@@ -1,196 +1,197 @@
 <!doctype html>
 <html lang="no">
 <head>
-	<meta charset="utf8">
-	<title>JavaScript - Mesaninen 2014</title>
-	<link rel="stylesheet" href="../revealjs/css/reveal.min.css">
-	<link rel="stylesheet" href="../revealjs/css/theme/sky.css" id="theme">
-	<link rel="stylesheet" href="../highlight/styles/default.css">
+  <meta charset="utf8">
+  <title>JavaScript - Mesaninen 2014</title>
+  <link rel="stylesheet" href="../revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="../revealjs/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../highlight/styles/default.css">
 </head>
 <html><body>
-	<div class="reveal">
-		<div class="slides">
+  <div class="reveal">
+    <div class="slides">
 
-			<section>
-				<h1>JavaScript</h1>
-				<p>Mesaninen 2014</p>
-				<p>Arild Tvergrov &amp; Mikkel Steine</p>
-			</section>
+      <section>
+        <h1>JavaScript</h1>
+        <p>Mesaninen 2014</p>
+        <p>Arild Tvergrov &amp; Mikkel Steine</p>
+      </section>
 
-			<section>
-				<h2>Program</h2>
-				<ol>
-					<li>Hvorfor JavaScript?</li>
-					<li>Historikk</li>
-					<li>Bruksområder</li>
-					<li>Språket JavaScript</li>
-					<li>Fremtiden</li>
-					<li>Rammeverk</li>
-					<li>Bygging</li>
-					<li>Testing</li>
-					<li>Lære mer...</li>
-				</ol>
-			</section>
+      <section>
+        <h2>Program</h2>
+        <ol>
+          <li>Hvorfor JavaScript?</li>
+          <li>Historikk</li>
+          <li>Bruksområder</li>
+          <li>Språket JavaScript</li>
+          <li>Fremtiden</li>
+          <li>Rammeverk</li>
+          <li>Bygging</li>
+          <li>Testing</li>
+          <li>Lære mer...</li>
+        </ol>
+      </section>
 
-			<section class="stack">
-				<section>
-					<h1>Hvorfor JavaScript?</h1>
-					<p>(Alle bruker det.)</p>
-				</section>
+      <section class="stack">
+        <section>
+          <h1>Hvorfor JavaScript?</h1>
+          <p>(Alle bruker det.)</p>
+        </section>
 
-				<section>
-					<h2>Suksesshistorier</h2>
-					<ul>
-						<li>Norman Antivirus</li>
-						<li>KISS</li>
-						<li></li>
-					</ul>
-				</section>
-			</section>
+        <section>
+          <h2>Suksesshistorier</h2>
+          <ul>
+            <li>Norman Antivirus</li>
+            <li>KISS</li>
+            <li></li>
+          </ul>
+        </section>
+      </section>
 
-			<section class="stack">
-				<section>
-					<h1>Historikk</h1>
-				</section>
-				<section>
-					<h1>JavaScript blir til...</h1>
-					<ul>
-						<li>1996-03: Introdusert i Netscape Navigator 2.0, laget for å slippe lange rundturer til server.</li>
-						<li>1997-10: Dynamisk HTML kom i IE4.</li>
-						<li>1999/2000: DOM kom med IE5, NS6 og Opera.</li>
-						<li>1999-12: Standarden <em>ECMAScript</em>, utgv. 3.</li>
-					</ul>
-				</section>
+      <section class="stack">
+        <section>
+          <h1>Historikk</h1>
+        </section>
+        <section>
+          <h1>JavaScript blir til...</h1>
+          <ul>
+            <li>1996-03: Introdusert i Netscape Navigator 2.0, laget for å slippe lange rundturer til server.</li>
+            <li>1997-10: Dynamisk HTML kom i IE4.</li>
+            <li>1999/2000: DOM kom med IE5, NS6 og Opera.</li>
+            <li>1999-20112: Standarden <em>ECMAScript</em>, utgv. 3.</li>
+          </ul>
+        </section>
 
-				<section>
-					<h1>Treg utvikling...</h1>
-					<ul>
-						<li>2000-tallet: JS-motorene henger ikke med i svingene</li>
-						<li>IE6 legger hemsko på utviklerne</li>
-						<li>Intrepretert språk - tregt</li>
-					</ul>
-				</section>
+        <section>
+          <h1>Treg utvikling...</h1>
+          <ul>
+            <li>2000-tallet: JS-motorene henger ikke med i svingene</li>
+            <li>IE6 legger hemsko på utviklerne</li>
+            <li>Intrepretert språk - tregt</li>
+          </ul>
+        </section>
 
-				<section>
-					<h1>Renessanse</h1>
-					<ul>
-						<li>2008: Google Chrome =&gt; V8; JS-motor med JIT-compiler</li>
-						<li>Andre fulgte etter:<ul>
-							<li>Safari 4: SquirrelFish Extreme</li>
-							<li>FireFox 3.5: TraceMonkey</li>
-							<li>IE 9: Chakra</li>
-						</ul></li>
-						<li>JavaScript fikk et skikkelig ytelsesløft!</li>
-					</ul>
-				</section>
+        <section>
+          <h1>Renessanse</h1>
+          <ul>
+            <li>2008: Google Chrome med V8: JS-motor med JIT-compiler</li>
+            <li>Andre fulgte etter:<ul>
+              <li>Safari 4: SquirrelFish Extreme</li>
+              <li>FireFox 3.5: TraceMonkey</li>
+              <li>IE 9: Chakra</li>
+            </ul></li>
+            <li>JavaScript fikk et skikkelig ytelsesløft!</li>
+          </ul>
+        </section>
 
-				<section>
-					<h1>Implementér!</h1>
-					<ul>
-						<li>Det offisielle navnet på standarden er ECMAScript</li>
-						<li>Siste versjon er 1.8.5</li>
-						<li>Mange forskjellige implementasjoner av ES
-							<ul>
-								<li>JavaScript 1.8.5 (ES5+, Firefox)</li>
-								<li>JScript 9.0 (ES5, Microsoft)</li>
-								<li>Nashorn 1.8.0 (ES5.1, Java/Oracle)</li>
-								<li>ActionScript (ES3, Flash og Flex)</li>
-								<li>QtScript (ES3, Qt)</li>
-								<li>ExtendScript (ES3, Adobe CS)</li>
-								<li>... og mange flere</li>
-							</ul>
-						</li>
-						<li>Alle implementasjoner har særegenheter i forhold til standarden.</li>
-					</ul>
-				</section>
-			</section>
+        <section>
+          <h1>Implementér!</h1>
+          <ul>
+            <li>Det offisielle navnet på standarden er ECMAScript</li>
+            <li>Siste versjon er 1.8.5</li>
+            <li>Mange forskjellige implementasjoner av ES
+              <ul>
+                <li>JavaScript 1.8.5 (ES5+, Firefox)</li>
+                <li>JScript 9.0 (ES5, Microsoft)</li>
+                <li>Nashorn 1.8.0 (ES5.1, Java/Oracle)</li>
+                <li>ActionScript (ES3, Flash og Flex)</li>
+                <li>QtScript (ES3, Qt)</li>
+                <li>ExtendScript (ES3, Adobe CS)</li>
+                <li>... og mange flere</li>
+              </ul>
+            </li>
+            <li>Alle implementasjoner har særegenheter i forhold til standarden.</li>
+          </ul>
+        </section>
+      </section>
 
-			<section class="stack">
-				<section>
-					<h1>Bruksområder</h1>
-				</section>
-			</section>
+      <section class="stack">
+        <section>
+          <h1>Bruksområder</h1>
+        </section>
+      </section>
 
-			<section class="stack">
-				<section>
-					<h1>Språket Javascript</h1>
-					<ul>
-						<li>Elementært</li>
-						<li>Datatyper</li>
-						<li>Falsy og truthy</li>
-						<li>Scope</li>
-						<li>Math</li>
-						<li>String</li>
-						<li>DOM</li>
-						<li>Eventer</li>
-						<li>Serverkommunikasjon</li>
-						<li>Prototyper</li>
-						<li>Ytelse</li>
-					</ul>
-				</section>
-				<section>
-					<h2>Elementært</h2>
-					<ul>
-						<li>Imperativt og strukturert: if, while, for, etc. C-stil.</li>
-						<li>Dynamisk: Type følger verdi, ikke variabel. "Alt" er objekter og kan utvides som man vil.</li>
-						<li>Funksjonelt: Funksjoner er også objekter. Funksjoner kan nestes også.</li>
-						<li>Prototype-basert: Bruker prototyper (altså gjenbruk av eksisterende objekt) i stedet for klasser og arv.</li>
-					</ul>
-				</section>
-				<section>
-					<pre><code data-trim contenteditable class="hljs javascript">
-var kurs = 5.67;
+      <section class="stack">
+        <section>
+          <h1>Språket Javascript</h1>
+          <ul>
+            <li>Elementært</li>
+            <li>Datatyper</li>
+            <li>Falsy og truthy</li>
+            <li>Scope</li>
+            <li>Math</li>
+            <li>String</li>
+            <li>DOM</li>
+            <li>Eventer</li>
+            <li>Serverkommunikasjon</li>
+            <li>Prototyper</li>
+            <li>Ytelse</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Elementært</h2>
+          <ul>
+            <li>Imperativt og strukturert: if, while, for, etc. C-stil.</li>
+            <li>Dynamisk: Type følger verdi, ikke variabel. "Alt" er objekter og kan utvides som man vil.</li>
+            <li>Funksjonelt: Funksjoner er også objekter. Funksjoner kan nøstes også.</li>
+            <li>Prototype-basert: Bruker prototyper (altså gjenbruk av eksisterende objekt) i stedet for klasser og arv.</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="hljs javascript">var kurs = 5.67;
 var f = function(x) { return x * kurs; };
 
-function yttreFunksjon() {
-	function indreFunksjon() {
-        alert("Hei!");
-	}
-	indreFunksjon();
+function ytreFunksjon() {
+  function indreFunksjon() {
+    alert("Hei!");
+  }
+  indreFunksjon();
 }
-
-function Ansatt (navn, tittel, fodt)
-{
-	this.navn = navn;
-	this.tittel = tittel;
-	this.fodt = fodt;
-}
-
-var fred = new employee("Fred Flintstone","Caveman",1970);
-employee.prototype.salary = null;
-fred.salary = 20000;
-
 </code></pre>
-				</section>
-				<section>
-					<h2>Datatyper</h2>
-					<ul>
-						<li>JavaScript er svakt typet</li>
-						<li>Operasjoner på typer i JS er ikke helt som man forventer</li>
-						<li>Alt er objekter, så konvertering av type betyr oppretting av nytt objekt og konvertering av verdi</li>
-						<li>Ikke opprett primitiver med "new". Ting blir mer komplekst og tregere.
-						<li>De forskjellige typene er: String, Number, Boolean, Array, Object, Undefined, null.</li>
-						<li>Bruk typeof for å sjekke typen av verdien.</li>
-					</ul>
-					<pre><code data-trim contenteditable class="hljs javascript">
+        </section>
+
+        <section>
+          <h2>Prototyper</h2>
+<pre><code data-trim contenteditable class="hljs javascript">function Ansatt(navn, tittel, fodt) {
+  this.navn = navn;
+  this.tittel = tittel;
+  this.fodt = fodt;
+}
+
+var fred = new Ansatt("Fred Flintstone", "Caveman", 1970);
+Ansatt.prototype.salary = null;
+Ansatt.salary = 20000;
+</code></pre>
+        </section>
+        <section>
+          <h2>Datatyper</h2>
+          <ul>
+            <li>JavaScript er svakt typet</li>
+            <li>Operasjoner på typer i JS er ikke helt som man forventer</li>
+            <li>Alt er objekter, så konvertering av type betyr oppretting av nytt objekt og konvertering av verdi</li>
+            <li>Ikke opprett primitiver med "new". Ting blir mer komplekst og tregere.
+            <li>De forskjellige typene er: String, Number, Boolean, Array, Object, Undefined, null.</li>
+            <li>Bruk typeof for å sjekke typen av verdien.</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">
 var x; // undefined
 x = 10; // number
 x = "Bøtteknott"; // string
 x = typeof x; // "string"
-					</code></pre>
-				</section>
-				<section>
-					<h2>Number</h2>
-					<p>Alle tall i JS representeres med denne typen.</p>
-					<ul>
-						<li>Integer finnes ikke!! Number implememteres med en double.</li>
-						<li>Man kan skrive tall med eller uten desimaler: 34.00 == 34</li>
-						<li>Man kan bruke vitenskapsnotasjon: 1e2 == 100; 1e-2 == 0.01</li>
-						<li>Tall oppfører seg som en double i C/Java med de utfordringer det medfører.</li>
-						<li>Tall blir automatisk konvertert til og fra andre typer om man prøver å bruke dem.</li>
-						<li>Om JS ikke klarer å konvertere en type til et tall så blir verdien "NaN" (Not a Number).</li>
-					</ul>
-					<pre><code data-trim contenteditable class="hljs javascript">
+          </code></pre>
+        </section>
+        <section>
+          <h2>Number</h2>
+          <p>Alle tall i JS representeres med denne typen.</p>
+          <ul>
+            <li>Integer finnes ikke!! Number implememteres med en double.</li>
+            <li>Man kan skrive tall med eller uten desimaler: 34.00 == 34</li>
+            <li>Man kan bruke vitenskapsnotasjon: 1e2 == 100; 1e-2 == 0.01</li>
+            <li>Tall oppfører seg som en double i C/Java med de utfordringer det medfører.</li>
+            <li>Tall blir automatisk konvertert til og fra andre typer om man prøver å bruke dem.</li>
+            <li>Om JS ikke klarer å konvertere en type til et tall så blir verdien <em>NaN</em> (Not a Number).</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">
 x = 10 + "5"; // ?
 x = "5" + 10; // ?
 x = "10" - 5; // ? 
@@ -198,78 +199,78 @@ x = 5 + "e4"; // ?
 x = "4r" - 3; // ?
 x = 1.000001 + 1; // ?
 x = 1.000001 - 1; // ?
-					</code></pre>
-				</section>
-				<section>
-					<h2>Boolean</h2>
-					<ul>
-						<li>Man må ikke bruke new Boolean(), da denne alltid er true(thy).</li>
-						<li>Verdiene er som vanlig true og false</li>
-					</ul>
-					<pre><code data-trim contenteditable class="hljs javascript">
+          </code></pre>
+        </section>
+        <section>
+          <h2>Boolean</h2>
+          <ul>
+            <li>Man må ikke bruke new Boolean(), da denne alltid er true(thy).</li>
+            <li>Verdiene er som vanlig true og false</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">
 x = Number(true); // ?
 x = true - 1; // ?
 x = new Boolean(false);
 if (x) {
-	// Kommer vi hit?
+  // Kommer vi hit?
 }
-					</code></pre>
-				</section>
-				<section>
-					<h2>String</h2>
-					<ul>
-						<li>Kan bruke både ' eller ", f.eks. om man har en streng med et av disse tegnene i seg, så kan man bruke det andre tegnet.</li>
-						<li>"Backslash" (\) er tegnet man bruker for å escape et spesialtegn.</li>
-						<li>Ikke bruk new String, som gir mange uheldig bieffekter. Lag vanlige strengprimitiver.</li>
-						<li>En streng har masse attributter og funksjoner, f.eks. "abc".length => 3 og " abc ".trim() => "abc"</li>
-					</ul>
-					<pre><code data-trim contenteditable class="hljs javascript">
+          </code></pre>
+        </section>
+        <section>
+          <h2>String</h2>
+          <ul>
+            <li>Kan bruke både ' eller ", f.eks. om man har en streng med et av disse tegnene i seg, så kan man bruke det andre tegnet.</li>
+            <li>"Backslash" (\) er tegnet man bruker for å escape et spesialtegn.</li>
+            <li>Ikke bruk new String, som gir mange uheldig bieffekter. Lag vanlige strengprimitiver.</li>
+            <li>En streng har masse attributter og funksjoner, f.eks. "abc".length => 3 og " abc ".trim() => "abc"</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">
 x = "abc"
 x = x.substr(0,2); // "ab"
-					</code></pre>
-				</section>
-				<section>
-					<h2>Object</h2>
-					<ul>
-						<li>Alt bortsett fra primitivene i JS er objekter, også funksjoner.</li>
-						<li>Man lager et objekt ganske enkelt med var obj = { bedrift : "Mesan", adressse : "HI20" };</li>
-						<li>Du legger enkelt til nye verdier med obj.telefonnr = "22334455";</li>
-						<li>Denne oppførselen er felles for alle objekter, selv om Array er litt spesiell...</li>
-						<li>Å legge til en funksjon til et objekt er like enkelt som å legge til verdier.</li>
-					</ul>
-					<pre><code data-trim contenteditable class="hljs javascript">
-var bedrift = { navn : "Mesan AS", adresse : "HI20", telefonnr : "22334455" };
-bedrift.ring = function() { alert(this.telefonnr); }
-					</code></pre>
-				</section>
-				<section>
-					<h2>Array</h2>
-					<ul>
-						<li>Ikke en primitiv, men et spesielt objekt som har visse egenskaper.</li>
-						<li>Aksessering er litt andreledes enn for objekter; man bruker [] i stedet for .</li>
-						<li>new Array(1,2,3) === [1,2,3]</li>
-						<li>Alle elementene i en array kan ha forksjellige typer.</li>
-						<li>Første element starter på 0, som i C/Java: ([1,2,3])[0] === 1;</li>
-						<li>typeof [1,2,3] == "object"</li>
-					</ul>
-				</section>
-				<section>
-					<h2>Undefined og null</h2>
-					<ul>
-						<li>En variabel er undefined når den ikke har fått noen verdi.</li>
-						<li>En variabel er null når man setter den til null.</li>
-						<li>Disse to er altså ikke det samme, og en verdi som ikke er satt blir ikke automatisk null.</li>
-					</ul>
-				</section>
+          </code></pre>
+        </section>
+        <section>
+          <h2>Object</h2>
+          <ul>
+            <li>Alt bortsett fra primitivene i JS er objekter, også funksjoner.</li>
+            <li>Man lager et objekt ganske enkelt med:<br />
+              <pre><code data-trim contenteditable class="hljs javascript">var obj = { bedrift: "Mesan", adresse: "HI20" };</code></pre></li>
+            <li>Du legger enkelt til nye verdier med:<br />
+              <pre><code data-trim contenteditable class="hljs javascript">obj.telefonnr = "22334455";</code></pre></li>
+            <li>Denne oppførselen er felles for alle objekter, selv om Array er litt spesiell...</li>
+            <li>Å legge til en funksjon til et objekt er like enkelt som å legge til verdier.</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">var bedrift = { navn : "Mesan AS", adresse : "HI20", telefonnr : "22334455" };
+bedrift.ring = function() { alert(this.telefonnr); };</code></pre>
+        </section>
+        <section>
+          <h2>Array</h2>
+          <ul>
+            <li>Ikke en primitiv, men et spesielt objekt som har visse egenskaper.</li>
+            <li>Aksessering er litt annerledes enn for objekter; man bruker <code>[]</code> i stedet for <code>.</code><br />
+              <pre><code data-trim contenteditable class="hljs javascript">new Array(1,2,3) === [1,2,3]</code></pre></li>
+            <li>Alle elementene i en array kan ha forskjellige typer.</li>
+            <li>Første element starter på 0, som i C/Java: ([1,2,3])[0] === 1;</li>
+            <li>typeof [1,2,3] == "object"</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Undefined og null</h2>
+          <ul>
+            <li>En variabel er undefined når den ikke har fått noen verdi.</li>
+            <li>En variabel er null når man setter den til null.</li>
+            <li>Disse to er altså ikke det samme, og en verdi som ikke er satt blir ikke automatisk null.</li>
+          </ul>
+        </section>
 
-				<section>
-					<h1>Falsy og thruthy</h1>
-					<ul>
-						<li>Følgende verdier er falsy: false, 0, "", null, undefined, NaN</li>
-						<li>ALT annet er truthy!</li>
-						<li>Bruk ===, !==, &gt;==, &lt;== i stedet for ==, !=, &gt;=, &lt;= til alle sjekker. == konverterer, === gjør det ikke.</li>
-					</ul>
-					<pre><code data-trim contenteditable class="hljs javascript">
+        <section>
+          <h1>Falsy og thruthy</h1>
+          <ul>
+            <li>Følgende verdier er falsy: false, 0, "", null, undefined, NaN</li>
+            <li>ALT annet er truthy!</li>
+            <li>Bruk ===, !==, &gt;==, &lt;== i stedet for ==, !=, &gt;=, &lt;= til alle sjekker. == konverterer, === gjør det ikke.</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">
 var c = (false == 0); // true
 var d = (false == ""); // true
 var e = (0 == ""); // true
@@ -281,77 +282,77 @@ var j = (NaN == null); // false
 var k = (NaN == NaN); // false
 var l = (false == 0); // true
 var m = (false === 0); // false
-					</code></pre>
-				</section>
-				<section>
-					<h1>Scope</h1>
-					<ul>
-						<li>Et veldig viktig konsept!</li>
-						<li>Alle funksjoner har sitt eget scope, som betyr at alt som opprettes i scopet til en funksjon er bare tilgjengelig i det scopet.</li>
-						<li>Variable man ikke oppretter med var foran blir globale (en del av Window).</li>
-						<li>Alle variable/funksjoner man kaller som ikke er en del av scopet må letes fram i scope-rekka.</li>
-					</ul>
-					<pre><code data-trim contenteditable class="hljs javascript">
+          </code></pre>
+        </section>
+        <section>
+          <h1>Scope</h1>
+          <ul>
+            <li>Et veldig viktig konsept!</li>
+            <li>Alle funksjoner har sitt eget scope, som betyr at alt som opprettes i scopet til en funksjon er bare tilgjengelig i det scopet.</li>
+            <li>Variable man ikke oppretter med var foran blir globale (en del av Window).</li>
+            <li>Alle variable/funksjoner man kaller som ikke er en del av scopet må letes fram i scope-rekka.</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">
 function f() {
-	x = 10; // window.x opprettes/oppdateres
-	var y = 20; // opprettes i lokalt scope til f(), ikke tilgjengelig utenfra
-	function visKoordinat() {
-		var z = 30;
-		alert("hei " + x + "," + y + "," + z);
-	}
-	visKoordinat();
+  x = 10; // window.x opprettes/oppdateres
+  var y = 20; // opprettes i lokalt scope til f(), ikke tilgjengelig utenfra
+  function visKoordinat() {
+    var z = 30;
+    alert("hei " + x + "," + y + "," + z);
+  }
+  visKoordinat();
 }
-					</code></pre>
-				</section>
-				<section>
-					<h1>Math og Date</h1>
-					<ul>
-						<li>Math og Date er implementert i C++ og er så kjappe som det går. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</li>
-						<li>Math inneholder de vanligste mattefunksjonene og noen predefinerte konstanter.</li>
-					</ul>
-					<ul>
-						<li>I Date-objektet finner man mange nyttige funksjoner for dato og tid.</li>
-						<li>Man kan sammenligne to Date-objekter.</li>
-					</ul>
-				</section>
-				<section>
-					<h1>RegExp</h1>
-					<ul>
-						<li>Man kan lage RegExp-objekter med new, men det er ikke nødvendig. Bruk heller <i>/mønster/modifikatorer</i></li>
-						<li>Bruker du samme RegExp mange ganger, kan du lagre den i en variabel og bruke f.eks. exec på den.</li>
-					</ul>
-					<pre><code data-trim contenteditable class="hljs javascript">
+          </code></pre>
+        </section>
+        <section>
+          <h1>Math og Date</h1>
+          <ul>
+            <li>Math og Date er implementert i C++ og er så kjappe som det går. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</li>
+            <li>Math inneholder de vanligste mattefunksjonene og noen predefinerte konstanter.</li>
+          </ul>
+          <ul>
+            <li>I Date-objektet finner man mange nyttige funksjoner for dato og tid.</li>
+            <li>Man kan sammenligne to Date-objekter.</li>
+          </ul>
+        </section>
+        <section>
+          <h1>RegExp</h1>
+          <ul>
+            <li>Man kan lage RegExp-objekter med new, men det er ikke nødvendig. Bruk heller <i>/mønster/modifikatorer</i></li>
+            <li>Bruker du samme RegExp mange ganger, kan du lagre den i en variabel og bruke f.eks. exec på den.</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">
 var pattern = /^[A-Z]$/i;
 var res = str.replace(/(gutt|jente)/i, "menneskebarn");
 var t = /du/i.exec("Du er der."); // 'Du'
 if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
-					</code></pre>
-				</section>
-				<section>
-					<h1>DOM</h1>
-					<ul>
-						<li>Document Object Model holder alle elementene i en webside i et tre i minnet.</li>
-						<li>Du har direkte tilgang til denne med <code>document</code>.</li>
-						<li>Med <code>document.getElementById("minId")</code>, <code>getElementsByClassName</code> eller <code>getElementsByName</code> kan man finne elementer i DOM.</li>
-						<li>Traversering av DOM er kostbart og bør gjøres med forsiktighet. Mellomlagre ting du vil bruke mer enn en gang.</li>
-					</ul>
-				</section>
-				<section>
-					<h1>Eventer</h1>
-					<ul>
-						<li>Den måten folk flest begynner å sette opp eventer på er å legge de til i HTML. F.eks. <code>&lt;a href="#" onclick="doSomething()"&gt;</code> </li>
-						<li>En ryddigere måte er å bruke <code>element.addEventListener("click", function(){ ... })</code> direkte på DOM-objektet.</li>
-						<li>IE er selvfølgelig vanskelig og der heter funksjonen i v8 og eldre <code>attachEvent</code>.</li>
-						<li>Man kan legge til event-lyttere til alle DOM-objekter, også <code>window</code> og man kan legge til flere til hvert element.</li>
-						<li>Man kan også fjerne og fyre av eventer (dispatchEvent og removeEventListener).</li>
-					</ul>
-				</section>
-				<section>
-					<pre><code data-trim contenteditable class="hljs javascript">
+          </code></pre>
+        </section>
+        <section>
+          <h1>DOM</h1>
+          <ul>
+            <li>Document Object Model holder alle elementene i en webside i et tre i minnet.</li>
+            <li>Du har direkte tilgang til denne med <code>document</code>.</li>
+            <li>Med <code>document.getElementById("minId")</code>, <code>getElementsByClassName</code> eller <code>getElementsByName</code> kan man finne elementer i DOM.</li>
+            <li>Traversering av DOM er kostbart og bør gjøres med forsiktighet. Mellomlagre ting du vil bruke mer enn en gang.</li>
+          </ul>
+        </section>
+        <section>
+          <h1>Eventer</h1>
+          <ul>
+            <li>Den måten folk flest begynner å sette opp eventer på er å legge de til i HTML. F.eks. <code>&lt;a href="#" onclick="doSomething()"&gt;</code> </li>
+            <li>En ryddigere måte er å bruke <code>element.addEventListener("click", function(){ ... })</code> direkte på DOM-objektet.</li>
+            <li>IE er selvfølgelig vanskelig og der heter funksjonen i v8 og eldre <code>attachEvent</code>.</li>
+            <li>Man kan legge til event-lyttere til alle DOM-objekter, også <code>window</code> og man kan legge til flere til hvert element.</li>
+            <li>Man kan også fjerne og fyre av eventer (dispatchEvent og removeEventListener).</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="hljs javascript">
 var useCapture = false; // Indre element håndteres først, true gjør motsatt
 var myFunction = function(event) {
-	var element = this; // elementet du klikket på
-	var faktiskElement = event.currentTarget;
+  var element = this; // elementet du klikket på
+  var faktiskElement = event.currentTarget;
 }, useCapture);
 
 var x = document.getElementById("myBtn");
@@ -362,18 +363,57 @@ if (x.addEventListener) { // For all major browsers, except IE 8 and earlier
 }
 
 x.removeEventListener("click", myFunction);
-					</code></pre>
-				</section>
-			</section>
+          </code></pre>
+        </section>
+      </section>
 
-		</div>
-	</div>
+      <section class="stack">
+        <section>
+          <h1>Fremtiden</h1>
+        </section>
 
-	<script src="../revealjs/lib/js/head.min.js"></script>
-	<script src="../revealjs/js/reveal.min.js"></script>
-	<script src="../highlight/highlight.pack.js"></script>
-	<script>
-		Reveal.initialize({ controls: true });
-		hljs.initHighlightingOnLoad();
-	</script>
+        <section>
+          <h2>EcmaScript 6 (&laquo;Harmony&raquo;)</h2>
+        </section>
+
+        <section>
+          <h2>Hva blir (er?) nytt?</h2>
+          <ul>
+            <li>Klasser</li>
+            <li>Arrow-funksjoner</li>
+            <li>Moduler</li>
+            <li>Block Scoping</li>
+            <li>Promises</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="stack">
+        <section>
+          <h1>Rammeverk</h1>
+        </section>
+      </section>
+
+      <section class="stack">
+        <section>
+          <h1>Bygging</h1>
+        </section>
+      </section>
+
+      <section class="stack">
+        <section>
+          <h1>Testing</h1>
+        </section>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../revealjs/lib/js/head.min.js"></script>
+  <script src="../revealjs/js/reveal.min.js"></script>
+  <script src="../highlight/highlight.pack.js"></script>
+  <script>
+    Reveal.initialize({ controls: true });
+    hljs.initHighlightingOnLoad();
+  </script>
 </body></html>
