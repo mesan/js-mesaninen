@@ -5,9 +5,9 @@
 	<title>JavaScript - Mesaninen 2014</title>
 	<link rel="stylesheet" href="../revealjs/css/reveal.min.css">
 	<link rel="stylesheet" href="../revealjs/css/theme/sky.css" id="theme">
+	<link rel="stylesheet" href="../highlight/styles/default.css">
 </head>
-<html>
-<body>
+<html><body>
 	<div class="reveal">
 		<div class="slides">
 
@@ -332,7 +332,8 @@ if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
 					<ul>
 						<li>Document Object Model holder alle elementene i en webside i et tre i minnet.</li>
 						<li>Du har direkte tilgang til denne med <code>document</code>.</li>
-						<li>Med 
+						<li>Med <code>document.getElementById("minId")</code>, <code>getElementsByClassName</code> eller <code>getElementsByName</code> kan man finne elementer i DOM.</li>
+						<li>Traversering av DOM er kostbart og bør gjøres med forsiktighet. Mellomlagre ting du vil bruke mer enn en gang.</li>
 					</ul>
 				</section>
 				<section>
@@ -342,8 +343,10 @@ if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
 						<li>En ryddigere måte er å bruke <code>element.addEventListener("click", function(){ ... })</code> direkte på DOM-objektet.</li>
 						<li>IE er selvfølgelig vanskelig og der heter funksjonen i v8 og eldre <code>attachEvent</code>.</li>
 						<li>Man kan legge til event-lyttere til alle DOM-objekter, også <code>window</code> og man kan legge til flere til hvert element.</li>
-						<li></li>
+						<li>Man kan også fjerne og fyre av eventer (dispatchEvent og removeEventListener).</li>
 					</ul>
+				</section>
+				<section>
 					<pre><code data-trim contenteditable class="hljs javascript">
 var useCapture = false; // Indre element håndteres først, true gjør motsatt
 var myFunction = function(event) {
@@ -356,7 +359,10 @@ if (x.addEventListener) { // For all major browsers, except IE 8 and earlier
     x.addEventListener("click", myFunction, useCapture);
 } else if (x.attachEvent) { // For IE 8 and earlier versions
     x.attachEvent("onclick", myFunction, useCapture);
-}					</code></pre>
+}
+
+x.removeEventListener("click", myFunction);
+					</code></pre>
 				</section>
 			</section>
 
@@ -365,8 +371,9 @@ if (x.addEventListener) { // For all major browsers, except IE 8 and earlier
 
 	<script src="../revealjs/lib/js/head.min.js"></script>
 	<script src="../revealjs/js/reveal.min.js"></script>
+	<script src="../highlight/highlight.pack.js"></script>
 	<script>
 		Reveal.initialize({ controls: true });
+		hljs.initHighlightingOnLoad();
 	</script>
-</body>
-</html>
+</body></html>
