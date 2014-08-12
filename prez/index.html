@@ -378,7 +378,8 @@ x.removeEventListener("click", myFunction);
 
         <section>
           <h2>Når kommer ES6?</h2>
-          <p>~ juni 2005</p>
+          <p>Ratifiseres i desember 2014.</p>
+          <p>Implementeres fortløpende i moderne nettlesere.</p>
         </section>
 
         <section>
@@ -386,10 +387,11 @@ x.removeEventListener("click", myFunction);
           <ul>
             <li>Block Scope</li>
             <li>Klasser</li>
-            <li>Arrow-funksjoner</li>
+            <li>Arrows</li>
             <li>Promises</li>
             <li>Moduler</li>
             <li>Generators</li>
+            <li>++</li>
           </ul>
         </section>
 
@@ -473,8 +475,8 @@ myPlane.canFly; // <= true
         </section>
 
         <section>
-          <h2>Arrow-funksjoner</h2>
-          Ekvivalent i ES5:<br />
+          <h2>Arrows</h2>
+          Hva ES6 løser:<br />
 <pre><code data-trim class="hljs javascript">var nr = [0, 1, 2];
 
 var squareNr = nr.map(function (x) {
@@ -486,8 +488,8 @@ console.log(squareNr);
         </section>
 
         <section>
-          <h2>Arrow-funksjoner</h2>
-          ES6:<br />
+          <h2>Arrows</h2>
+          ES6 løser det slik:<br />
 <pre><code data-trim class="hljs javascript">let nr = [0, 1, 2];
 
 let squareNr = nr.map(x => x * x);
@@ -545,11 +547,55 @@ Promise.race([p1, p2]).then((value) => console.log(value)); // <= 'turtle'
 </code></pre>
         </section>
 
+        <section>
+          <h2>Generators</h2>
+<pre><code data-trim class="hljs javascript">function *characters(name) {
+  let i = 0;
+  while (true) {
+    if (i >= name.length) i = 0;
+    yield name[i++];
+  }
+}
+
+let chars = characters('Arild');
+
+for (let i = 0; i < 10; i++) {
+  console.log(chars.next().value);
+}
+</code></pre>
+
+        </section>
+
+        <section>
+          <h2>++</h2>
+          <p class="fragment current-visible">
+            Standard-parametre:<br /><code>function (a, b=1, c=2) {}</code>
+          </p>
+          <p class="fragment current-visible">
+            Rest-parametre:<br /><code>function format(str, ...args) {}</code>
+          </p>
+          <p class="fragment current-visible">
+            Destructured Assignment:<br /><code>let [one, two] = [1, 2];</code>
+          </p>
+          <p class="fragment current-visible">
+            Template Strings:<br /><code>`Hello ${name}, how are you ${time}?`</code>
+          </p>
+          <p class="fragment current-visible">
+            <code>For-of</code>-løkker:<br /><code>for (let nr of [1, 2, 3]) {}</code>
+          </p>
+
+        </section>
+
       </section>
 
       <section class="stack">
+
         <section>
           <h1>Rammeverk</h1>
+        </section>
+
+        <section data-background="tagcloud.png" data-background-transition="zoom">
+
         </section>
       </section>
 
