@@ -194,7 +194,7 @@ x = typeof x; // "string"
           <pre><code data-trim contenteditable class="hljs javascript">
 x = 10 + "5"; // ?
 x = "5" + 10; // ?
-x = "10" - 5; // ? 
+x = "10" - 5; // ?
 x = 5 + "e4"; // ?
 x = "4r" - 3; // ?
 x = 1.000001 + 1; // ?
@@ -386,6 +386,61 @@ x.removeEventListener("click", myFunction);
             <li>Promises</li>
           </ul>
         </section>
+
+        <section>
+          <h2>Klasser</h2>
+          ES5:<br />
+<pre><code data-trim class="hljs javascript">function Vehicle(owner) {
+  this.owner = owner;
+}
+
+Vehicle.prototype.printOwner = function () {
+  console.log('The owner of this vehicle is ' + this.owner);
+};
+
+var myVehicle = new Vehicle('Arild');
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Klasser</h2>
+          ES6:<br />
+<pre><code data-trim class="hljs javascript">class Vehicle {
+  constructor(owner) {
+    this.owner = owner;
+  }
+
+  printOwner() {
+    console.log('The owner of this vehicle is ' + this.owner);
+  }
+}
+
+let myVehicle = new Vehicle("Arild");
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Klasser og arv</h2>
+          ES6:<br />
+<pre><code data-trim class="hljs javascript">class Vehicle {
+  constructor(owner, canFly) {
+    this.owner = owner;
+    this.canFly = canFly;
+  }
+
+  printOwner() { /* ... */ }
+}
+
+class Plane extends Vehicle {
+  constructor(owner) {
+    super(owner, true);
+  }
+}
+
+let myPlane = new Plane("Arild");
+myPlane.canFly; // <= true
+</code></pre>
+        </section>
       </section>
 
       <section class="stack">
@@ -413,7 +468,13 @@ x.removeEventListener("click", myFunction);
   <script src="../revealjs/js/reveal.min.js"></script>
   <script src="../highlight/highlight.pack.js"></script>
   <script>
-    Reveal.initialize({ controls: true });
+    Reveal.initialize({
+      controls: true,
+      parallaxBackgroundImage:
+        "parallax2.jpg",
+      parallaxBackgroundSize: '1920px 1920px',
+      transition: 'linear'
+    });
     hljs.initHighlightingOnLoad();
   </script>
 </body></html>
