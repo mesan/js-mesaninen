@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../revealjs/css/theme/sky.css" id="theme">
   <link rel="stylesheet" href="../highlight/styles/default.css">
 </head>
-<html><body>
+<body>
   <div class="reveal">
     <div class="slides">
 
@@ -107,7 +107,7 @@
 
       <section class="stack">
         <section>
-          <h1>Bruksområder</h1>
+          <h1>Hva bruker vi JavaScript til?</h1>
         </section>
       </section>
 
@@ -373,18 +373,48 @@ x.removeEventListener("click", myFunction);
         </section>
 
         <section>
-          <h2>EcmaScript 6 (&laquo;Harmony&raquo;)</h2>
+          <h2>EcmaScript 6<br />(&laquo;ES.next&raquo;)</h2>
+        </section>
+
+        <section>
+          <h2>Når kommer ES6?</h2>
+          <p>~ juni 2005</p>
         </section>
 
         <section>
           <h2>Hva blir (er?) nytt?</h2>
           <ul>
+            <li>Block Scope</li>
             <li>Klasser</li>
             <li>Arrow-funksjoner</li>
-            <li>Moduler</li>
-            <li>Block Scoping</li>
             <li>Promises</li>
+            <li>Moduler</li>
+            <li>Generators</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Block Scope</h2>
+          ES5 har global og function scope, men ikke block scope:<br />
+<pre><code data-trim class="hljs javascript">if (true) {
+  var a = 'abc';
+}
+
+a; // <= 'abc'
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Block Scope</h2>
+          ES6 har block scope med nøkkelordet <code>let</code>:<br />
+<pre><code data-trim class="hljs javascript">if (true) {
+  var a = 'abc';
+  let b = 'def';
+}
+
+a; // <= 'abc'
+b; // <= undefined
+</code></pre>
         </section>
 
         <section>
@@ -441,6 +471,80 @@ let myPlane = new Plane("Arild");
 myPlane.canFly; // <= true
 </code></pre>
         </section>
+
+        <section>
+          <h2>Arrow-funksjoner</h2>
+          Ekvivalent i ES5:<br />
+<pre><code data-trim class="hljs javascript">var nr = [0, 1, 2];
+
+var squareNr = nr.map(function (x) {
+  return x * x;
+});
+
+console.log(squareNr);
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Arrow-funksjoner</h2>
+          ES6:<br />
+<pre><code data-trim class="hljs javascript">let nr = [0, 1, 2];
+
+let squareNr = nr.map(x => x * x);
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Promises</h2>
+          <p>ES5: Callbacks From Hell</p>
+<pre><code data-trim class="hljs javascript">doThis(function () {
+  doThat(function () {
+    pleaseDoThisToo(function () {
+      andEventuallyDoThisAsWell(function () {
+        ohAndAlmostForgot(function () {
+          console.log('Done!');
+        });
+      });
+    });
+  });
+});
+</code></pre>
+          <p>Tredjepartsbiblioteker gir god Promise-støtte:<br />
+            Q.js, jQuery, RSVP.js, ++</p>
+        </section>
+
+        <section>
+          <h2>Promises</h2>
+          <p>ES6: Innebygd støtte for promises</p>
+        </section>
+
+        <section>
+          <h2>Promises</h2>
+          <h3><code>Promise.all()</code></h3>
+<pre><code data-trim class="hljs javascript">let p1 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 300, 'done!'));
+
+let p2 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 400, 'meToo!'));
+
+Promise.all([p1, p2]).then((value) => console.log(value));
+// <= ['done!', 'meToo!']
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Promises</h2>
+          <h3><code>Promise.race()</code></h3>
+<pre><code data-trim class="hljs javascript">let p1 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 400, 'rabbit'));
+
+let p2 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 200, 'turtle'));
+
+Promise.race([p1, p2]).then((value) => console.log(value)); // <= 'turtle'
+</code></pre>
+        </section>
+
       </section>
 
       <section class="stack">
@@ -460,7 +564,6 @@ myPlane.canFly; // <= true
           <h1>Testing</h1>
         </section>
       </section>
-
     </div>
   </div>
 
