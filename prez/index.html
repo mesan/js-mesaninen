@@ -55,10 +55,10 @@
         <section>
           <h2>JavaScript blir til...</h2>
           <ul>
-            <li>1996-03: Introdusert i Netscape Navigator 2.0, laget for å slippe lange rundturer til server.</li>
-            <li>1997-10: Dynamisk HTML kom i IE4.</li>
+            <li>1996 mar: Introdusert i Netscape Navigator 2.0, laget for å slippe lange rundturer til server.</li>
+            <li>1997 okt: Dynamisk HTML kom i IE4.</li>
             <li>1999/2000: DOM kom med IE5, NS6 og Opera.</li>
-            <li>1999-12: Standarden <em>ECMAScript</em>, utgv. 3.</li>
+            <li>1999 des: Standarden <em>ECMAScript</em>, utgv. 3.</li>
           </ul>
         </section>
 
@@ -107,7 +107,7 @@
 
       <section class="stack">
         <section>
-          <h2>Hva bruker vi JavaScript til?</h2>
+          <h2>Bruksområder</h2>
         </section>
       </section>
 
@@ -182,34 +182,60 @@ x = typeof x; // "string"
         </section>
         <section>
           <h2>Number</h2>
-          <p>Alle tall i JS representeres med denne typen.</p>
           <ul>
+            <li>Alle tall i JS representeres med denne typen.</li>
             <li>Integer finnes ikke!! Number implememteres med en double.</li>
             <li>Man kan skrive tall med eller uten desimaler: 34.00 == 34</li>
             <li>Man kan bruke vitenskapsnotasjon: 1e2 == 100; 1e-2 == 0.01</li>
             <li>Tall oppfører seg som en double i C/Java med de utfordringer det medfører.</li>
+            <li>Bruk &lt; og &gt; i stedet for = og != når man sammenligner tall, siden man ikke har nøyaktige desimaltall.</li>
             <li>Tall blir automatisk konvertert til og fra andre typer om man prøver å bruke dem.</li>
             <li>Om JS ikke klarer å konvertere en type til et tall så blir verdien <em>NaN</em> (Not a Number).</li>
           </ul>
+        </section>
+        <section>
           <pre><code data-trim contenteditable class="hljs javascript">
 x = 10 + "5"; // ?
 x = "5" + 10; // ?
 x = "10" - 5; // ?
 x = 5 + "e4"; // ?
 x = "4r" - 3; // ?
+x = parseInt("4r") - 3; // ?
+x = parseInt("a3") - 3; // ?
 x = 1.000001 + 1; // ?
 x = 1.000001 - 1; // ?
+0.1.toFixed(20); // 0.10000000000000000555
+x = 9999999999999999; // ?
+
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n)
+}
           </code></pre>
         </section>
         <section>
           <h2>Boolean</h2>
+          <p>(Falsy og thruthy)</p>
           <ul>
+            <li>Følgende verdier er falsy: false, 0, "", null, undefined, NaN</li>
+            <li>ALT annet er truthy!</li>
+            <li>Bruk ===, !==, &gt;==, &lt;== i stedet for ==, !=, &gt;=, &lt;= til alle sjekker. == konverterer, === gjør det ikke.</li>
             <li>Man må ikke bruke new Boolean(), da denne alltid er true(thy).</li>
-            <li>Verdiene er som vanlig true og false</li>
           </ul>
-          <pre><code data-trim contenteditable class="hljs javascript">
-x = Number(true); // ?
-x = true - 1; // ?
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="hljs javascript">var c = (false == 0); // true
+var d = (false == ""); // true
+var e = (0 == ""); // true
+var f = (null == false); // false
+var g = (null == null); // true
+var h = (undefined == undefined); // true
+var i = (undefined == null); // true
+var j = (NaN == null); // false
+var k = (NaN == NaN); // false
+var l = (false == 0); // true
+var m = (false === 0); // false
+
+var x = true - 1; // ?
 x = new Boolean(false);
 if (x) {
   // Kommer vi hit?
@@ -220,7 +246,7 @@ if (x) {
           <h2>String</h2>
           <ul>
             <li>Kan bruke både ' eller ", f.eks. om man har en streng med et av disse tegnene i seg, så kan man bruke det andre tegnet.</li>
-            <li>"Backslash" (\) er tegnet man bruker for å escape et spesialtegn.</li>
+            <li>"Backslash" (\) brukes for å escape et spesialtegn.</li>
             <li>Ikke bruk new String, som gir mange uheldig bieffekter. Lag vanlige strengprimitiver.</li>
             <li>En streng har masse attributter og funksjoner, f.eks. <code>"abc".length => 3</code> og <code>" abc ".trim() => "abc"</code></li>
           </ul>
@@ -263,27 +289,6 @@ bedrift.ring = function() { alert(this.telefonnr); }
           </ul>
         </section>
 
-        <section>
-          <h2>Falsy og thruthy</h2>
-          <ul>
-            <li>Følgende verdier er falsy: false, 0, "", null, undefined, NaN</li>
-            <li>ALT annet er truthy!</li>
-            <li>Bruk ===, !==, &gt;==, &lt;== i stedet for ==, !=, &gt;=, &lt;= til alle sjekker. == konverterer, === gjør det ikke.</li>
-          </ul>
-          <pre><code data-trim contenteditable class="hljs javascript">
-var c = (false == 0); // true
-var d = (false == ""); // true
-var e = (0 == ""); // true
-var f = (null == false); // false
-var g = (null == null); // true
-var h = (undefined == undefined); // true
-var i = (undefined == null); // true
-var j = (NaN == null); // false
-var k = (NaN == NaN); // false
-var l = (false == 0); // true
-var m = (false === 0); // false
-          </code></pre>
-        </section>
         <section>
           <h2>Scope</h2>
           <ul>
@@ -401,7 +406,7 @@ x.removeEventListener("click", myFunction);
           <ul>
             <li>Programmerervennlig måte å finne elementer i DOM: <code>$(".knapp")</code></li>
             <li>Bygger på CSS-selectors: <code>.class, #id, div</code></li>
-            <li>Mer avansert utvalg med f.eks.: <code>:first, :last, :gt(), :lt(), :even, :odd</li>
+            <li>Mer avansert utvalg med f.eks.: <code>:first, :last, :gt(), :lt(), :even, :odd</code></li>
             <li>Velg elementer basert på innhold: <code>:containts(), :has(), :empty()</code></li>
             <li>Velg elementer basert på verdi/attributter: <code>[navn="verdi"]</code></li>
             <li>+++</li>
@@ -452,7 +457,7 @@ x.removeEventListener("click", myFunction);
   var a = 'abc';
 }
 
-a; // <= 'abc'
+a; // &lt;= 'abc'
 </code></pre>
         </section>
 
@@ -464,8 +469,8 @@ a; // <= 'abc'
   let b = 'def';
 }
 
-a; // <= 'abc'
-b; // <= undefined
+a; // &lt;= 'abc'
+b; // &lt;= undefined
 </code></pre>
         </section>
 
@@ -580,7 +585,7 @@ let p2 = new Promise((resolve, reject) =>
   setTimeout(resolve, 400, 'meToo!'));
 
 Promise.all([p1, p2]).then((value) => console.log(value));
-// <= ['done!', 'meToo!']
+// &lt;= ['done!', 'meToo!']
 </code></pre>
         </section>
 
@@ -593,7 +598,7 @@ Promise.all([p1, p2]).then((value) => console.log(value));
 let p2 = new Promise((resolve, reject) =>
   setTimeout(resolve, 200, 'turtle'));
 
-Promise.race([p1, p2]).then((value) => console.log(value)); // <= 'turtle'
+Promise.race([p1, p2]).then((value) => console.log(value)); // &lt;= 'turtle'
 </code></pre>
         </section>
 
