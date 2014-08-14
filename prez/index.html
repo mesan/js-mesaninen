@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../revealjs/css/theme/sky.css" id="theme">
   <link rel="stylesheet" href="../highlight/styles/default.css">
 </head>
-<body>
+<html><body>
   <div class="reveal">
     <div class="slides">
 
@@ -34,12 +34,12 @@
 
       <section class="stack">
         <section>
-          <h1>Hvorfor JavaScript?</h1>
+          <h2>Hvorfor JavaScript?</h2>
           <p>(Alle bruker det.)</p>
         </section>
 
         <section>
-          <h2>Suksesshistorier</h2>
+          <h3>Suksesshistorier</h3>
           <ul>
             <li>Norman Antivirus</li>
             <li>KISS</li>
@@ -50,20 +50,20 @@
 
       <section class="stack">
         <section>
-          <h1>Historikk</h1>
+          <h2>Historikk</h2>
         </section>
         <section>
-          <h1>JavaScript blir til...</h1>
+          <h2>JavaScript blir til...</h2>
           <ul>
             <li>1996-03: Introdusert i Netscape Navigator 2.0, laget for å slippe lange rundturer til server.</li>
             <li>1997-10: Dynamisk HTML kom i IE4.</li>
             <li>1999/2000: DOM kom med IE5, NS6 og Opera.</li>
-            <li>1999-20112: Standarden <em>ECMAScript</em>, utgv. 3.</li>
+            <li>1999-12: Standarden <em>ECMAScript</em>, utgv. 3.</li>
           </ul>
         </section>
 
         <section>
-          <h1>Treg utvikling...</h1>
+          <h2>Treg utvikling...</h2>
           <ul>
             <li>2000-tallet: JS-motorene henger ikke med i svingene</li>
             <li>IE6 legger hemsko på utviklerne</li>
@@ -72,7 +72,7 @@
         </section>
 
         <section>
-          <h1>Renessanse</h1>
+          <h2>Renessanse</h2>
           <ul>
             <li>2008: Google Chrome med V8: JS-motor med JIT-compiler</li>
             <li>Andre fulgte etter:<ul>
@@ -85,7 +85,7 @@
         </section>
 
         <section>
-          <h1>Implementér!</h1>
+          <h2>Implementér!</h2>
           <ul>
             <li>Det offisielle navnet på standarden er ECMAScript</li>
             <li>Siste versjon er 1.8.5</li>
@@ -107,13 +107,13 @@
 
       <section class="stack">
         <section>
-          <h1>Hva bruker vi JavaScript til?</h1>
+          <h2>Hva bruker vi JavaScript til?</h2>
         </section>
       </section>
 
       <section class="stack">
         <section>
-          <h1>Språket Javascript</h1>
+          <h2>Språket Javascript</h2>
           <ul>
             <li>Elementært</li>
             <li>Datatyper</li>
@@ -222,7 +222,7 @@ if (x) {
             <li>Kan bruke både ' eller ", f.eks. om man har en streng med et av disse tegnene i seg, så kan man bruke det andre tegnet.</li>
             <li>"Backslash" (\) er tegnet man bruker for å escape et spesialtegn.</li>
             <li>Ikke bruk new String, som gir mange uheldig bieffekter. Lag vanlige strengprimitiver.</li>
-            <li>En streng har masse attributter og funksjoner, f.eks. "abc".length => 3 og " abc ".trim() => "abc"</li>
+            <li>En streng har masse attributter og funksjoner, f.eks. <code>"abc".length => 3</code> og <code>" abc ".trim() => "abc"</code></li>
           </ul>
           <pre><code data-trim contenteditable class="hljs javascript">
 x = "abc"
@@ -233,38 +233,38 @@ x = x.substr(0,2); // "ab"
           <h2>Object</h2>
           <ul>
             <li>Alt bortsett fra primitivene i JS er objekter, også funksjoner.</li>
-            <li>Man lager et objekt ganske enkelt med:<br />
-              <pre><code data-trim contenteditable class="hljs javascript">var obj = { bedrift: "Mesan", adresse: "HI20" };</code></pre></li>
-            <li>Du legger enkelt til nye verdier med:<br />
-              <pre><code data-trim contenteditable class="hljs javascript">obj.telefonnr = "22334455";</code></pre></li>
+            <li>Man lager et objekt ganske enkelt med <code>var obj = { bedrift : "Mesan", adressse : "HI20" };</code></li>
+            <li>Du legger enkelt til nye verdier med <code>obj.telefonnr = "22334455";</code></li>
             <li>Denne oppførselen er felles for alle objekter, selv om Array er litt spesiell...</li>
             <li>Å legge til en funksjon til et objekt er like enkelt som å legge til verdier.</li>
           </ul>
-          <pre><code data-trim contenteditable class="hljs javascript">var bedrift = { navn : "Mesan AS", adresse : "HI20", telefonnr : "22334455" };
-bedrift.ring = function() { alert(this.telefonnr); };</code></pre>
+          <pre><code data-trim contenteditable class="hljs javascript">
+var bedrift = { navn : "Mesan AS", adresse : "HI20", telefonnr : "22334455" };
+bedrift.ring = function() { alert(this.telefonnr); }
+          </code></pre>
         </section>
         <section>
           <h2>Array</h2>
           <ul>
-            <li>Ikke en primitiv, men et spesielt objekt som har visse egenskaper.</li>
-            <li>Aksessering er litt annerledes enn for objekter; man bruker <code>[]</code> i stedet for <code>.</code><br />
-              <pre><code data-trim contenteditable class="hljs javascript">new Array(1,2,3) === [1,2,3]</code></pre></li>
-            <li>Alle elementene i en array kan ha forskjellige typer.</li>
-            <li>Første element starter på 0, som i C/Java: ([1,2,3])[0] === 1;</li>
-            <li>typeof [1,2,3] == "object"</li>
+            <li>Et spesielt objekt med litt anderledes aksessering; man bruker <code>[]</code> i stedet for .</li>
+            <li><code>new Array(1,2,3) === [1,2,3]</code></li>
+            <li>Alle elementene i en array kan ha forksjellige typer.</li>
+            <li>Første element starter på 0, som i C/Java: <code>([1,2,3])[0] === 1;</code></li>
+            <li><code>typeof [1,2,3] == "object"</code></li>
           </ul>
         </section>
         <section>
-          <h2>Undefined og null</h2>
+          <h2>Inifinity, Undefined og null</h2>
           <ul>
             <li>En variabel er undefined når den ikke har fått noen verdi.</li>
             <li>En variabel er null når man setter den til null.</li>
             <li>Disse to er altså ikke det samme, og en verdi som ikke er satt blir ikke automatisk null.</li>
+            <li>Inifinity er verdien som vises om tallet overskrider maks verdi (positivt eller negativt).</li>
           </ul>
         </section>
 
         <section>
-          <h1>Falsy og thruthy</h1>
+          <h2>Falsy og thruthy</h2>
           <ul>
             <li>Følgende verdier er falsy: false, 0, "", null, undefined, NaN</li>
             <li>ALT annet er truthy!</li>
@@ -285,7 +285,7 @@ var m = (false === 0); // false
           </code></pre>
         </section>
         <section>
-          <h1>Scope</h1>
+          <h2>Scope</h2>
           <ul>
             <li>Et veldig viktig konsept!</li>
             <li>Alle funksjoner har sitt eget scope, som betyr at alt som opprettes i scopet til en funksjon er bare tilgjengelig i det scopet.</li>
@@ -305,21 +305,26 @@ function f() {
           </code></pre>
         </section>
         <section>
-          <h1>Math og Date</h1>
+          <h2>Math</h2>
           <ul>
-            <li>Math og Date er implementert i C++ og er så kjappe som det går. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</li>
-            <li>Math inneholder de vanligste mattefunksjonene og noen predefinerte konstanter.</li>
-          </ul>
-          <ul>
-            <li>I Date-objektet finner man mange nyttige funksjoner for dato og tid.</li>
-            <li>Man kan sammenligne to Date-objekter.</li>
+            <li><code>Math</code> og <code>Date</code> er implementert i C++ og er så kjappe som det går. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</li>
+            <li><code>Math</code> inneholder de vanligste mattefunksjonene og noen predefinerte konstanter.</li>
+            <li>Tall kan skrives på forskjellige formater: <code>10 == 0x10 == 012</code>, men man har ikke tilsvarende for binære tall (må bruke streng og <code>parseInt("1010",2)</code>).</li>
+            <li>Også bit-mønster-operatorer er effektive: &amp;, |, ~, ^, &lt;&lt; og &gt;&gt;</li>
           </ul>
         </section>
         <section>
-          <h1>RegExp</h1>
+          <h2>Date</h2>
           <ul>
-            <li>Man kan lage RegExp-objekter med new, men det er ikke nødvendig. Bruk heller <i>/mønster/modifikatorer</i></li>
-            <li>Bruker du samme RegExp mange ganger, kan du lagre den i en variabel og bruke f.eks. exec på den.</li>
+            <li>I <code>Date</code>-objektet finner man mange nyttige funksjoner for dato og tid.</li>
+            <li>Man kan sammenligne to <code>Date</code>-objekter.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>RegExp</h2>
+          <ul>
+            <li>Man kan lage <code>RegExp</code>-objekter med new, men det er ikke nødvendig. Bruk heller <i>/mønster/modifikatorer</i></li>
+            <li>Bruker du samme mønster mange ganger, kan du lagre den i en variabel og bruke f.eks. exec på den.</li>
           </ul>
           <pre><code data-trim contenteditable class="hljs javascript">
 var pattern = /^[A-Z]$/i;
@@ -329,7 +334,7 @@ if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
           </code></pre>
         </section>
         <section>
-          <h1>DOM</h1>
+          <h2>DOM</h2>
           <ul>
             <li>Document Object Model holder alle elementene i en webside i et tre i minnet.</li>
             <li>Du har direkte tilgang til denne med <code>document</code>.</li>
@@ -338,7 +343,7 @@ if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
           </ul>
         </section>
         <section>
-          <h1>Eventer</h1>
+          <h2>Eventer</h2>
           <ul>
             <li>Den måten folk flest begynner å sette opp eventer på er å legge de til i HTML. F.eks. <code>&lt;a href="#" onclick="doSomething()"&gt;</code> </li>
             <li>En ryddigere måte er å bruke <code>element.addEventListener("click", function(){ ... })</code> direkte på DOM-objektet.</li>
@@ -356,14 +361,59 @@ var myFunction = function(event) {
 }, useCapture);
 
 var x = document.getElementById("myBtn");
-if (x.addEventListener) { // For all major browsers, except IE 8 and earlier
+if (x.addEventListener) { // Alle nettlesere bortsett fra IE8 og eldre
     x.addEventListener("click", myFunction, useCapture);
-} else if (x.attachEvent) { // For IE 8 and earlier versions
+} else if (x.attachEvent) { // IE8 og eldre
     x.attachEvent("onclick", myFunction, useCapture);
 }
 
 x.removeEventListener("click", myFunction);
           </code></pre>
+        </section>
+        <section>
+          <h2>Globale funksjoner</h2>
+          <ul>
+            <li>JavaScript har noen få støttefunksjoner. Et par av dem er verdt å nevne:</li>
+            <li><code>eval()</code> er en funksjon som tar input gjennom JS-parseren og kjører innholdet. eval is evil!</li>
+            <li><code>encodeURI()</code>, <code>decodeURI()</code> brukes får å sikre at en URL er godkjent og at alle spesialtegn er håndtert. Rører ikke spesialtegn som er en del av fullverdig URL.</li>
+            <li><code>encodeURIComponent()</code>, <code>decodeURIComponent()</code> gjør tilsvarende, men erstatter også alle tegn i en gyldig URL.</li>
+            <li><code>parseInt()</code> og <code>parserFloat()</code> gjør akkurat det, men trengs aldri i praksis. <code>parseInt</code> har en bonus ved at den med ekstra parameter kan gi tallene i hex eller andre tallsystemer.</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="stack">
+        <section>
+          <h2>jQuery</h2>
+          <ul>
+            <li>Skjuler forskjeller mellom implementasjoner. "Alle" bruker det.</li>
+            <li>"Unobtrusive"</li>
+            <li>Hovedbruksområder:<ul>
+              <li>Henting/manipulering av elementer</li>
+              <li>Hendelser</li>
+              <li>Animasjoner</li>
+              <li>AJAX</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Selectors</h2>
+          <ul>
+            <li>Programmerervennlig måte å finne elementer i DOM: <code>$(".knapp")</code></li>
+            <li>Bygger på CSS-selectors: <code>.class, #id, div</code></li>
+            <li>Mer avansert utvalg med f.eks.: <code>:first, :last, :gt(), :lt(), :even, :odd</li>
+            <li>Velg elementer basert på innhold: <code>:containts(), :has(), :empty()</code></li>
+            <li>Velg elementer basert på verdi/attributter: <code>[navn="verdi"]</code></li>
+            <li>+++</li>
+            <li>Resultatet er et objekt som inneholder en Array med DOM-elementer</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Manipulering</h2>
+          <ul>
+            <li>jQuery har endel nyttige funksjoner for manipulering av DOM-elementer.</li>
+            <li></li>
+          </ul>
         </section>
       </section>
 
@@ -589,7 +639,6 @@ for (let i = 0; i < 10; i++) {
       </section>
 
       <section class="stack">
-
         <section>
           <h1>Rammeverk</h1>
         </section>
@@ -610,6 +659,7 @@ for (let i = 0; i < 10; i++) {
           <h1>Testing</h1>
         </section>
       </section>
+
     </div>
   </div>
 
