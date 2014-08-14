@@ -4,7 +4,7 @@
   <meta charset="utf8">
   <title>JavaScript - Mesaninen 2014</title>
   <link rel="stylesheet" href="../revealjs/css/reveal.min.css">
-  <link rel="stylesheet" href="../revealjs/css/theme/sky.css" id="theme">
+  <link rel="stylesheet" href="../revealjs/css/theme/simple.css" id="theme">
   <link rel="stylesheet" href="../highlight/styles/default.css">
 </head>
 <html><body>
@@ -290,13 +290,16 @@ bedrift.ring = function() { alert(this.telefonnr); }
         </section>
 
         <section>
-          <h2>Scope</h2>
+          <h2>Scope (!)</h2>
           <ul>
-            <li>Et veldig viktig konsept!</li>
             <li>Alle funksjoner har sitt eget scope, som betyr at alt som opprettes i scopet til en funksjon er bare tilgjengelig i det scopet.</li>
-            <li>Variable man ikke oppretter med var foran blir globale (en del av Window).</li>
+            <li>Det lokale scopet legges til en kø av scope helt ut til det globale scopet.</li>
+            <li>To funksjoner som opprettes ved siden av hverandre har adskilte scopes.</li>
+            <li>Variable man ikke oppretter med var foran blir endret om den finnes i scope-chain eller opprettet globalt (en del av <code>window</code>).</li>
             <li>Alle variable/funksjoner man kaller som ikke er en del av scopet må letes fram i scope-rekka.</li>
           </ul>
+        </section>
+        <section>
           <pre><code data-trim contenteditable class="hljs javascript">
 function f() {
   x = 10; // window.x opprettes/oppdateres
@@ -305,25 +308,49 @@ function f() {
     var z = 30;
     alert("hei " + x + "," + y + "," + z);
   }
+  z = 40; // Ser ikke z, oppretter en global z
   visKoordinat();
 }
+
+function f2() {
+  y = 30; // Ser ikke y, oppretter y globalt
+  x = 25; // endrer global x
+}
+          </code></pre>
+        </section>
+        <section>
+          <h2>Hoisting</h2>
+          <ul>
+            <li>Oppretting av alle variable blir flyttet til toppen av scopet. Setting av verdi forblir der de er.</li>
+            <li>Vær obs på bruk av variable med samme navn og når de blir satt og brukt.</li>
+            <li>Legg alle variable i toppen av alle funksjoner, alltid. Git litt bedre ytelse også.</li>
+          </ul>
+          <pre><code data-trim contenteditable class="hljs javascript">var global_i;
+
+(function() {
+  var x = 20,y,z; // Initisering
+  for (;x--;) {
+    global_i = x; // vi prøver å sette global variabel...
+    alert("Plagsom! " + i);
+  }
+  var global_i = 0; // Ha! global_i er ikke global likevel.
+})();
           </code></pre>
         </section>
         <section>
           <h2>Math</h2>
           <ul>
-            <li><code>Math</code> og <code>Date</code> er implementert i C++ og er så kjappe som det går. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</li>
             <li><code>Math</code> inneholder de vanligste mattefunksjonene og noen predefinerte konstanter.</li>
             <li>Tall kan skrives på forskjellige formater: <code>10 == 0x10 == 012</code>, men man har ikke tilsvarende for binære tall (må bruke streng og <code>parseInt("1010",2)</code>).</li>
             <li>Også bit-mønster-operatorer er effektive: &amp;, |, ~, ^, &lt;&lt; og &gt;&gt;</li>
           </ul>
-        </section>
-        <section>
           <h2>Date</h2>
           <ul>
             <li>I <code>Date</code>-objektet finner man mange nyttige funksjoner for dato og tid.</li>
             <li>Man kan sammenligne to <code>Date</code>-objekter.</li>
           </ul>
+          <br><br>
+          <em><code>Math</code> og <code>Date</code> er implementert i C++. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</em>
         </section>
         <section>
           <h2>RegExp</h2>
@@ -387,6 +414,7 @@ x.removeEventListener("click", myFunction);
         </section>
       </section>
 
+
       <section class="stack">
         <section>
           <h2>jQuery</h2>
@@ -417,10 +445,14 @@ x.removeEventListener("click", myFunction);
           <h2>Manipulering</h2>
           <ul>
             <li>jQuery har endel nyttige funksjoner for manipulering av DOM-elementer.</li>
-            <li></li>
+            <li><code>.wrap()</code> m.fl. legger til element <i>rundt</i> elementet man angir.</li>
+            <li><code>.html(), .append(), .prepend()</code> m.fl. endrer innholdet i et element.</li>
+            <li><code>.after(), .before()</code> legger til elementer utenfor gjeldende element.</li>
+            <li>Husk at ting gjøres mot DOM med en gang. Man kan bruke </li>
           </ul>
         </section>
       </section>
+
 
       <section class="stack">
         <section>
