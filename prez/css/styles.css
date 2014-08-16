@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
 
 html {
@@ -7,6 +7,21 @@ html {
 
 .reveal ul li {
   padding-top: .5em;
+}
+
+.reveal p {
+  padding-bottom: .5em;
+}
+
+.reveal code {
+  margin-bottom: 2em;
+}
+
+input[type=text] {
+  display: inline-box;
+  padding: 10px;
+  font-size: 0.7em;
+  margin-bottom: 10px;
 }
 
 .reveal section img.no-border {
@@ -29,6 +44,12 @@ html {
 
 .reveal h2 {
   font-size: 1.5em;
+}
+
+.reveal h3 {
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.3em;
 }
 
 .reveal table {

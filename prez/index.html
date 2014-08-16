@@ -660,16 +660,16 @@ for (let i = 0; i < 10; i++) {
 
         <section>
           <h2>++</h2>
-          <p class="fragment current-visible">
+          <p class="fragment">
             Standard-parametre:<br /><code>function (a, b=1, c=2) {}</code>
           </p>
-          <p class="fragment current-visible">
+          <p class="fragment">
             Rest-parametre:<br /><code>function format(str, ...args) {}</code>
           </p>
-          <p class="fragment current-visible">
+          <p class="fragment">
             Destructured Assignment:<br /><code>let [one, two] = [1, 2];</code>
           </p>
-          <p class="fragment current-visible">
+          <p class="fragment">
             Template Strings:<br /><code>`Hello ${name}, how are you ${time}?`</code>
           </p>
           <p class="fragment">
@@ -772,31 +772,116 @@ for (let i = 0; i < 10; i++) {
         </section>
 
         <section>
-          <h2><i class="fa fa-cubes"></i> AngularJS-komponenter</h2>
-          <ul>
-            <li>Module</li>
-            <li>Controller</li>
-            <li>Directive</li>
-            <li>&laquo;Model&raquo;</li>
-            <li>Service</li>
-            <li>Filter</li>
-          </ul>
-        </section>
-
-        <section>
           <h2><i class="fa fa-file-code-o"></i> Hello World-eksempel</h2>
-          <p>Hva skal til ...?</p>
+          <p>Hva skal egentlig til ...?</p>
 <pre class="fragment"><code>&lt;!DOCTYPE html&gt;
   &lt;html <strong>ng-app</strong>&gt;
   &lt;head&gt;
     <strong>&lt;script src=&quot;angular.js&quot;&gt;&lt;/script&gt;</strong>
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;input type=&quot;text&quot; <strong>ng-model=&quot;name&quot;&gt;</strong>
+    &lt;input type=&quot;text&quot; <strong>ng-model=&quot;name&quot; /&gt;</strong>
     &lt;p&gt;What's up, <strong>{{name}}</strong>?&lt;/p&gt;
   &lt;/body&gt;
   &lt;/html&gt;
 </code></pre>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-file-code-o"></i> Hello World-eksempel</h2>
+          <p>Resultat:</p>
+          <div ng-app>
+            <input type="text" ng-model="name" />
+            <p>What's up, {{name}}?</p>
+          </div>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cubes"></i> AngularJS-komponenter</h2>
+          <ul>
+            <li>Template</li>
+            <li>Directive</li>
+            <li>Controller</li>
+            <li>&laquo;Model&raquo;</li>
+            <li>Service</li>
+            <li>Module</li>
+            <li>Filter</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"></i> Template</h2>
+          <h3>
+            HTML-kode med støtte for interpolering og direktiver.
+          </h3>
+        </section>
+
+        <section>
+          <h2>Eksempel</h2>
+
+          <div>
+            <p>Vi lager et avsnitt:</p>
+            <pre><code>&lt;p&gt;Jeg er 28 år.&lt;/p&gt;</code></pre>
+          </div>
+
+          <div class="fragment">
+            <p>... og interpolerer en variabel:</p>
+            <pre><code>&lt;p&gt;Jeg er {{age}} år.&lt;/p&gt;</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"></i> Directive</h2>
+          <h3>
+            Utvider HTML med attributter og elementer.
+          </h3>
+        </section>
+
+        <section>
+          <h2>Eksempel</h2>
+
+          <p>Angular har et innebygd direktiv som heter <code>ngRepeat</code>.</p>
+          <p>Det lar oss iterere over lister i HTML:</p>
+          <pre><code>&lt;ul&gt;
+  &lt;li ng-repeat="item in items"&gt;
+    {{item.data}}
+  &lt;/li&gt;</code></pre>
+          <p>I dette tilfellet er <code>items</code> en variabel.</p>
+
+        </section>
+
+        <section>
+          <p>Man kan også enkelt lage sine egne direktiver.</p>
+
+          <p>Oppgave kommer ...</p>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"></i> Controller</h2>
+          <h3>Megler mellom GUI-et og forretningslogikken.</h3>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"></i> Module</h2>
+          <h3>
+            Brukes for å gruppere komponentene dine inn i logiske deler.
+          </h3>
+        </section>
+
+        <section>
+          <h2>Eksempel</h2>
+          <div class="fragment">
+            <p>Vi deklarerer en modul:</p>
+            <pre><code>var myModule = angular.module('myModule', []);</code></pre>
+          </div>
+          <div class="fragment">
+            <p>... og &laquo;putter&raquo; en controller oppi modulen vår:</p>
+            <pre><code>myModule.controller('myController', function () {});</code></pre>
+          </div>
+          <div class="fragment">
+            <p>... og en service:</p>
+            <pre><code>myModule.service('foobarService', function () {});</code></pre>
+          </div>
         </section>
 
         <section data-background="assignments.jpg" data-background-transition="slide">
@@ -905,6 +990,7 @@ for (let i = 0; i < 10; i++) {
   <script src="../revealjs/lib/js/head.min.js"></script>
   <script src="../revealjs/js/reveal.min.js"></script>
   <script src="../highlight/highlight.pack.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script>
     Reveal.initialize({
       controls: true,
