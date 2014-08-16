@@ -1,0 +1,63 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700);
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css);
+
+html {
+  font-family: 'Open Sans', Arial;
+}
+
+.reveal ul li {
+  padding-top: .5em;
+}
+
+.reveal section img.no-border {
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.text-muted {
+  opacity: 0.3;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  font-family: 'Open Sans', Arial;
+}
+
+.reveal h2 {
+  font-size: 1.5em;
+}
+
+.reveal table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.reveal table th {
+  font-weight: bold; }
+
+.reveal table th,
+.reveal table td {
+  text-align: left;
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  border-bottom: 1px solid; }
+
+.reveal table tr:last-child td {
+  border-bottom: none; }
+
+.reveal .text-white * {
+  color: #fff;
+}
+
+.reveal .fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
