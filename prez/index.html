@@ -755,9 +755,9 @@ for (let i = 0; i < 10; i++) {
           <h2><i class="fa fa-shopping-cart"></i> Hva tilbyr AngularJS?</h2>
           <ul>
             <li>Frikobling av forretningslogikk fra DOM-en.</li>
-            <li>Modularisering av kode.</li>
+            <li>Dependency Injection (DI) / Inversion of Control (IoC).</li>
             <li>Enklere testing.</li>
-            <li>Inversion of Control (IoC) / Dependency Injection (DI).</li>
+            <li>Modularisering av kode.</li>
             <li>... og mye mer.</li>
           </ul>
         </section>
@@ -775,7 +775,7 @@ for (let i = 0; i < 10; i++) {
           <h2><i class="fa fa-file-code-o"></i> Hello World-eksempel</h2>
           <p>Hva skal egentlig til ...?</p>
 <pre class="fragment"><code>&lt;!DOCTYPE html&gt;
-  &lt;html <strong>ng-app</strong>&gt;
+&lt;html <strong>ng-app</strong>&gt;
   &lt;head&gt;
     <strong>&lt;script src=&quot;angular.js&quot;&gt;&lt;/script&gt;</strong>
   &lt;/head&gt;
@@ -783,7 +783,7 @@ for (let i = 0; i < 10; i++) {
     &lt;input type=&quot;text&quot; <strong>ng-model=&quot;name&quot; /&gt;</strong>
     &lt;p&gt;What's up, <strong>{{name}}</strong>?&lt;/p&gt;
   &lt;/body&gt;
-  &lt;/html&gt;
+&lt;/html&gt;
 </code></pre>
         </section>
 
@@ -844,21 +844,16 @@ for (let i = 0; i < 10; i++) {
           <p>Det lar oss iterere over lister i HTML:</p>
           <pre><code>&lt;ul&gt;
   &lt;li ng-repeat="item in items"&gt;
-    {{item.data}}
+    {{item}}
   &lt;/li&gt;</code></pre>
           <p>I dette tilfellet er <code>items</code> en variabel.</p>
 
         </section>
 
         <section>
-          <p>Man kan også enkelt lage sine egne direktiver.</p>
-
+          <p>Direktiver kan være tagger, klasser eller attributter.</p>
+          <p>Du kan også enkelt lage dine egne direktiver.</p>
           <p>Oppgave kommer ...</p>
-        </section>
-
-        <section>
-          <h2><i class="fa fa-cube"></i> Controller</h2>
-          <h3>Megler mellom GUI-et og forretningslogikken.</h3>
         </section>
 
         <section>
@@ -872,15 +867,110 @@ for (let i = 0; i < 10; i++) {
           <h2>Eksempel</h2>
           <div class="fragment">
             <p>Vi deklarerer en modul:</p>
-            <pre><code>var myModule = angular.module('myModule', []);</code></pre>
+<pre><code>var mesanModule = angular.module('mesanModule', [
+  // Module dependencies here...
+]);</code></pre>
           </div>
           <div class="fragment">
             <p>... og &laquo;putter&raquo; en controller oppi modulen vår:</p>
-            <pre><code>myModule.controller('myController', function () {});</code></pre>
+<pre><code>mesanModule.controller('AboutController', function () {
+  // Controller code here...
+});</code></pre>
           </div>
           <div class="fragment">
             <p>... og en service:</p>
-            <pre><code>myModule.service('foobarService', function () {});</code></pre>
+<pre><code>mesanModule.service('employeeService', function () {
+  // Service code here...
+});
+</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"></i> Controller</h2>
+          <h3>Megler mellom GUI-et og forretningslogikken.</h3>
+        </section>
+
+        <section>
+          <p>Vi deklarerer en controller i en modul slik:</p>
+<pre><code>module.controller('AboutController', function () {
+  // Controller code here...
+});
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Hva mer kjennetegner en controller?</h2>
+          <ul>
+            <li class="fragment">Alle controllere har hvert sitt <em>scope</em>.</li>
+            <li class="fragment">Alle <em>properties</em> knyttet til <em>scopet</em>, er
+              tilgjengelige i GUI-et.</li>
+            <li class="fragment">Hvor får du tak i <em>scopet</em> til controlleren?
+              <span class="fragment">
+                Ved å legge til <code>$scope</code> som parameter til controlleren
+                (<em><a href="http://en.wikipedia.org/wiki/Dependency_injection#Constructor_injection"
+                   target="_blank">constructor injection</a></em>).</span>
+            </li>
+          </ul>
+<pre class="fragment"><code>module.controller('MyController', function ($scope) {
+  // $scope er her scopet til controlleren.
+});
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Eksempel på bruk av <code>$scope</code></h2>
+
+          <div class="fragment">
+            <p>Vi deklarerer en controller og legger til <code>name</code> til
+              <em>scopet</em>:</p>
+<pre><code>module.controller('AboutController', function ($scope) {
+  $scope.name = 'Oddgeir';
+});
+</code></pre>
+          </div>
+
+          <div class="fragment">
+            <p>Vi binder controlleren til en tag i HTML-en og interpolerer
+              <code>name</code>-feltet vårt:</p>
+<pre><code>&lt;div ng-controller="AboutController">{{name}}&lt;/div></code></pre>
+          </div>
+
+          <div class="fragment">
+            <p><strong><i class="fa fa-hand-o-up fa-warning"></i></strong>
+              <em>ngController</em> er et Angular-direktiv.</p>
+          </div>
+
+        </section>
+
+        <section>
+          <p>Direktiver lytter på endringer i <em>scopet</em>.</p>
+          <p>Dette gjelder også <em>ngController</em>-direktivet.</p>
+        </section>
+
+        <section>
+          <h2>Eksempel på bruk av <code>$scope</code></h2>
+          <div class="fragment">
+            <p>Vi deklarerer en controller, med <code>count</code> som
+              inkrementerer hvert sekund (ved hjelp av Angular's <code>$timeout</code>
+              service):</p>
+<pre><code>module.controller('CountController', function ($scope, $timeout) {
+  $scope.count = 0;
+  $timeout(function () {
+    $scope.count++;
+  }, 1000);
+});
+</code></pre>
+          </div>
+
+          <div class="fragment">
+            <p>Vi endrer HTML-en til å vise <code>count</code>-en vår:</p>
+            <pre><code>&lt;div ng-controller="CountController">{{count}} seconds&lt;/div></code></pre>
+          </div>
+
+          <div class="fragment">
+            <p><strong><i class="fa fa-hand-o-up fa-warning"></i></strong> HTML-en oppdateres
+              automatisk når <code>count</code> endrer seg!</p>
           </div>
         </section>
 
