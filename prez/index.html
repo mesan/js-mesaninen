@@ -801,11 +801,10 @@ for (let i = 0; i < 10; i++) {
           <ul>
             <li>Template</li>
             <li>Directive</li>
-            <li>Controller</li>
-            <li>&laquo;Model&raquo;</li>
-            <li>Service</li>
             <li>Module</li>
-            <li>Filter</li>
+            <li>Controller</li>
+            <li>Model</li>
+            <li>Service</li>
           </ul>
         </section>
 
@@ -864,7 +863,7 @@ for (let i = 0; i < 10; i++) {
         </section>
 
         <section>
-          <h2>Eksempel</h2>
+          <h2>Eksempel på bruk av moduler</h2>
           <div class="fragment">
             <p>Vi deklarerer en modul:</p>
 <pre><code>var mesanModule = angular.module('mesanModule', [
@@ -887,6 +886,11 @@ for (let i = 0; i < 10; i++) {
         </section>
 
         <section>
+          <img src="angular-modules.png" alt="Angular-moduler" class="no-border" />
+          <p><small>Illustrasjon: Modul med komponenter knyttet til seg.</small></p>
+        </section>
+
+        <section>
           <h2><i class="fa fa-cube"></i> Controller</h2>
           <h3>Megler mellom GUI-et og forretningslogikken.</h3>
         </section>
@@ -905,7 +909,7 @@ for (let i = 0; i < 10; i++) {
             <li class="fragment">Alle controllere har hvert sitt <em>scope</em>.</li>
             <li class="fragment">Alle <em>properties</em> knyttet til <em>scopet</em>, er
               tilgjengelige i GUI-et.</li>
-            <li class="fragment">Hvor får du tak i <em>scopet</em> til controlleren?
+            <li class="fragment">Hvor får vi tak i <em>scopet</em> til controlleren?
               <span class="fragment">
                 Ved å legge til <code>$scope</code> som parameter til controlleren
                 (<em><a href="http://en.wikipedia.org/wiki/Dependency_injection#Constructor_injection"
@@ -944,12 +948,7 @@ for (let i = 0; i < 10; i++) {
         </section>
 
         <section>
-          <p>Direktiver lytter på endringer i <em>scopet</em>.</p>
-          <p>Dette gjelder også <em>ngController</em>-direktivet.</p>
-        </section>
-
-        <section>
-          <h2>Eksempel på bruk av <code>$scope</code></h2>
+          <h2>Nytt eksempel på bruk av <code>$scope</code></h2>
           <div class="fragment">
             <p>Vi deklarerer en controller, med <code>count</code> som
               inkrementerer hvert sekund (ved hjelp av Angular's <code>$timeout</code>
@@ -971,6 +970,47 @@ for (let i = 0; i < 10; i++) {
           <div class="fragment">
             <p><strong><i class="fa fa-hand-o-up fa-warning"></i></strong> HTML-en oppdateres
               automatisk når <code>count</code> endrer seg!</p>
+          </div>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"></i> Model</h2>
+          <h3>Holder på dataene i applikasjonen. Tilgjengelig både i controller og GUI
+            gjennom <em>scopet</em>.</h3>
+        </section>
+
+        <section>
+          <p>Litt svevende begrep i AngularJS.</p>
+          <p>I prinsippet er alle <em>properties</em> knyttet til <em>scopet</em> en
+            modell.</p>
+<pre><code>$scope.user = { username: 'arildt', company: 'Mesan AS' };</code></pre>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"></i> Service</h2>
+          <h3>Utfører forretningslogikken i applikasjonen. Brukes av controllere.</h3>
+        </section>
+
+        <section>
+          <p><i class="fa fa-hand-o-up fa-warning"></i> Husk: Controllere sitt ansvar er å binde
+            forretningslogikken og GUI-et sammen.</p>
+          <p>Hold derfor controllere enkle og la servicer ta seg av den tyngre
+            forretningslogikken.</p>
+        </section>
+
+        <section>
+          <h2>Hvordan bruker vi servicer i en controller?</h2>
+          <p class="fragment">Bruk Dependency Injection!</p>
+          <div class="fragment">Først deklarerer vi servicen:
+<pre><code>module.service('menuService', function () {
+  this.getMenu = function (menuName) { /* Business logic here */ };
+});</code></pre>
+          </div>
+          <div class="fragment">Deretter injiserer vi servicen i controlleren:
+<pre><code>module.controller('MenuController', function ($scope, menuService) {
+  $scope.mainMenu = menuService.getMenu('main');
+});
+</code></pre>
           </div>
         </section>
 
