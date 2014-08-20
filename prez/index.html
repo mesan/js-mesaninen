@@ -115,16 +115,15 @@
           <h2>Mange muligheter!</h2>
           <ul>
             <li>JavaScript ble opprinnelig laget for å redusere behov for lasting av HTML for små endringer.</li>
-            <li>JS støttes av alle nettlesere, også mobil.</li>
-            <li>Så og si alle web-sider bruker litt eller mye JS.</li>
-            <li>Man kan bruke JS til å lage avansert grafikk:<ul>
+            <li><strong>Web:</strong> JS støttes av alle nettlesere, også mobil.</li>
+            <li><strong>Grafikk:</strong><ul>
               <li>Canvas (Fabric.js, Paper.js, etc.)</li>
               <li>SVG (Raphael.js, D3.js, etc.)</li>
               <li>WebGL (tree.js, GLGE, Canvas 3d JS, etc.)</li>
             </ul></li>
-            <li>PhoneGap (krossplatform mobilapps)</li>
-            <li>Windows 8-apps skrives i JS</li>
-            <li>Node.js gjør det mulig å lage backend også i JS.</li>
+            <li><strong>Mobil:</strong> PhoneGap (krossplatform mobilapps)</li>
+            <li><strong>Desktop:</strong> Windows 8-apps</li>
+            <li><strong>Backend:</strong> Node.js</li>
           </ul>
         </section>
         <section>
@@ -436,123 +435,6 @@ x.removeEventListener("click", myFunction);
         </section>
       </section>
 
-
-      <section class="stack" data-background="#84fcff">
-        <section class="text-white" data-background="#0F1923">
-          <h1 class="hidden">jQuery</h1>
-          <img src="jquery-logo.png" alt="jQuery-logo" class="no-border" style="width: 50%" />
-        </section>
-
-        <section>
-          <h2>Enklere hverdag</h2>
-          <ul>
-            <li>Skjuler forskjeller mellom implementasjoner. "Alle" bruker det.</li>
-            <li>Hovedbruksområder:<ul>
-              <li>Henting/manipulering av elementer</li>
-              <li>Hendelser</li>
-              <li>Animasjoner</li>
-              <li>AJAX</li>
-            </ul>
-          </ul>
-        </section>
-        <section>
-          <h2>Generelt</h2>
-          <ul>
-            <li>"Unobtrusive", endrer ikke oppførsel til eksisterende JS.</li>
-            <li><code>$()</code> eller <code>jQuery()</code> er utgangspunktet for all jQuery-kode</li>
-            <li>Generell fremgangsmåte: Finn objekter og manipuler/les/skriv.</li>
-            <li>Kan hekte på en lang rekke kall som gjør koden mer kompakt.</li>
-          </ul>
-        </section>
-        <section>
-          <pre><code data-trim contenteditable class="hljs javascript">(function() {
-  function showLink() { var aObj = $(this); /* ... */ }
-  function hideLink() { /* ... */ }
-  function followLink() { /* ... */ }
-
-  $("a").
-    filter(".external").
-      css("color", "#200040").
-      delegate("mouseover", showLink).
-      delegate("mouseout", hideLink).
-      delegate("click", followLink).
-    end().
-    filter(".internal").
-      css("color", "#505020");
-})();
-          </code></pre>
-        </section>
-        <section>
-          <h2>Selectors</h2>
-          <ul>
-            <li>Programmerervennlig måte å finne elementer i DOM: <code>$(".knapp")</code></li>
-            <li>Bygger på CSS-selectors: <code>.class, #id, div</code></li>
-            <li>Mer avansert utvalg med f.eks.: <code>:first, :last, :gt(), :lt(), :even, :odd</code></li>
-            <li>Velg elementer basert på innhold: <code>:contains(), :has(), :empty()</code></li>
-            <li>Velg elementer basert på verdi/attributter: <code>[navn="verdi"]</code></li>
-            <li>+++</li>
-            <li>Resultatet er et objekt som inneholder en Array med DOM-elementer, en jQuery-samling.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Manipulering</h2>
-          <ul>
-            <li>jQuery har endel nyttige funksjoner for manipulering av DOM-elementer.</li>
-            <li><code>.wrap()</code> m.fl. legger til element <i>rundt</i> elementet man angir.</li>
-            <li><code>.html(), .append(), .prepend()</code> m.fl. endrer innholdet i et element.</li>
-            <li><code>.after(), .before()</code> legger til elementer utenfor gjeldende element.</li>
-            <li>Man kan bruke <code>.detach()</code> for å jobbe med ting utenom DOM.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Hendelser</h2>
-          <ul>
-            <li>"Events" er enklere i jQuery, og forskjeller mellom nettlesere skjules bak enkle funksjoner.</li>
-            <li><code>$(document).ready()</code> kalles når HTML er ferdig lastet, men man trenger ikke bruke denne.</li>
-            <li><code>.click()</code> og en rekke andre events kan settes på en jQuery-samling.</li>
-            <li>Event-objektet som sendes med er samme objekt som man er vant med fra vanilla js og inneholder mange nyttige ting.</li>
-            <li>Bruk <code>.delegate()</code> for all hendelseshåndtering! Asynkront, ryddig og effektivt.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Animasjoner</h2>
-          <ul>
-            <li>Med <code>.animate()</code> så kan man lage mye fancy.</li>
-            <li>Hovedlinjene er at man kan gi en CSS-stil som animasjonen skal bevege seg mot, og styre hastighet og mye annet.</li>
-            <li>Enkle animasjoner som gradvis visning kan gjøres med <code>.hide(), .show(), .toggle(), .fadeIn(), .fadeOut()</code> osv.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>AJAX</h2>
-          <ul>
-            <li>Man kan bruke funksjonen <code>$.ajax()</code> eller kortversjonene <code>$.get()</code> og <code>$.post()</code></li>
-            <li>Resultatet håndterer man med en callback-funksjon.</li>
-            <li>Med <code>.load()</code> kan man hente resultatet av AJAX-kallet rett inn i et element.</li>
-            <li>Du har mange muligheter for spesialisering i parametere til <code>$.ajax()</code>.</li>
-          </ul>
-        </section>
-        <section>
-          <pre><code data-trim contenteditable class="hljs javascript">
-$.get("some/url.php?data", function(data) {
-  // Bruk data til noe
-});
-
-$.ajax({
-  url: "some/url.php",
-  data: "parameter=on",
-  success: function(data) {
-    // Bruk data til noe
-  },
-  dataType: "html" // xml, json, script, etc.
-});
-
-$.getJSON("some/url.json", function(jsondata) {
-  // Her kan du bruke jsondata direkte
-  var antall = jsondata.brukerListe.length;
-});
-          </code></pre>
-        </section>
-      </section>
 
       <section class="stack" data-background="#c0d0ff">
         <section>
@@ -970,12 +852,129 @@ for (let i = 0; i < 10; i++) {
         <section>
           <h1><i class="fa fa-search"></i></h1>
           <p>
-            Vi ser nærmere på <strong>AngularJS</strong>,
+            Vi ser nærmere på <strong>jQuery</strong>, <strong>AngularJS</strong>,
             <strong>Knockout</strong>,
             <strong>Jasmine</strong> og
             <strong>Grunt</strong>.</p>
         </section>
 
+      </section>
+
+      <section class="stack" data-background="#84fcff">
+        <section class="text-white" data-background="#0F1923">
+          <h1 class="hidden">jQuery</h1>
+          <img src="jquery-logo.png" alt="jQuery-logo" class="no-border" style="width: 50%" />
+        </section>
+
+        <section>
+          <h2>Enklere hverdag</h2>
+          <ul>
+            <li>Skjuler forskjeller mellom implementasjoner. "Alle" bruker det.</li>
+            <li>Hovedbruksområder:<ul>
+              <li>Henting/manipulering av elementer</li>
+              <li>Hendelser</li>
+              <li>Animasjoner</li>
+              <li>AJAX</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Generelt</h2>
+          <ul>
+            <li>"Unobtrusive", endrer ikke oppførsel til eksisterende JS.</li>
+            <li><code>$()</code> eller <code>jQuery()</code> er utgangspunktet for all jQuery-kode</li>
+            <li>Generell fremgangsmåte: Finn objekter og manipuler/les/skriv.</li>
+            <li>Kan hekte på en lang rekke kall som gjør koden mer kompakt.</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="hljs javascript">(function() {
+  function showLink() { var aObj = $(this); /* ... */ }
+  function hideLink() { /* ... */ }
+  function followLink() { /* ... */ }
+
+  $("a").
+    filter(".external").
+      css("color", "#200040").
+      delegate("mouseover", showLink).
+      delegate("mouseout", hideLink).
+      delegate("click", followLink).
+    end().
+    filter(".internal").
+      css("color", "#505020");
+})();
+          </code></pre>
+        </section>
+        <section>
+          <h2>Selectors</h2>
+          <ul>
+            <li>Programmerervennlig måte å finne elementer i DOM: <code>$(".knapp")</code></li>
+            <li>Bygger på CSS-selectors: <code>.class, #id, div</code></li>
+            <li>Mer avansert utvalg med f.eks.: <code>:first, :last, :gt(), :lt(), :even, :odd</code></li>
+            <li>Velg elementer basert på innhold: <code>:contains(), :has(), :empty()</code></li>
+            <li>Velg elementer basert på verdi/attributter: <code>[navn="verdi"]</code></li>
+            <li>+++</li>
+            <li>Resultatet er et objekt som inneholder en Array med DOM-elementer, en jQuery-samling.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Manipulering</h2>
+          <ul>
+            <li>jQuery har endel nyttige funksjoner for manipulering av DOM-elementer.</li>
+            <li><code>.wrap()</code> m.fl. legger til element <i>rundt</i> elementet man angir.</li>
+            <li><code>.html(), .append(), .prepend()</code> m.fl. endrer innholdet i et element.</li>
+            <li><code>.after(), .before()</code> legger til elementer utenfor gjeldende element.</li>
+            <li>Man kan bruke <code>.detach()</code> for å jobbe med ting utenom DOM.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Hendelser</h2>
+          <ul>
+            <li>"Events" er enklere i jQuery, og forskjeller mellom nettlesere skjules bak enkle funksjoner.</li>
+            <li><code>$(document).ready()</code> kalles når HTML er ferdig lastet, men man trenger ikke bruke denne.</li>
+            <li><code>.click()</code> og en rekke andre events kan settes på en jQuery-samling.</li>
+            <li>Event-objektet som sendes med er samme objekt som man er vant med fra vanilla js og inneholder mange nyttige ting.</li>
+            <li>Bruk <code>.delegate()</code> for all hendelseshåndtering! Asynkront, ryddig og effektivt.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Animasjoner</h2>
+          <ul>
+            <li>Med <code>.animate()</code> så kan man lage mye fancy.</li>
+            <li>Hovedlinjene er at man kan gi en CSS-stil som animasjonen skal bevege seg mot, og styre hastighet og mye annet.</li>
+            <li>Enkle animasjoner som gradvis visning kan gjøres med <code>.hide(), .show(), .toggle(), .fadeIn(), .fadeOut()</code> osv.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>AJAX</h2>
+          <ul>
+            <li>Man kan bruke funksjonen <code>$.ajax()</code> eller kortversjonene <code>$.get()</code> og <code>$.post()</code></li>
+            <li>Resultatet håndterer man med en callback-funksjon.</li>
+            <li>Med <code>.load()</code> kan man hente resultatet av AJAX-kallet rett inn i et element.</li>
+            <li>Du har mange muligheter for spesialisering i parametere til <code>$.ajax()</code>.</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="hljs javascript">
+$.get("some/url.php?data", function(data) {
+  // Bruk data til noe
+});
+
+$.ajax({
+  url: "some/url.php",
+  data: "parameter=on",
+  success: function(data) {
+    // Bruk data til noe
+  },
+  dataType: "html" // xml, json, script, etc.
+});
+
+$.getJSON("some/url.json", function(jsondata) {
+  // Her kan du bruke jsondata direkte
+  var antall = jsondata.brukerListe.length;
+});
+          </code></pre>
+        </section>
       </section>
 
       <section class="stack">
