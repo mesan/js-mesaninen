@@ -1357,6 +1357,35 @@ for (let i = 0; i < 10; i++) {
 
       </section>
 
+      <section>
+        <h2>Minifisering og konkatenering</h2>
+        <ul>
+          <li><a href="https://github.com/mishoo/UglifyJS2">UglifyJS 2</a>:<br><code>&gt; uglifyjs file1.js file2.js&nbsp;\<br>
+         -o foo.min.js \<br>
+         -p 5 -c -m</code></li>
+         <li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a>:<br><code>&gt; java -jar yuicompressor-x.y.z.jar \<br>myfile.js -o myfile-min.js</code></li>
+         <li><a href="https://github.com/google/closure-compiler">Closure Compiler</a>:<br><code>&gt; java -jar compiler.jar \<br>--js_output_file=out.js \<br>in1.js in2.js in3.js</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Kvalitetssikring av koden</h2>
+        <ul>
+          <li><a href="https://github.com/reid/node-jslint">JSLint (node.js)</a>:<br><code>&gt; jslint lib/color.js lib/reporter.js</code></li>
+          <li><a href="">jshint</a>:<br><code>&gt; jshint fil1.js<br>
+          fil1.js: line 110, col 4, Unnecessary semicolon.<br>
+          <br>
+          1 error</code></li>
+          <li>Dette sikrer kun at det ikke er noen åpenbare feil i koden, men finner ikke logiske feil.</li>
+          <li>Kan være veldig til hjelp om man opplever helt merkelige feil.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Konferanser</h1>
+        <a href="http://lanyrd.com/topics/javascript/">http://lanyrd.com/topics/javascript/</a>
+      </section>
+
     </div>
   </div>
 
