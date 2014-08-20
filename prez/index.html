@@ -57,7 +57,7 @@
         <section>
           <h2>JavaScript blir til...</h2>
           <ul>
-            <li>1996 mar: Introdusert i Netscape Navigator 2.0, laget for å slippe lange rundturer til server.</li>
+            <li>1996 mar: Introdusert i Netscape Navigator 2.0</li>
             <li>1997 okt: Dynamisk HTML kom i IE4.</li>
             <li>1999/2000: DOM kom med IE5, NS6 og Opera.</li>
             <li>1999 des: Standarden <em>ECMAScript</em>, utgv. 3.</li>
@@ -89,11 +89,11 @@
         <section>
           <h2>Implementér!</h2>
           <ul>
-            <li>Det offisielle navnet på standarden er ECMAScript</li>
-            <li>Siste versjon er 1.8.5</li>
-            <li>Mange forskjellige implementasjoner av ES
+            <li>Siste versjon av standarden er ECMAScript 1.8.5 = ES5</li>
+            <li>Mange forskjellige implementasjoner:
               <ul>
                 <li>JavaScript 1.8.5 (ES5+, Firefox)</li>
+                <li>Node.js (ES5, V8)</li>
                 <li>JScript 9.0 (ES5, Microsoft)</li>
                 <li>Nashorn 1.8.0 (ES5.1, Java/Oracle)</li>
                 <li>ActionScript (ES3, Flash og Flex)</li>
@@ -102,7 +102,7 @@
                 <li>... og mange flere</li>
               </ul>
             </li>
-            <li>Alle implementasjoner har særegenheter i forhold til standarden.</li>
+            <li>Alle har særegenheter sammenlignet med standarden.</li>
           </ul>
         </section>
       </section>
@@ -412,7 +412,7 @@ var useCapture = false; // Indre element håndteres først, true gjør motsatt
 var myFunction = function(event) {
   var element = this; // elementet du klikket på
   var faktiskElement = event.currentTarget;
-}, useCapture);
+};
 
 var x = document.getElementById("myBtn");
 if (x.addEventListener) { // Alle nettlesere bortsett fra IE8 og eldre
@@ -428,10 +428,10 @@ x.removeEventListener("click", myFunction);
           <h2>Globale funksjoner</h2>
           <ul>
             <li>JavaScript har noen få støttefunksjoner. Et par av dem er verdt å nevne:</li>
-            <li><code>eval()</code> er en funksjon som tar input gjennom JS-parseren og kjører innholdet. eval is evil!</li>
+            <li><code>eval()</code> er en funksjon som tar input gjennom JS-parseren og kjører innholdet. <strong>eval is evil!</strong></li>
             <li><code>encodeURI()</code>, <code>decodeURI()</code> brukes får å sikre at en URL er godkjent og at alle spesialtegn er håndtert. Rører ikke spesialtegn som er en del av fullverdig URL.</li>
             <li><code>encodeURIComponent()</code>, <code>decodeURIComponent()</code> gjør tilsvarende, men erstatter også alle tegn i en gyldig URL.</li>
-            <li><code>parseInt()</code> og <code>parserFloat()</code> gjør akkurat det, men trengs aldri i praksis. <code>parseInt</code> har en bonus ved at den med ekstra parameter kan gi tallene i hex eller andre tallsystemer.</li>
+            <li><code>parseInt()</code> og <code>parseFloat()</code> gjør akkurat det, men trengs aldri i praksis. <code>parseInt</code> har en bonus ved at den med ekstra parameter kan gi tallene i hex eller andre tallsystemer.</li>
           </ul>
         </section>
       </section>
@@ -453,6 +453,11 @@ x.removeEventListener("click", myFunction);
               <li>Animasjoner</li>
               <li>AJAX</li>
             </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Generelt</h2>
+          <ul>
             <li>"Unobtrusive", endrer ikke oppførsel til eksisterende JS.</li>
             <li><code>$()</code> eller <code>jQuery()</code> er utgangspunktet for all jQuery-kode</li>
             <li>Generell fremgangsmåte: Finn objekter og manipuler/les/skriv.</li>
@@ -469,7 +474,7 @@ x.removeEventListener("click", myFunction);
     filter(".external").
       css("color", "#200040").
       delegate("mouseover", showLink).
-      delegate("mouseout"), hideLink).
+      delegate("mouseout", hideLink).
       delegate("click", followLink).
     end().
     filter(".internal").
@@ -483,7 +488,7 @@ x.removeEventListener("click", myFunction);
             <li>Programmerervennlig måte å finne elementer i DOM: <code>$(".knapp")</code></li>
             <li>Bygger på CSS-selectors: <code>.class, #id, div</code></li>
             <li>Mer avansert utvalg med f.eks.: <code>:first, :last, :gt(), :lt(), :even, :odd</code></li>
-            <li>Velg elementer basert på innhold: <code>:containts(), :has(), :empty()</code></li>
+            <li>Velg elementer basert på innhold: <code>:contains(), :has(), :empty()</code></li>
             <li>Velg elementer basert på verdi/attributter: <code>[navn="verdi"]</code></li>
             <li>+++</li>
             <li>Resultatet er et objekt som inneholder en Array med DOM-elementer, en jQuery-samling.</li>
@@ -1343,6 +1348,29 @@ for (let i = 0; i < 10; i++) {
           <h2>Slide #2</h2>
         </section>
 
+        <section>
+          <h2>Minifisering og konkatenering</h2>
+          <ul>
+            <li><a href="https://github.com/mishoo/UglifyJS2">UglifyJS 2</a>:<br><code>&gt; uglifyjs file1.js file2.js&nbsp;\<br>
+           -o foo.min.js \<br>
+           -p 5 -c -m</code></li>
+           <li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a>:<br><code>&gt; java -jar yuicompressor-x.y.z.jar \<br>myfile.js -o myfile-min.js</code></li>
+           <li><a href="https://github.com/google/closure-compiler">Closure Compiler</a>:<br><code>&gt; java -jar compiler.jar \<br>--js_output_file=out.js \<br>in1.js in2.js in3.js</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Kvalitetssikring av koden</h2>
+          <ul>
+            <li><a href="https://github.com/reid/node-jslint">JSLint (node.js)</a>:<br><code>&gt; jslint lib/color.js lib/reporter.js</code></li>
+            <li><a href="">jshint</a>:<br><code>&gt; jshint fil1.js<br>
+            fil1.js: line 110, col 4, Unnecessary semicolon.<br>
+            <br>
+            1 error</code></li>
+            <li>Dette sikrer kun at det ikke er noen åpenbare feil i koden, men finner ikke logiske feil.</li>
+            <li>Kan være veldig til hjelp om man opplever helt merkelige feil.</li>
+          </ul>
+        </section>
       </section>
 
       <section class="stack">
@@ -1357,35 +1385,6 @@ for (let i = 0; i < 10; i++) {
 
       </section>
 
-      <section>
-        <h2>Minifisering og konkatenering</h2>
-        <ul>
-          <li><a href="https://github.com/mishoo/UglifyJS2">UglifyJS 2</a>:<br><code>&gt; uglifyjs file1.js file2.js&nbsp;\<br>
-         -o foo.min.js \<br>
-         -p 5 -c -m</code></li>
-         <li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a>:<br><code>&gt; java -jar yuicompressor-x.y.z.jar \<br>myfile.js -o myfile-min.js</code></li>
-         <li><a href="https://github.com/google/closure-compiler">Closure Compiler</a>:<br><code>&gt; java -jar compiler.jar \<br>--js_output_file=out.js \<br>in1.js in2.js in3.js</code></li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Kvalitetssikring av koden</h2>
-        <ul>
-          <li><a href="https://github.com/reid/node-jslint">JSLint (node.js)</a>:<br><code>&gt; jslint lib/color.js lib/reporter.js</code></li>
-          <li><a href="">jshint</a>:<br><code>&gt; jshint fil1.js<br>
-          fil1.js: line 110, col 4, Unnecessary semicolon.<br>
-          <br>
-          1 error</code></li>
-          <li>Dette sikrer kun at det ikke er noen åpenbare feil i koden, men finner ikke logiske feil.</li>
-          <li>Kan være veldig til hjelp om man opplever helt merkelige feil.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h1>Konferanser</h1>
-        <a href="http://lanyrd.com/topics/javascript/">http://lanyrd.com/topics/javascript/</a>
-      </section>
-
     </div>
   </div>
 
@@ -1396,6 +1395,7 @@ for (let i = 0; i < 10; i++) {
   <script>
     Reveal.initialize({
       controls: true,
+      history: true,
       backgroundTransition: 'slide',
       transition: 'linear'
     });
