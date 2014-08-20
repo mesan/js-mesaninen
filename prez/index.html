@@ -436,154 +436,6 @@ x.removeEventListener("click", myFunction);
       </section>
 
 
-      <section class="stack" data-background="#c0d0ff">
-        <section>
-          <h1><i class="fa fa-dashboard"></i><br>Ytelse</h1>
-        </section>
-
-        <section>
-          <h2>Flaskehalser</h2>
-          <ul>
-            <li>Lasting og kjøring</li>
-            <li>Variable og data</li>
-            <li>DOM</li>
-            <li>Løkker og rekursjon</li>
-            <li>UI-tråden</li>
-            <li>Kodepraksis</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Lasting og kjøring av JavaScript</h2>
-          <ul>
-            <li>Nettlesere venter mens JS laster, evalueres, kjører.</li>
-            <li>Hver <code>&lt;script&gt;</code>-tag blir kjørt før resten av HTML+CSS lastes.</li>
-            <li>Putt alle <code>&lt;script&gt;</code>tags i bunn av <code>&lt;body&gt;</code> og dropp <code>onready()</code>.</li>
-            <li>Ikke bruk inline JS</li>
-            <li>Komprimer, merge og last JS-filer dynamisk med en loader.</li>
-            <li>Fjern kode som ikke brukes (utkommentert kode fjernes av komprimeringsprogrammer).</li>
-          </ul>
-        </section>
-<!--        <section>
-          <pre><code data-trim contenteditable class="hljs html">&lt;html&gt;
-&lt;head&gt;
-&lt;script src=“stopper_lasting_av_siden.js” /&gt;
-&lt;link href=“style.css”&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;h1&gt;Mesan&lt;/h1&gt;
-...
-&lt;script src=“kjoerer_etter_lasting.js”/&gt;
-&lt;/body&gt;
-&lt;/html&gt;         
-          </code></pre>
-        </section>-->
-
-        <section>
-          <h2>Variable og data</h2>
-          <ul>
-            <li>Scope chain gjør at man må passe på hva man bruker. Traversering i scope chain er veldig kostbart.</li>
-            <li>Lag lokale kopier av yttre variable.</li>
-            <li>Unngå gjentatte kall til globale variable som <code>window</code> og <code>location.href</code>.</li>
-            <li>Lokale scope er alltid veldig kjapt, og blir alltid sjekket først.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>DOM</h2>
-          <ul>
-            <li>Å aksessere DOM er veldig kostbart, gjør det så sjelden som mulig og ikke i løkker!</li>
-            <li>Endringer i DOM gir reflow <strong>hver gang</strong>.<ul>
-              <li>Ved mange forandringer på DOM-objekter kan man skjule-endre-vise for å redusere “reflow”.</li>
-              <li>Bruk låst layout (CSS) der du kan for å redusere omfang av “reflow”.</li>
-            </ul></li>
-            <li>Mange events er kostbart (lasting/minne/prosesseringstid). Bruk event-deligering i stedet for click-event.</li>
-            <li>Ved store lister kan man bruke <code>cloneNode</code> for å bygge disse utenfor DOM først.</li>
-            <li>Lagre jQuery-søk på elementer om du bruker dem flere ganger.</li>
-          </ul>
-        </section>
-        <section>
-          <pre><code data-trim contenteditable calss="hljs javascript">(function(){
-  var div = document.createElement(“div”),
-      hundegaard = $(“#hundegaard”);
-
-  function luftHunder(hunder) {
-    var flokk = div.cloneNode();
-    var hund = div.cloneNode();
-    hund.className = “hund”;
-    var i = hunder.length;
-    for (;i--;) {
-        var enhund = hund.cloneNode(true);
-        endhund.innerHMTL = hunder[i].navn;
-        flokk.appendChild(enhund);
-    }
-    hundegaard.html(flokk);
-  }
-
-  hentData(luftHunder);
-})();
-          </code></pre>
-        </section>
-
-        <section>
-          <h2>Løkker og rekursjon</h2>
-          <ul>
-            <li>Man får liten hjelp om man skriver ineffektiv kode.</li>
-            <li>Jo mer som gjøres inne i løkker, jo tregere blir det.</li>
-            <li><code>for-in</code>-løkker og <code>$.each</code> er kjekt, men tregt.</li>
-            <li>Rekursjon er risikabelt og tungt.</li>
-            <li>En statisk <code>Array</code> er betydelig raskere enn <code>switch</code> eller <code>if-then-else</code>.</li>
-            <li>Hold mest mulig av arbeidet utenfor løkkene.</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>UI-tråden</h2>
-          <ul>
-            <li>En seriell kø for alle UI-endringer. Pauser både UI og JS.</li>
-            <li>Eksekvering av JavaScript gjør at UI-køen settes på vent. Det “henger!”</li>
-            <li>Henting av data ved lasting av web-siden hindrer resten av lastingen.<ul>
-              <li>Bruk setTimeout for å utsette lasting av tunge lister etc.</li>
-              <li>Lasting av data kan splittes opp. (Last f.eks. neste side i bakgrunnen.)</li>
-            </ul></li>
-            <li>Nettlesere har ofte en “time-out” om eksekvering av JS ikke fullfører innen en viss tid.</li>
-            <li>La initiell JS-kode være så minimal som mulig. Bruk <code>setTimeout</code> på resten, eller kjør den når brukeren gjør noe (events).</li>
-          </ul>
-        </section>
-        <section>
-          <pre><code>function gjorFlereTungeTingMedObjekt(objekt) {
-  // Liste med funksjons-referanser
-  var oppgaver = [oppgave1, oppgave2, oppgave3];
-
-  setTimeout(function() {
-    // Neste oppgave:
-    var oppgave = oppgaver.shift();
-    oppgave(objekt);
-    // Se etter flere oppgaver:
-    if (oppgaver.length > 0) {
-     setTimeout(arguments.callee, 25);
-    }
-  },25);
-}
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Kodepraksis</h2>
-          <ul>
-            <li>eval() is evil – og veldig tregt. Bruk en funksjon som parameter til setTimeout/setInterval i stedet for streng.</li>
-            <li>Løpende oppretting av objekt eller liste er tregt. Opprett objekter og lister i én operasjon hvor mulig.</li>
-            <li>Cache så mye som mulig.</li>
-            <li>Bruk Math og bit-operatorer. Ikke lag egen matte-kode!</li>
-            <li>Ikke gi JS-motoren mer jobb enn nødvendig: Skriv korrekt kode! Bruk jshint el.</li>
-            <li>Bruk CSS der CSS kan erstatte JS.</li>
-            <li>Ikke forsøple globalt namespace (<code>window</code>).</li>
-            <li>Pakk koden.</li>
-            <li>Bruk nettleserens inspector og sjekk profilering og nettverkstrafikk.</li>
-          </ul>
-        </section>
-      </section>
-
 
       <section class="stack">
         <section data-background="#47A4DE" class="text-white">
@@ -860,8 +712,8 @@ for (let i = 0; i < 10; i++) {
 
       </section>
 
-      <section class="stack" data-background="#84fcff">
-        <section class="text-white" data-background="#0F1923">
+      <section class="stack">
+        <section class="text-white" data-background="#cdf">
           <h1 class="hidden">jQuery</h1>
           <img src="jquery-logo.png" alt="jQuery-logo" class="no-border" style="width: 50%" />
         </section>
@@ -1374,6 +1226,155 @@ $.getJSON("some/url.json", function(jsondata) {
         </section>
 
       </section>
+
+      <section class="stack">
+        <section data-background="#c0d0ff">
+          <h1><i class="fa fa-dashboard"></i><br>Ytelse</h1>
+        </section>
+
+        <section>
+          <h2>Flaskehalser</h2>
+          <ul>
+            <li>Lasting og kjøring</li>
+            <li>Variable og data</li>
+            <li>DOM</li>
+            <li>Løkker og rekursjon</li>
+            <li>UI-tråden</li>
+            <li>Kodepraksis</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Lasting og kjøring av JavaScript</h2>
+          <ul>
+            <li>Nettlesere venter mens JS laster, evalueres, kjører.</li>
+            <li>Hver <code>&lt;script&gt;</code>-tag blir kjørt før resten av HTML+CSS lastes.</li>
+            <li>Putt alle <code>&lt;script&gt;</code>tags i bunn av <code>&lt;body&gt;</code> og dropp <code>onready()</code>.</li>
+            <li>Ikke bruk inline JS</li>
+            <li>Komprimer, merge og last JS-filer dynamisk med en loader.</li>
+            <li>Fjern kode som ikke brukes (utkommentert kode fjernes av komprimeringsprogrammer).</li>
+          </ul>
+        </section>
+<!--        <section>
+          <pre><code data-trim contenteditable class="hljs html">&lt;html&gt;
+&lt;head&gt;
+&lt;script src=“stopper_lasting_av_siden.js” /&gt;
+&lt;link href=“style.css”&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Mesan&lt;/h1&gt;
+...
+&lt;script src=“kjoerer_etter_lasting.js”/&gt;
+&lt;/body&gt;
+&lt;/html&gt;         
+          </code></pre>
+        </section>-->
+
+        <section>
+          <h2>Variable og data</h2>
+          <ul>
+            <li>Scope chain gjør at man må passe på hva man bruker. Traversering i scope chain er veldig kostbart.</li>
+            <li>Lag lokale kopier av yttre variable.</li>
+            <li>Unngå gjentatte kall til globale variable som <code>window</code> og <code>location.href</code>.</li>
+            <li>Lokale scope er alltid veldig kjapt, og blir alltid sjekket først.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>DOM</h2>
+          <ul>
+            <li>Å aksessere DOM er veldig kostbart, gjør det så sjelden som mulig og ikke i løkker!</li>
+            <li>Endringer i DOM gir reflow <strong>hver gang</strong>.<ul>
+              <li>Ved mange forandringer på DOM-objekter kan man skjule-endre-vise for å redusere “reflow”.</li>
+              <li>Bruk låst layout (CSS) der du kan for å redusere omfang av “reflow”.</li>
+            </ul></li>
+            <li>Mange events er kostbart (lasting/minne/prosesseringstid). Bruk event-deligering i stedet for click-event.</li>
+            <li>Ved store lister kan man bruke <code>cloneNode</code> for å bygge disse utenfor DOM først.</li>
+            <li>Lagre jQuery-søk på elementer om du bruker dem flere ganger.</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable calss="hljs javascript">(function(){
+  var div = document.createElement(“div”),
+      hundegaard = $(“#hundegaard”);
+
+  function luftHunder(hunder) {
+    var flokk = div.cloneNode();
+    var hund = div.cloneNode();
+    hund.className = “hund”;
+    var i = hunder.length;
+    for (;i--;) {
+        var enhund = hund.cloneNode(true);
+        endhund.innerHMTL = hunder[i].navn;
+        flokk.appendChild(enhund);
+    }
+    hundegaard.html(flokk);
+  }
+
+  hentData(luftHunder);
+})();
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Løkker og rekursjon</h2>
+          <ul>
+            <li>Man får liten hjelp om man skriver ineffektiv kode.</li>
+            <li>Jo mer som gjøres inne i løkker, jo tregere blir det.</li>
+            <li><code>for-in</code>-løkker og <code>$.each</code> er kjekt, men tregt.</li>
+            <li>Rekursjon er risikabelt og tungt.</li>
+            <li>En statisk <code>Array</code> er betydelig raskere enn <code>switch</code> eller <code>if-then-else</code>.</li>
+            <li>Hold mest mulig av arbeidet utenfor løkkene.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>UI-tråden</h2>
+          <ul>
+            <li>En seriell kø for alle UI-endringer. Pauser både UI og JS.</li>
+            <li>Eksekvering av JavaScript gjør at UI-køen settes på vent. Det “henger!”</li>
+            <li>Henting av data ved lasting av web-siden hindrer resten av lastingen.<ul>
+              <li>Bruk setTimeout for å utsette lasting av tunge lister etc.</li>
+              <li>Lasting av data kan splittes opp. (Last f.eks. neste side i bakgrunnen.)</li>
+            </ul></li>
+            <li>Nettlesere har ofte en “time-out” om eksekvering av JS ikke fullfører innen en viss tid.</li>
+            <li>La initiell JS-kode være så minimal som mulig. Bruk <code>setTimeout</code> på resten, eller kjør den når brukeren gjør noe (events).</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code>function gjorFlereTungeTingMedObjekt(objekt) {
+  // Liste med funksjons-referanser
+  var oppgaver = [oppgave1, oppgave2, oppgave3];
+
+  setTimeout(function() {
+    // Neste oppgave:
+    var oppgave = oppgaver.shift();
+    oppgave(objekt);
+    // Se etter flere oppgaver:
+    if (oppgaver.length > 0) {
+     setTimeout(arguments.callee, 25);
+    }
+  },25);
+}
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Kodepraksis</h2>
+          <ul>
+            <li>eval() is evil – og veldig tregt. Bruk en funksjon som parameter til setTimeout/setInterval i stedet for streng.</li>
+            <li>Løpende oppretting av objekt eller liste er tregt. Opprett objekter og lister i én operasjon hvor mulig.</li>
+            <li>Cache så mye som mulig.</li>
+            <li>Bruk Math og bit-operatorer. Ikke lag egen matte-kode!</li>
+            <li>Ikke gi JS-motoren mer jobb enn nødvendig: Skriv korrekt kode! Bruk jshint el.</li>
+            <li>Bruk CSS der CSS kan erstatte JS.</li>
+            <li>Ikke forsøple globalt namespace (<code>window</code>).</li>
+            <li>Pakk koden.</li>
+            <li>Bruk nettleserens inspector og sjekk profilering og nettverkstrafikk.</li>
+          </ul>
+        </section>
+      </section>
+
 
     </div>
   </div>
