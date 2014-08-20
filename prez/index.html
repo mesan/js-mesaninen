@@ -438,231 +438,6 @@ x.removeEventListener("click", myFunction);
 
 
       <section class="stack">
-        <section data-background="#47A4DE" class="text-white">
-          <h1><i class="fa fa-space-shuttle"></i><br />Fremtiden</h1>
-        </section>
-
-        <section>
-          <h2>EcmaScript 6<br />(&laquo;ES.next&raquo;)</h2>
-        </section>
-
-        <section>
-          <h2>Når kommer ES6?</h2>
-          <p>Ratifiseres i desember 2014.</p>
-          <p>Implementeres fortløpende i moderne nettlesere.</p>
-        </section>
-
-        <section>
-          <h2>Hva blir (er?) nytt?</h2>
-          <ul>
-            <li>Block Scope</li>
-            <li>Klasser</li>
-            <li>Arrows</li>
-            <li>Promises</li>
-            <li>Moduler</li>
-            <li>Generators</li>
-            <li>++</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>Block Scope</h2>
-          ES5 har global og function scope, men ikke block scope:<br />
-<pre><code data-trim class="hljs javascript">if (true) {
-  var a = 'abc';
-}
-
-a; // &lt;= 'abc'
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Block Scope</h2>
-          ES6 har block scope med nøkkelordet <code>let</code>:<br />
-<pre><code data-trim class="hljs javascript">if (true) {
-  var a = 'abc';
-  let b = 'def';
-}
-
-a; // &lt;= 'abc'
-b; // &lt;= undefined
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Klasser</h2>
-          ES5:<br />
-<pre><code data-trim class="hljs javascript">function Vehicle(owner) {
-  this.owner = owner;
-}
-
-Vehicle.prototype.printOwner = function () {
-  console.log('The owner of this vehicle is ' + this.owner);
-};
-
-var myVehicle = new Vehicle('Arild');
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Klasser</h2>
-          ES6:<br />
-<pre><code data-trim class="hljs javascript">class Vehicle {
-  constructor(owner) {
-    this.owner = owner;
-  }
-
-  get owner() {
-    return this.owner;
-  }
-
-  printOwner() {
-    console.log('The owner of this vehicle is ' + this.owner);
-  }
-}
-
-let myVehicle = new Vehicle('Arild');
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Klasser</h2>
-          ES6 støtter også arv:<br />
-<pre><code data-trim class="hljs javascript">class Vehicle {
-  constructor(owner, canFly) {
-    this.owner = owner;
-    this.canFly = canFly;
-  }
-
-  printOwner() { /* ... */ }
-}
-
-class Plane extends Vehicle {
-  constructor(owner) {
-    super(owner, true);
-  }
-}
-
-let myPlane = new Plane('Arild');
-myPlane.canFly; // <= true
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Arrows</h2>
-          Hva ES6 løser:<br />
-<pre><code data-trim class="hljs javascript">var nr = [0, 1, 2];
-
-var squareNr = nr.map(function (x) {
-  return x * x;
-});
-
-console.log(squareNr);
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Arrows</h2>
-          ES6 løser det slik:<br />
-<pre><code data-trim class="hljs javascript">let nr = [0, 1, 2];
-
-let squareNr = nr.map(x => x * x);
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Promises</h2>
-          <p>ES5: Callbacks From Hell</p>
-<pre><code data-trim class="hljs javascript">doThis(function () {
-  doThat(function () {
-    pleaseDoThisToo(function () {
-      andEventuallyDoThisAsWell(function () {
-        ohAndAlmostForgot(function () {
-          console.log('Done!');
-        });
-      });
-    });
-  });
-});
-</code></pre>
-          <p>Tredjepartsbiblioteker gir god Promise-støtte i ES5:<br />
-            Q.js, jQuery, RSVP.js, ++</p>
-        </section>
-
-        <section>
-          <h2>Promises</h2>
-          <p>ES6: Innebygd støtte for promises</p>
-        </section>
-
-        <section>
-          <h2>Promises</h2>
-          <h3><code>Promise.all()</code></h3>
-<pre><code data-trim class="hljs javascript">let p1 = new Promise((resolve, reject) =>
-  setTimeout(resolve, 300, 'done!'));
-
-let p2 = new Promise((resolve, reject) =>
-  setTimeout(resolve, 400, 'meToo!'));
-
-Promise.all([p1, p2]).then((value) => console.log(value));
-// &lt;= ['done!', 'meToo!']
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Promises</h2>
-          <h3><code>Promise.race()</code></h3>
-<pre><code data-trim class="hljs javascript">let p1 = new Promise((resolve, reject) =>
-  setTimeout(resolve, 400, 'rabbit'));
-
-let p2 = new Promise((resolve, reject) =>
-  setTimeout(resolve, 200, 'turtle'));
-
-Promise.race([p1, p2]).then((value) => console.log(value)); // &lt;= 'turtle'
-</code></pre>
-        </section>
-
-        <section>
-          <h2>Generators</h2>
-<pre><code data-trim class="hljs javascript">function *characters(name) {
-  let i = 0;
-  while (true) {
-    if (i >= name.length) i = 0;
-    yield name[i++];
-  }
-}
-
-let chars = characters('Arild');
-
-for (let i = 0; i < 10; i++) {
-  console.log(chars.next().value);
-}
-</code></pre>
-
-        </section>
-
-        <section>
-          <h2>++</h2>
-          <p class="fragment">
-            Standard-parametre:<br /><code>function (a, b=1, c=2) {}</code>
-          </p>
-          <p class="fragment">
-            Rest-parametre:<br /><code>function format(str, ...args) {}</code>
-          </p>
-          <p class="fragment">
-            Destructured Assignment:<br /><code>let [one, two] = [1, 2];</code>
-          </p>
-          <p class="fragment">
-            Template Strings:<br /><code>`Hello ${name}, how are you ${time}?`</code>
-          </p>
-          <p class="fragment">
-            <code>For-of</code>-løkker:<br /><code>for (let nr of [1, 2, 3]) {}</code>
-          </p>
-
-        </section>
-
-      </section>
-
-      <section class="stack">
         <section data-background="#52C77F" class="text-white">
           <h1><i class="fa fa-cogs"></i><br />Rammeverk</h1>
         </section>
@@ -1373,6 +1148,231 @@ $.getJSON("some/url.json", function(jsondata) {
             <li>Bruk nettleserens inspector og sjekk profilering og nettverkstrafikk.</li>
           </ul>
         </section>
+      </section>
+
+      <section class="stack">
+        <section data-background="#47A4DE" class="text-white">
+          <h1><i class="fa fa-space-shuttle"></i><br />Fremtiden</h1>
+        </section>
+
+        <section>
+          <h2>EcmaScript 6<br />(&laquo;ES.next&raquo;)</h2>
+        </section>
+
+        <section>
+          <h2>Når kommer ES6?</h2>
+          <p>Ratifiseres i desember 2014.</p>
+          <p>Implementeres fortløpende i moderne nettlesere.</p>
+        </section>
+
+        <section>
+          <h2>Hva blir (er?) nytt?</h2>
+          <ul>
+            <li>Block Scope</li>
+            <li>Klasser</li>
+            <li>Arrows</li>
+            <li>Promises</li>
+            <li>Moduler</li>
+            <li>Generators</li>
+            <li>++</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Block Scope</h2>
+          ES5 har global og function scope, men ikke block scope:<br />
+<pre><code data-trim class="hljs javascript">if (true) {
+  var a = 'abc';
+}
+
+a; // &lt;= 'abc'
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Block Scope</h2>
+          ES6 har block scope med nøkkelordet <code>let</code>:<br />
+<pre><code data-trim class="hljs javascript">if (true) {
+  var a = 'abc';
+  let b = 'def';
+}
+
+a; // &lt;= 'abc'
+b; // &lt;= undefined
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Klasser</h2>
+          ES5:<br />
+<pre><code data-trim class="hljs javascript">function Vehicle(owner) {
+  this.owner = owner;
+}
+
+Vehicle.prototype.printOwner = function () {
+  console.log('The owner of this vehicle is ' + this.owner);
+};
+
+var myVehicle = new Vehicle('Arild');
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Klasser</h2>
+          ES6:<br />
+<pre><code data-trim class="hljs javascript">class Vehicle {
+  constructor(owner) {
+    this.owner = owner;
+  }
+
+  get owner() {
+    return this.owner;
+  }
+
+  printOwner() {
+    console.log('The owner of this vehicle is ' + this.owner);
+  }
+}
+
+let myVehicle = new Vehicle('Arild');
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Klasser</h2>
+          ES6 støtter også arv:<br />
+<pre><code data-trim class="hljs javascript">class Vehicle {
+  constructor(owner, canFly) {
+    this.owner = owner;
+    this.canFly = canFly;
+  }
+
+  printOwner() { /* ... */ }
+}
+
+class Plane extends Vehicle {
+  constructor(owner) {
+    super(owner, true);
+  }
+}
+
+let myPlane = new Plane('Arild');
+myPlane.canFly; // <= true
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Arrows</h2>
+          Hva ES6 løser:<br />
+<pre><code data-trim class="hljs javascript">var nr = [0, 1, 2];
+
+var squareNr = nr.map(function (x) {
+  return x * x;
+});
+
+console.log(squareNr);
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Arrows</h2>
+          ES6 løser det slik:<br />
+<pre><code data-trim class="hljs javascript">let nr = [0, 1, 2];
+
+let squareNr = nr.map(x => x * x);
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Promises</h2>
+          <p>ES5: Callbacks From Hell</p>
+<pre><code data-trim class="hljs javascript">doThis(function () {
+  doThat(function () {
+    pleaseDoThisToo(function () {
+      andEventuallyDoThisAsWell(function () {
+        ohAndAlmostForgot(function () {
+          console.log('Done!');
+        });
+      });
+    });
+  });
+});
+</code></pre>
+          <p>Tredjepartsbiblioteker gir god Promise-støtte i ES5:<br />
+            Q.js, jQuery, RSVP.js, ++</p>
+        </section>
+
+        <section>
+          <h2>Promises</h2>
+          <p>ES6: Innebygd støtte for promises</p>
+        </section>
+
+        <section>
+          <h2>Promises</h2>
+          <h3><code>Promise.all()</code></h3>
+<pre><code data-trim class="hljs javascript">let p1 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 300, 'done!'));
+
+let p2 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 400, 'meToo!'));
+
+Promise.all([p1, p2]).then((value) => console.log(value));
+// &lt;= ['done!', 'meToo!']
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Promises</h2>
+          <h3><code>Promise.race()</code></h3>
+<pre><code data-trim class="hljs javascript">let p1 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 400, 'rabbit'));
+
+let p2 = new Promise((resolve, reject) =>
+  setTimeout(resolve, 200, 'turtle'));
+
+Promise.race([p1, p2]).then((value) => console.log(value)); // &lt;= 'turtle'
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Generators</h2>
+<pre><code data-trim class="hljs javascript">function *characters(name) {
+  let i = 0;
+  while (true) {
+    if (i >= name.length) i = 0;
+    yield name[i++];
+  }
+}
+
+let chars = characters('Arild');
+
+for (let i = 0; i < 10; i++) {
+  console.log(chars.next().value);
+}
+</code></pre>
+
+        </section>
+
+        <section>
+          <h2>++</h2>
+          <p class="fragment">
+            Standard-parametre:<br /><code>function (a, b=1, c=2) {}</code>
+          </p>
+          <p class="fragment">
+            Rest-parametre:<br /><code>function format(str, ...args) {}</code>
+          </p>
+          <p class="fragment">
+            Destructured Assignment:<br /><code>let [one, two] = [1, 2];</code>
+          </p>
+          <p class="fragment">
+            Template Strings:<br /><code>`Hello ${name}, how are you ${time}?`</code>
+          </p>
+          <p class="fragment">
+            <code>For-of</code>-løkker:<br /><code>for (let nr of [1, 2, 3]) {}</code>
+          </p>
+
+        </section>
+
       </section>
 
 
