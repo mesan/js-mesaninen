@@ -12,46 +12,47 @@
   <div class="reveal">
     <div class="slides">
 
-      <section>
-        <h1>JavaScript</h1>
-        <p>Mesaninen 2014</p>
-        <p>Arild Tvergrov &amp; Mikkel Steine</p>
-      </section>
-
-      <section>
-        <h2>Program</h2>
-        <ol>
-          <li>Hvorfor JavaScript?</li>
-          <li>Historikk</li>
-          <li>Bruksområder</li>
-          <li>Språket JavaScript</li>
-          <li>Fremtiden</li>
-          <li>Rammeverk</li>
-          <li>Bygging</li>
-          <li>Testing</li>
-          <li>Lære mer...</li>
-        </ol>
-      </section>
-
       <section class="stack">
         <section>
-          <h2>Hvorfor JavaScript?</h2>
-          <p>(Alle bruker det.)</p>
+          <h1><i class="fa fa-send"></i><br />JavaScript</h1>
+          <h4>Mesaninen 2014</h4>
+          <p>Arild Tvergrov &amp; Mikkel Steine</p>
         </section>
 
         <section>
-          <h3>Suksesshistorier</h3>
+          <h2>Program</h2>
+          <ol>
+            <li>Hvorfor JavaScript?</li>
+            <li>Historikk</li>
+            <li>Bruksområder</li>
+            <li>Språket JavaScript</li>
+            <li>Fremtiden</li>
+            <li>Rammeverk</li>
+            <li>Bygging</li>
+            <li>Testing</li>
+            <li>Lære mer...</li>
+          </ol>
+        </section>
+      </section>
+
+      <section class="stack" data-background="#ffe0d0">
+        <section>
+          <h1><i class="fa fa-thumbs-o-up"></i><br>Hvorfor JavaScript?</h1>
+          <p>Alle bruker det.</p>
+        </section>
+
+        <section>
+          <h2>Suksesshistorier</h2>
           <ul>
             <li>Norman Antivirus</li>
             <li>KISS</li>
-            <li></li>
           </ul>
         </section>
       </section>
 
-      <section class="stack">
-        <section>
-          <h2>Historikk</h2>
+      <section class="stack" data-background="#eee">
+        <section data-background="#ccc">
+          <h1><i class="fa fa-history"></i><br />Historikk</h1>
         </section>
         <section>
           <h2>JavaScript blir til...</h2>
@@ -108,33 +109,51 @@
 
       <section class="stack">
         <section>
-          <h2>Bruksområder</h2>
+          <h1><i class="fa fa-puzzle-piece"></i><br>Bruksområder</h2>
+        </section>
+        <section>
+          <h2>Mange muligheter!</h2>
+          <ul>
+            <li>JavaScript ble opprinnelig laget for å redusere behov for lasting av HTML for små endringer.</li>
+            <li>JS støttes av alle nettlesere, også mobil.</li>
+            <li>Så og si alle web-sider bruker litt eller mye JS.</li>
+            <li>Man kan bruke JS til å lage avansert grafikk:<ul>
+              <li>Canvas (Fabric.js, Paper.js, etc.)</li>
+              <li>SVG (Raphael.js, D3.js, etc.)</li>
+              <li>WebGL (tree.js, GLGE, Canvas 3d JS, etc.)</li>
+            </ul></li>
+            <li>PhoneGap (krossplatform mobilapps)</li>
+            <li>Windows 8-apps skrives i JS</li>
+            <li>Node.js gjør det mulig å lage backend også i JS.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Ting du ikke(?) visste var mulig</h2>
+          <ul>
+            <li>Aksesser web-kamera og lag skype-klone!</li>
+            <li>Koble deg til Arduino med node.js og seriellport-bibliotek.</li>
+            <li>Bruk Microsofts Kinect SDK og kinect.js slik at man kan bruke Kinect i nettleseren.</li>
+            <li>Lag 3D-spill i JS med WebGL.</li>
+            <li>Kontroller 3D-spill med spillkontroller.</li>
+            <li>Spill Flash-ting på din iPad med JS (Bikeshed).</li>
+            <li>Lag krossplatform-apps med PhoneGap.</li>
+            <li>Med Emscripten kan du kjøre f.eks. Python eller Ruby i nettleseren (repl.it).</li>
+            <li>Krossplatform desktop-applikasjoner med app.js.</li>
+            <li>Med node.js kan man lage en web-server i JS.</li>
+          </ul>
         </section>
       </section>
 
       <section class="stack">
         <section>
-          <h2>Språket Javascript</h2>
-          <ul>
-            <li>Elementært</li>
-            <li>Datatyper</li>
-            <li>Falsy og truthy</li>
-            <li>Scope</li>
-            <li>Math</li>
-            <li>String</li>
-            <li>DOM</li>
-            <li>Eventer</li>
-            <li>Serverkommunikasjon</li>
-            <li>Prototyper</li>
-            <li>Ytelse</li>
-          </ul>
+          <h1><i class="fa fa-cubes"></i><br>Språket</h1>
         </section>
         <section>
-          <h2>Elementært</h2>
+          <h2>Grunnleggende</h2>
           <ul>
             <li>Imperativt og strukturert: if, while, for, etc. C-stil.</li>
             <li>Dynamisk: Type følger verdi, ikke variabel. "Alt" er objekter og kan utvides som man vil.</li>
-            <li>Funksjonelt: Funksjoner er også objekter. Funksjoner kan nøstes også.</li>
+            <li>Funksjonelt: Funksjoner er også objekter, og kan nøstes også.</li>
             <li>Prototype-basert: Bruker prototyper (altså gjenbruk av eksisterende objekt) i stedet for klasser og arv.</li>
           </ul>
         </section>
@@ -167,11 +186,11 @@ Ansatt.salary = 20000;
         <section>
           <h2>Datatyper</h2>
           <ul>
-            <li>JavaScript er svakt typet</li>
+            <li>Svakt typet</li>
             <li>Operasjoner på typer i JS er ikke helt som man forventer</li>
             <li>Alt er objekter, så konvertering av type betyr oppretting av nytt objekt og konvertering av verdi</li>
-            <li>Ikke opprett primitiver med "new". Ting blir mer komplekst og tregere.
-            <li>De forskjellige typene er: String, Number, Boolean, Array, Object, Undefined, null.</li>
+            <li>Ikke opprett primitiver med <code>new</code>. Ting blir mer komplekst og tregere.
+            <li>De forskjellige typene er: <code>String, Number, Boolean, Array, Object, Undefined, null</code></li>
             <li>Bruk typeof for å sjekke typen av verdien.</li>
           </ul>
           <pre><code data-trim contenteditable class="hljs javascript">
@@ -185,13 +204,14 @@ x = typeof x; // "string"
           <h2>Number</h2>
           <ul>
             <li>Alle tall i JS representeres med denne typen.</li>
-            <li>Integer finnes ikke!! Number implememteres med en double.</li>
-            <li>Man kan skrive tall med eller uten desimaler: 34.00 == 34</li>
-            <li>Man kan bruke vitenskapsnotasjon: 1e2 == 100; 1e-2 == 0.01</li>
+            <li>Integer finnes ikke!! Number implementeres med en double.</li>
+            <li>Man kan skrive tall med eller uten desimaler: <code>34.00 == 34</code></li>
+            <li>Man kan bruke vitenskapsnotasjon: <code>1e2 == 100; 1e-2 == 0.01</code></li>
             <li>Tall oppfører seg som en double i C/Java med de utfordringer det medfører.</li>
-            <li>Bruk &lt; og &gt; i stedet for = og != når man sammenligner tall, siden man ikke har nøyaktige desimaltall.</li>
+            <li>Bruk &lt; og &gt; i stedet for = og != når man sammenligner tall.</li>
             <li>Tall blir automatisk konvertert til og fra andre typer om man prøver å bruke dem.</li>
-            <li>Om JS ikke klarer å konvertere en type til et tall så blir verdien <em>NaN</em> (Not a Number).</li>
+            <li>Om JS ikke klarer å konvertere en type til et tall så blir verdien <code>NaN</code> (Not a Number).</li>
+            <li><code>Inifinity</code> og <code>-Infinity</code> er mulige verdier.</li>
           </ul>
         </section>
         <section>
@@ -205,7 +225,7 @@ x = parseInt("4r") - 3; // ?
 x = parseInt("a3") - 3; // ?
 x = 1.000001 + 1; // ?
 x = 1.000001 - 1; // ?
-0.1.toFixed(20); // 0.10000000000000000555
+0.1.toFixed(20); // "0.10000000000000000555"
 x = 9999999999999999; // ?
 
 function isNumeric(n) {
@@ -217,8 +237,8 @@ function isNumeric(n) {
           <h2>Boolean</h2>
           <p>(Falsy og thruthy)</p>
           <ul>
-            <li>Følgende verdier er falsy: false, 0, "", null, undefined, NaN</li>
-            <li>ALT annet er truthy!</li>
+            <li>Følgende verdier er falsy: <code>false, 0, "", null, undefined, NaN</code></li>
+            <li><strong><em>Alt</em> annet er truthy!</strong></li>
             <li>Bruk ===, !==, &gt;==, &lt;== i stedet for ==, !=, &gt;=, &lt;= til alle sjekker. == konverterer, === gjør det ikke.</li>
             <li>Man må ikke bruke new Boolean(), da denne alltid er true(thy).</li>
           </ul>
@@ -248,11 +268,11 @@ if (x) {
           <ul>
             <li>Kan bruke både ' eller ", f.eks. om man har en streng med et av disse tegnene i seg, så kan man bruke det andre tegnet.</li>
             <li>"Backslash" (\) brukes for å escape et spesialtegn.</li>
-            <li>Ikke bruk new String, som gir mange uheldig bieffekter. Lag vanlige strengprimitiver.</li>
+            <li>Ikke bruk <code>new String</code>, som gir mange uheldig bieffekter. Lag vanlige strengprimitiver.</li>
             <li>En streng har masse attributter og funksjoner, f.eks. <code>"abc".length => 3</code> og <code>" abc ".trim() => "abc"</code></li>
           </ul>
           <pre><code data-trim contenteditable class="hljs javascript">
-x = "abc"
+x = "abc";
 x = x.substr(0,2); // "ab"
           </code></pre>
         </section>
@@ -276,17 +296,16 @@ bedrift.ring = function() { alert(this.telefonnr); }
             <li>Et spesielt objekt med litt anderledes aksessering; man bruker <code>[]</code> i stedet for .</li>
             <li><code>new Array(1,2,3) === [1,2,3]</code></li>
             <li>Alle elementene i en array kan ha forksjellige typer.</li>
-            <li>Første element starter på 0, som i C/Java: <code>([1,2,3])[0] === 1;</code></li>
+            <li>Første element starter på 0, som i C/Java:<br><code>([1,2,3])[0] === 1</code></li>
             <li><code>typeof [1,2,3] == "object"</code></li>
           </ul>
         </section>
         <section>
-          <h2>Inifinity, Undefined og null</h2>
+          <h2>Undefined og null</h2>
           <ul>
             <li>En variabel er undefined når den ikke har fått noen verdi.</li>
             <li>En variabel er null når man setter den til null.</li>
             <li>Disse to er altså ikke det samme, og en verdi som ikke er satt blir ikke automatisk null.</li>
-            <li>Inifinity er verdien som vises om tallet overskrider maks verdi (positivt eller negativt).</li>
           </ul>
         </section>
 
@@ -345,6 +364,7 @@ function f2() {
             <li>Tall kan skrives på forskjellige formater: <code>10 == 0x10 == 012</code>, men man har ikke tilsvarende for binære tall (må bruke streng og <code>parseInt("1010",2)</code>).</li>
             <li>Også bit-mønster-operatorer er effektive: &amp;, |, ~, ^, &lt;&lt; og &gt;&gt;</li>
           </ul>
+          <br><br>
           <h2>Date</h2>
           <ul>
             <li>I <code>Date</code>-objektet finner man mange nyttige funksjoner for dato og tid.</li>
@@ -376,8 +396,9 @@ if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
           </ul>
         </section>
         <section>
-          <h2>Eventer</h2>
+          <h2>Hendelser</h2>
           <ul>
+            <li>Hendelser ("events") håndteres ved at man setter opp callback-funksjoner knyttet til et element og en hendelse.</li>
             <li>Den måten folk flest begynner å sette opp eventer på er å legge de til i HTML. F.eks. <code>&lt;a href="#" onclick="doSomething()"&gt;</code> </li>
             <li>En ryddigere måte er å bruke <code>element.addEventListener("click", function(){ ... })</code> direkte på DOM-objektet.</li>
             <li>IE er selvfølgelig vanskelig og der heter funksjonen i v8 og eldre <code>attachEvent</code>.</li>
@@ -416,19 +437,45 @@ x.removeEventListener("click", myFunction);
       </section>
 
 
-      <section class="stack">
+      <section class="stack" data-background="#84fcff">
+        <section class="text-white" data-background="#0F1923">
+          <h1 class="hidden">jQuery</h1>
+          <img src="jquery-logo.png" alt="jQuery-logo" class="no-border" style="width: 50%" />
+        </section>
+
         <section>
-          <h2>jQuery</h2>
+          <h2>Enklere hverdag</h2>
           <ul>
             <li>Skjuler forskjeller mellom implementasjoner. "Alle" bruker det.</li>
-            <li>"Unobtrusive"</li>
             <li>Hovedbruksområder:<ul>
               <li>Henting/manipulering av elementer</li>
               <li>Hendelser</li>
               <li>Animasjoner</li>
               <li>AJAX</li>
             </ul>
+            <li>"Unobtrusive", endrer ikke oppførsel til eksisterende JS.</li>
+            <li><code>$()</code> eller <code>jQuery()</code> er utgangspunktet for all jQuery-kode</li>
+            <li>Generell fremgangsmåte: Finn objekter og manipuler/les/skriv.</li>
+            <li>Kan hekte på en lang rekke kall som gjør koden mer kompakt.</li>
           </ul>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="hljs javascript">(function() {
+  function showLink() { var aObj = $(this); /* ... */ }
+  function hideLink() { /* ... */ }
+  function followLink() { /* ... */ }
+
+  $("a").
+    filter(".external").
+      css("color", "#200040").
+      delegate("mouseover", showLink).
+      delegate("mouseout"), hideLink).
+      delegate("click", followLink).
+    end().
+    filter(".internal").
+      css("color", "#505020");
+})();
+          </code></pre>
         </section>
         <section>
           <h2>Selectors</h2>
@@ -439,7 +486,7 @@ x.removeEventListener("click", myFunction);
             <li>Velg elementer basert på innhold: <code>:containts(), :has(), :empty()</code></li>
             <li>Velg elementer basert på verdi/attributter: <code>[navn="verdi"]</code></li>
             <li>+++</li>
-            <li>Resultatet er et objekt som inneholder en Array med DOM-elementer</li>
+            <li>Resultatet er et objekt som inneholder en Array med DOM-elementer, en jQuery-samling.</li>
           </ul>
         </section>
         <section>
@@ -449,7 +496,203 @@ x.removeEventListener("click", myFunction);
             <li><code>.wrap()</code> m.fl. legger til element <i>rundt</i> elementet man angir.</li>
             <li><code>.html(), .append(), .prepend()</code> m.fl. endrer innholdet i et element.</li>
             <li><code>.after(), .before()</code> legger til elementer utenfor gjeldende element.</li>
-            <li>Husk at ting gjøres mot DOM med en gang. Man kan bruke </li>
+            <li>Man kan bruke <code>.detach()</code> for å jobbe med ting utenom DOM.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Hendelser</h2>
+          <ul>
+            <li>"Events" er enklere i jQuery, og forskjeller mellom nettlesere skjules bak enkle funksjoner.</li>
+            <li><code>$(document).ready()</code> kalles når HTML er ferdig lastet, men man trenger ikke bruke denne.</li>
+            <li><code>.click()</code> og en rekke andre events kan settes på en jQuery-samling.</li>
+            <li>Event-objektet som sendes med er samme objekt som man er vant med fra vanilla js og inneholder mange nyttige ting.</li>
+            <li>Bruk <code>.delegate()</code> for all hendelseshåndtering! Asynkront, ryddig og effektivt.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Animasjoner</h2>
+          <ul>
+            <li>Med <code>.animate()</code> så kan man lage mye fancy.</li>
+            <li>Hovedlinjene er at man kan gi en CSS-stil som animasjonen skal bevege seg mot, og styre hastighet og mye annet.</li>
+            <li>Enkle animasjoner som gradvis visning kan gjøres med <code>.hide(), .show(), .toggle(), .fadeIn(), .fadeOut()</code> osv.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>AJAX</h2>
+          <ul>
+            <li>Man kan bruke funksjonen <code>$.ajax()</code> eller kortversjonene <code>$.get()</code> og <code>$.post()</code></li>
+            <li>Resultatet håndterer man med en callback-funksjon.</li>
+            <li>Med <code>.load()</code> kan man hente resultatet av AJAX-kallet rett inn i et element.</li>
+            <li>Du har mange muligheter for spesialisering i parametere til <code>$.ajax()</code>.</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable class="hljs javascript">
+$.get("some/url.php?data", function(data) {
+  // Bruk data til noe
+});
+
+$.ajax({
+  url: "some/url.php",
+  data: "parameter=on",
+  success: function(data) {
+    // Bruk data til noe
+  },
+  dataType: "html" // xml, json, script, etc.
+});
+
+$.getJSON("some/url.json", function(jsondata) {
+  // Her kan du bruke jsondata direkte
+  var antall = jsondata.brukerListe.length;
+});
+          </code></pre>
+        </section>
+      </section>
+
+      <section class="stack" data-background="#c0d0ff">
+        <section>
+          <h1><i class="fa fa-dashboard"></i><br>Ytelse</h1>
+        </section>
+
+        <section>
+          <h2>Flaskehalser</h2>
+          <ul>
+            <li>Lasting og kjøring</li>
+            <li>Variable og data</li>
+            <li>DOM</li>
+            <li>Løkker og rekursjon</li>
+            <li>UI-tråden</li>
+            <li>Kodepraksis</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Lasting og kjøring av JavaScript</h2>
+          <ul>
+            <li>Nettlesere venter mens JS laster, evalueres, kjører.</li>
+            <li>Hver <code>&lt;script&gt;</code>-tag blir kjørt før resten av HTML+CSS lastes.</li>
+            <li>Putt alle <code>&lt;script&gt;</code>tags i bunn av <code>&lt;body&gt;</code> og dropp <code>onready()</code>.</li>
+            <li>Ikke bruk inline JS</li>
+            <li>Komprimer, merge og last JS-filer dynamisk med en loader.</li>
+            <li>Fjern kode som ikke brukes (utkommentert kode fjernes av komprimeringsprogrammer).</li>
+          </ul>
+        </section>
+<!--        <section>
+          <pre><code data-trim contenteditable class="hljs html">&lt;html&gt;
+&lt;head&gt;
+&lt;script src=“stopper_lasting_av_siden.js” /&gt;
+&lt;link href=“style.css”&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Mesan&lt;/h1&gt;
+...
+&lt;script src=“kjoerer_etter_lasting.js”/&gt;
+&lt;/body&gt;
+&lt;/html&gt;         
+          </code></pre>
+        </section>-->
+
+        <section>
+          <h2>Variable og data</h2>
+          <ul>
+            <li>Scope chain gjør at man må passe på hva man bruker. Traversering i scope chain er veldig kostbart.</li>
+            <li>Lag lokale kopier av yttre variable.</li>
+            <li>Unngå gjentatte kall til globale variable som <code>window</code> og <code>location.href</code>.</li>
+            <li>Lokale scope er alltid veldig kjapt, og blir alltid sjekket først.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>DOM</h2>
+          <ul>
+            <li>Å aksessere DOM er veldig kostbart, gjør det så sjelden som mulig og ikke i løkker!</li>
+            <li>Endringer i DOM gir reflow <strong>hver gang</strong>.<ul>
+              <li>Ved mange forandringer på DOM-objekter kan man skjule-endre-vise for å redusere “reflow”.</li>
+              <li>Bruk låst layout (CSS) der du kan for å redusere omfang av “reflow”.</li>
+            </ul></li>
+            <li>Mange events er kostbart (lasting/minne/prosesseringstid). Bruk event-deligering i stedet for click-event.</li>
+            <li>Ved store lister kan man bruke <code>cloneNode</code> for å bygge disse utenfor DOM først.</li>
+            <li>Lagre jQuery-søk på elementer om du bruker dem flere ganger.</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code data-trim contenteditable calss="hljs javascript">(function(){
+  var div = document.createElement(“div”),
+      hundegaard = $(“#hundegaard”);
+
+  function luftHunder(hunder) {
+    var flokk = div.cloneNode();
+    var hund = div.cloneNode();
+    hund.className = “hund”;
+    var i = hunder.length;
+    for (;i--;) {
+        var enhund = hund.cloneNode(true);
+        endhund.innerHMTL = hunder[i].navn;
+        flokk.appendChild(enhund);
+    }
+    hundegaard.html(flokk);
+  }
+
+  hentData(luftHunder);
+})();
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Løkker og rekursjon</h2>
+          <ul>
+            <li>Man får liten hjelp om man skriver ineffektiv kode.</li>
+            <li>Jo mer som gjøres inne i løkker, jo tregere blir det.</li>
+            <li><code>for-in</code>-løkker og <code>$.each</code> er kjekt, men tregt.</li>
+            <li>Rekursjon er risikabelt og tungt.</li>
+            <li>En statisk <code>Array</code> er betydelig raskere enn <code>switch</code> eller <code>if-then-else</code>.</li>
+            <li>Hold mest mulig av arbeidet utenfor løkkene.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>UI-tråden</h2>
+          <ul>
+            <li>En seriell kø for alle UI-endringer. Pauser både UI og JS.</li>
+            <li>Eksekvering av JavaScript gjør at UI-køen settes på vent. Det “henger!”</li>
+            <li>Henting av data ved lasting av web-siden hindrer resten av lastingen.<ul>
+              <li>Bruk setTimeout for å utsette lasting av tunge lister etc.</li>
+              <li>Lasting av data kan splittes opp. (Last f.eks. neste side i bakgrunnen.)</li>
+            </ul></li>
+            <li>Nettlesere har ofte en “time-out” om eksekvering av JS ikke fullfører innen en viss tid.</li>
+            <li>La initiell JS-kode være så minimal som mulig. Bruk <code>setTimeout</code> på resten, eller kjør den når brukeren gjør noe (events).</li>
+          </ul>
+        </section>
+        <section>
+          <pre><code>function gjorFlereTungeTingMedObjekt(objekt) {
+  // Liste med funksjons-referanser
+  var oppgaver = [oppgave1, oppgave2, oppgave3];
+
+  setTimeout(function() {
+    // Neste oppgave:
+    var oppgave = oppgaver.shift();
+    oppgave(objekt);
+    // Se etter flere oppgaver:
+    if (oppgaver.length > 0) {
+     setTimeout(arguments.callee, 25);
+    }
+  },25);
+}
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Kodepraksis</h2>
+          <ul>
+            <li>eval() is evil – og veldig tregt. Bruk en funksjon som parameter til setTimeout/setInterval i stedet for streng.</li>
+            <li>Løpende oppretting av objekt eller liste er tregt. Opprett objekter og lister i én operasjon hvor mulig.</li>
+            <li>Cache så mye som mulig.</li>
+            <li>Bruk Math og bit-operatorer. Ikke lag egen matte-kode!</li>
+            <li>Ikke gi JS-motoren mer jobb enn nødvendig: Skriv korrekt kode! Bruk jshint el.</li>
+            <li>Bruk CSS der CSS kan erstatte JS.</li>
+            <li>Ikke forsøple globalt namespace (<code>window</code>).</li>
+            <li>Pakk koden.</li>
+            <li>Bruk nettleserens inspector og sjekk profilering og nettverkstrafikk.</li>
           </ul>
         </section>
       </section>
@@ -1106,6 +1349,35 @@ for (let i = 0; i < 10; i++) {
           <h2>Slide #2</h2>
         </section>
 
+      </section>
+
+      <section>
+        <h2>Minifisering og konkatenering</h2>
+        <ul>
+          <li><a href="https://github.com/mishoo/UglifyJS2">UglifyJS 2</a>:<br><code>&gt; uglifyjs file1.js file2.js&nbsp;\<br>
+         -o foo.min.js \<br>
+         -p 5 -c -m</code></li>
+         <li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a>:<br><code>&gt; java -jar yuicompressor-x.y.z.jar \<br>myfile.js -o myfile-min.js</code></li>
+         <li><a href="https://github.com/google/closure-compiler">Closure Compiler</a>:<br><code>&gt; java -jar compiler.jar \<br>--js_output_file=out.js \<br>in1.js in2.js in3.js</code></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Kvalitetssikring av koden</h2>
+        <ul>
+          <li><a href="https://github.com/reid/node-jslint">JSLint (node.js)</a>:<br><code>&gt; jslint lib/color.js lib/reporter.js</code></li>
+          <li><a href="">jshint</a>:<br><code>&gt; jshint fil1.js<br>
+          fil1.js: line 110, col 4, Unnecessary semicolon.<br>
+          <br>
+          1 error</code></li>
+          <li>Dette sikrer kun at det ikke er noen åpenbare feil i koden, men finner ikke logiske feil.</li>
+          <li>Kan være veldig til hjelp om man opplever helt merkelige feil.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1>Konferanser</h1>
+        <a href="http://lanyrd.com/topics/javascript/">http://lanyrd.com/topics/javascript/</a>
       </section>
 
     </div>
