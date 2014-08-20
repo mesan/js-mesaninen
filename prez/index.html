@@ -803,7 +803,7 @@ for (let i = 0; i < 10; i++) {
             <li>Directive</li>
             <li>Module</li>
             <li>Controller</li>
-            <li>Model</li>
+            <li>Scope</li>
             <li>Service</li>
           </ul>
         </section>
@@ -868,6 +868,8 @@ for (let i = 0; i < 10; i++) {
             <p>Vi deklarerer en modul:</p>
 <pre><code>var mesanModule = angular.module('mesanModule', [
   // Module dependencies here...
+  // 'jquery',
+  // 'ui.router'
 ]);</code></pre>
           </div>
           <div class="fragment">
@@ -923,6 +925,11 @@ for (let i = 0; i < 10; i++) {
         </section>
 
         <section>
+          <h2><i class="fa fa-cube"></i> Scope</h2>
+          <h3></h3>
+        </section>
+
+        <section>
           <h2>Eksempel på bruk av <code>$scope</code></h2>
 
           <div class="fragment">
@@ -971,19 +978,6 @@ for (let i = 0; i < 10; i++) {
             <p><strong><i class="fa fa-hand-o-up fa-warning"></i></strong> HTML-en oppdateres
               automatisk når <code>count</code> endrer seg!</p>
           </div>
-        </section>
-
-        <section>
-          <h2><i class="fa fa-cube"></i> Model</h2>
-          <h3>Holder på dataene i applikasjonen. Tilgjengelig både i controller og GUI
-            gjennom <em>scopet</em>.</h3>
-        </section>
-
-        <section>
-          <p>Litt svevende begrep i AngularJS.</p>
-          <p>I prinsippet er alle <em>properties</em> knyttet til <em>scopet</em> en
-            modell.</p>
-<pre><code>$scope.user = { username: 'arildt', company: 'Mesan AS' };</code></pre>
         </section>
 
         <section>
