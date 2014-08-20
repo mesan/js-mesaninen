@@ -1149,27 +1149,24 @@ for (let i = 0; i < 10; i++) {
         </section>
 
         <section>
-          <h2>Hva mer kjennetegner en controller?</h2>
-          <ul>
-            <li class="fragment">Alle controllere har hvert sitt <em>scope</em>.</li>
-            <li class="fragment">Alle <em>properties</em> knyttet til <em>scopet</em>, er
-              tilgjengelige i GUI-et.</li>
-            <li class="fragment">Hvor får vi tak i <em>scopet</em> til controlleren?
+          <h2><i class="fa fa-cube"></i> Scope</h2>
+          <h3>Bindeleddet mellom GUI-et og controlleren.</h3>
+        </section>
+
+        <section>
+            <p>Alle controllere har hvert sitt <em>scope</em>.</p>
+            <p class="fragment">Alle <em>properties</em> knyttet til <em>scopet</em>, er
+              tilgjengelige i GUI-et.</p>
+            <p class="fragment">Hvor får vi tak i <em>scopet</em> til controlleren?
               <span class="fragment">
                 Ved å legge til <code>$scope</code> som parameter til controlleren
                 (<em><a href="http://en.wikipedia.org/wiki/Dependency_injection#Constructor_injection"
-                   target="_blank">constructor injection</a></em>).</span>
-            </li>
-          </ul>
+                        target="_blank">constructor injection</a></em>).</span>
+            </p>
 <pre class="fragment"><code>module.controller('MyController', function ($scope) {
   // $scope er her scopet til controlleren.
 });
 </code></pre>
-        </section>
-
-        <section>
-          <h2><i class="fa fa-cube"></i> Scope</h2>
-          <h3></h3>
         </section>
 
         <section>
@@ -1187,7 +1184,7 @@ for (let i = 0; i < 10; i++) {
           <div class="fragment">
             <p>Vi binder controlleren til en tag i HTML-en og interpolerer
               <code>name</code>-feltet vårt:</p>
-<pre><code>&lt;div ng-controller="AboutController">{{name}}&lt;/div></code></pre>
+<pre><code>&lt;div ng-controller="AboutController">My name is {{name}}&lt;/div></code></pre>
           </div>
 
           <div class="fragment">
@@ -1231,7 +1228,7 @@ for (let i = 0; i < 10; i++) {
         <section>
           <p><i class="fa fa-hand-o-up fa-warning"></i> Husk: Controllere sitt ansvar er å binde
             forretningslogikken og GUI-et sammen.</p>
-          <p>Hold derfor controllere enkle og la servicer ta seg av den tyngre
+          <p class="fragment">Hold derfor controllere enkle, og la servicer ta seg av den tyngre
             forretningslogikken.</p>
         </section>
 
