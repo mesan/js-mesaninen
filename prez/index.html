@@ -150,23 +150,36 @@
         <section>
           <h2>Grunnleggende</h2>
           <ul>
-            <li>Imperativt og strukturert: if, while, for, etc. C-stil.</li>
-            <li>Dynamisk: Type følger verdi, ikke variabel. "Alt" er objekter og kan utvides som man vil.</li>
-            <li>Funksjonelt: Funksjoner er også objekter, og kan nøstes også.</li>
-            <li>Prototype-basert: Bruker prototyper (altså gjenbruk av eksisterende objekt) i stedet for klasser og arv.</li>
+            <li class="fragment">Imperativt og strukturert: if, while, for, etc. C-stil.</li>
+            <li class="fragment">Dynamisk: Type følger verdi, ikke variabel. "Alt" er objekter og kan utvides som man vil.</li>
+            <li class="fragment">Funksjonelt: Funksjoner er også objekter, kan nøstes og sendes som argumenter.</li>
+            <li class="fragment">Prototype-basert: Bruker prototyper (altså gjenbruk av eksisterende objekt) i stedet for klasser og arv.</li>
           </ul>
         </section>
         <section>
-          <pre><code data-trim contenteditable class="hljs javascript">var kurs = 5.67;
-var f = function(x) { return x * kurs; };
-
-function ytreFunksjon() {
-  function indreFunksjon() {
-    alert("Hei!");
-  }
+          <h2>Funksjoner</h2>
+          <div class="fragment">Man kan ha lokale funksjoner inne i andre funksjoner.
+          <pre><code data-trim contenteditable class="hljs javascript">function ytreFunksjon() {
+  function indreFunksjon() { alert("Hei!"); }
   indreFunksjon();
 }
-</code></pre>
+</code></pre></div>
+          <div class="fragment">Funksjoner er objekter, akkurat som alt annet.
+          <pre><code data-trim contenteditable class="hljs javascript">function f() {}
+f.call();
+f.valueOf(); // "function f() {}"
+          </code></pre></div>
+        </section>
+        <section>
+          <h2>Funksjoner</h2>
+          <div class="fragment">Kan ha dynamisk antall argumenter. Bruk <code>arguments</code>.
+          <pre><code data-trim contenteditable class="hljs">function f() { var siste_argument = arguments[arguments.length]; }
+f(1,2,3);</code></pre></div>
+          <div class="fragment">Funksjoner kan være anonyme.
+          <pre><code data-trim contenteditable class="hljs javascript">var kurs = 5.67;
+var f = function(x) { return x * kurs; };
+f(45);
+          </code></pre></div>
         </section>
 
         <section>
