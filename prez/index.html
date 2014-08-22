@@ -14,9 +14,13 @@
 
       <section class="stack">
         <section>
-          <h1><i class="fa fa-send"></i><br />JavaScript</h1>
-          <h4>Mesaninen 2014</h4>
+          <h1>JavaScript</h1>
+          <h3 class="text-mesan">Mesaninen 2014</h3>
           <p>Arild Tvergrov &amp; Mikkel Steine</p>
+          <img src="arildtvergrov.png" alt="Arild Tvergrov"
+               class="no-border img-circle img-askew img-person" /> &nbsp;
+          <img src="mikkelsteine.png" alt="Mikkel Steine"
+               class="no-border img-circle img-askew img-person" />
         </section>
 
         <section>
@@ -28,9 +32,7 @@
             <li>Språket JavaScript</li>
             <li>Fremtiden</li>
             <li>Rammeverk</li>
-            <li>Bygging</li>
-            <li>Testing</li>
-            <li>Lære mer...</li>
+            <li>Case</li>
           </ol>
         </section>
       </section>
@@ -842,20 +844,24 @@ $.getJSON("some/url.json", function(jsondata) {
           <h2>Nytt eksempel på bruk av <code>$scope</code></h2>
           <div class="fragment">
             <p>Vi deklarerer en controller, med <code>count</code> som
-              inkrementerer hvert sekund (ved hjelp av Angular's <code>$timeout</code>
-              service):</p>
-<pre><code>module.controller('CountController', function ($scope, $timeout) {
+              inkrementerer for hvert klikk på en knapp:</p>
+<pre><code>module.controller('CountController', function ($scope) {
   $scope.count = 0;
-  $timeout(function () {
+  $scope.increment = function () {
     $scope.count++;
-  }, 1000);
+  };
 });
 </code></pre>
           </div>
 
           <div class="fragment">
             <p>Vi endrer HTML-en til å vise <code>count</code>-en vår:</p>
-            <pre><code>&lt;div ng-controller="CountController">{{count}} seconds&lt;/div></code></pre>
+<pre><code>
+&lt;div ng-controller="CountController">
+  {{count}} times
+  &lt;button ng-click="increment()">Click Me!</button>
+&lt;/div>
+</code></pre>
           </div>
 
           <div class="fragment">
@@ -894,6 +900,77 @@ $.getJSON("some/url.json", function(jsondata) {
 
         <section data-background="assignments.jpg" data-background-transition="slide">
           <h2><i class="fa fa-pencil"></i> Oppgaver</h2>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-pencil"></i> Oppgave 1: Superhelter</h2>
+          <ul>
+            <li>
+              <strong>Lag en knapp som viser navnet til en tilfeldig superhelt hver gang du klikker
+              på den.</strong>
+            </li>
+            <li>
+              Det skal implementeres ved hjelp av en controller, og klikket skal trigge
+              funksjonalitet ved hjelp av <em>ngClick</em>-direktivet.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-pencil"></i> Oppgave 2: Spillsøk</h2>
+          <ul>
+            <li>
+              <strong>La brukeren søke etter spilltitler.</strong>
+            </li>
+            <li>Det skal være fritekstsøk.</li>
+            <li>Det skal være mulig å søke basert på tittel og utgivelsesår.</li>
+            <li>
+              <a href="https://docs.angularjs.org/api/ng/filter/filter" target="_blank">
+              Pssst ...!
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-pencil"></i> Oppgave 3: Nyhetsbrev</h2>
+          <ul>
+            <li>
+              <strong>Lag et skjema hvor en bruker kan &laquo;melde seg&raquo; på ditt nyhetsbrev
+              ved å registrere e-postadresse, fornavn og etternavn.</strong>
+            </li>
+            <li>
+              <strong>List opp alle brukere som er meldt på nyhetsbrevet ditt.</strong>
+            </li>
+            <li>
+              For enkelhets skyld kan påmelding og liste over brukere være på samme side.
+            </li>
+            <li>
+              Krav: Listen skal oppdateres automatisk så fort brukeren har registrert seg.
+            </li>
+            <li>
+              (Ekstra utfordring: Bruk
+              <code>
+                <a href="http://www.w3schools.com/html/html5_webstorage.asp">
+                  HTML5 LocalStorage
+                </a>
+              </code> for å persistere brukerlisten på tvers av sesjoner.)
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-pencil"></i> Oppgave 4: Direktiver</h2>
+              <strong>Lag følgende direktiv:</strong>
+<pre><code>&lt;wikipedia lang="en" what="Bacon" /></code></pre>
+              <strong>som genererer følgende HTML:</strong>
+<pre><code>&lt;a href="http://en.wikipedia.org/wiki/Bacon" target="_blank">
+  Bacon on Wikipedia
+&lt/a>
+</code></pre>
+            <a href="https://docs.angularjs.org/guide/directive" target="_blank">
+              Pssst ...!
+            </a>
         </section>
 
       </section>
@@ -1054,7 +1131,7 @@ $.getJSON("some/url.json", function(jsondata) {
 ...
 &lt;script src=“kjoerer_etter_lasting.js”/&gt;
 &lt;/body&gt;
-&lt;/html&gt;         
+&lt;/html&gt;
           </code></pre>
         </section>-->
 

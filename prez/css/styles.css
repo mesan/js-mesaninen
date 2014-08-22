@@ -5,12 +5,8 @@ html {
   font-family: 'Open Sans', Arial;
 }
 
-.reveal ul li {
+.reveal ul li, .reveal ol li, .reveal p {
   padding-top: .5em;
-}
-
-.reveal p {
-  padding-bottom: .5em;
 }
 
 .reveal code {
@@ -73,6 +69,10 @@ input[type=text] {
   color: #fff;
 }
 
+.reveal .text-mesan *, .reveal .text-mesan {
+  color: #c4101f;
+}
+
 .reveal .fa {
   display: inline-block;
   font-family: FontAwesome;
@@ -85,4 +85,24 @@ input[type=text] {
 
 .reveal .fa-warning {
   color: orange;
+}
+
+.img-circle {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border-radius: 50%;
+}
+
+.img-askew {
+}
+
+.img-askew:hover {
+  -ms-transform: rotate(15deg); /* IE 9 */
+  -webkit-transform: rotate(15deg); /* Chrome, Safari, Opera */
+  transform: rotate(15deg);
+}
+
+.img-person {
+  width: 20%;
 }
