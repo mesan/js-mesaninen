@@ -1107,11 +1107,148 @@ $.getJSON("some/url.json", function(jsondata) {
         </section>
 
         <section>
-          <h2>Slide #2</h2>
+          <h2>Hvorfor skal jeg bruke Grunt?</h2>
+          <p class="fragment">Svar: <strong>automatisering.</strong></p>
         </section>
 
         <section>
-          <h2>Minifisering og konkatenering</h2>
+          <h2>Hva kan jeg bruke Grunt til?</h2>
+          <ul>
+            <li class="fragment">Minimering av HTML, JavaScript og CSS.</li>
+            <li class="fragment">Linting av JavaScript og CSS.</li>
+            <li class="fragment">Kjøre testene dine.</li>
+            <li class="fragment">Starte opp utviklingsserver.</li>
+            <li class="fragment">Lytte på endringer i kildefilene dine og trigge skreddersydde jobber
+              automatisk.</li>
+            <li class="fragment">... pluss det aller meste!</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-sitemap"></i> Avhengigheter</h2>
+          <p>Grunt bruker <code>npm</code>, Node.js sin pakke-manager.</p>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cog"></i> Oppsett</h2>
+          <ol>
+            <li>
+              Last ned og installer
+              <a href="http://www.nodejs.org/download/" target="_blank">Node.js</a>.
+            </li>
+            <li>
+              Kjør <code>[sudo] npm install grunt-cli -g</code> for å installere Grunt sitt
+              Command Line Interface.
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-file-code-o"></i> Gruntfile.js</h2>
+          <h3>Konfigurasjonsfilen for Grunt i prosjektet ditt.</h3>
+        </section>
+
+        <section>
+          <h2>Eksempel på Gruntfile.js</h2>
+<pre><code>module.exports = function(grunt) {
+  grunt.initConfig({
+    // Project configuration.
+  });
+
+  // Set up task(s).
+  grunt.registerTask('default', []);
+};</code></pre>
+        </section>
+
+        <section>
+          <h2>Bruk Grunt-plugins</h2>
+          <ul>
+          <li>Det finnes en bråte med Grunt-plugins der ute.</li>
+          <li>For å bruke disse, må du ha en <code>package.json</code>-fil i prosjektet
+            ditt.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-file-code-o"></i> package.json</h2>
+          <h3>Holder styr på avhengigheter i prosjektet ditt.</h3>
+        </section>
+
+        <section>
+          <h2>Eksempel på package.json</h2>
+<pre><code>{
+  "name": "MesanProject",
+  "description": "Just another Mesan project",
+  "author": "John Doe &lt;john@doe.com>",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": ">= 1.2.0",
+    "optimist": ">= 0.1.0"
+  },
+  "engine": "node 0.4.1"
+}
+</code></pre>
+        </section>
+
+        <section>
+          <h2>Definering av en task</h2>
+          <p><strong>La oss si vi ønsker å validere Gruntfile-scriptet vårt med JSHint.</strong></p>
+          <div class="fragment"><p>Vi installerer <em>grunt-contrib-jshint</em> med
+            <code>npm</code>:</p>
+<pre><code>npm install grunt-contrib-jshint --save-dev</code></pre></div>
+          <div class="fragment">Og konfigurerer tasken vår i <code>Gruntfile.js</code>:
+<pre><code>module.exports = function(grunt) {
+  grunt.initConfig({
+    jshint: {
+      gruntfile: ['Gruntfile.js']
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+
+  grunt.registerTask('default', ['jshint:gruntfile']);
+};
+</code></pre></div>
+        </section>
+
+        <section>
+          <h2>Tut og kjør</h2>
+          <p>Alle tasker i Grunt blir kjørt fra kommandolinjen slik:</p>
+<pre><code>grunt [taskName]</code></pre>
+
+          <p>Dersom du utelater <code>taskName</code>, blir det det samme som å kjøre
+          <code>grunt default</code>. Altså kjører du <em>default</em>-tasken.</p>
+
+          <p>Vi registrerte vår JSHint-oppgave i <em>default</em>-tasken, så det holder å
+            kjøre <code>grunt</code> uten argumenter.</p>
+        </section>
+
+        <section>
+          <h2>Nytt eksempel med JSHint</h2>
+          <p><strong>La oss si vi i tillegg ønsker å validere alle JavaScript-filene våre i en
+            mappe (og alle undermapper).</strong></p>
+          <div class="fragment">Konfigurer:
+<pre><code>grunt.initConfig({
+  jshint: {
+    gruntfile: ['Gruntfile.js'],
+    <strong>all: ['src/**/*.js']</strong>
+  }
+});</code></pre>
+            </div>
+            <div class="fragment">
+          Registrer:
+<pre><code>grunt.registerTask('lint-all', ['jshint:gruntfile', 'jshint:all']);
+</code></pre></div>
+
+          <div class="fragment">
+            Kjør:
+<pre><code>grunt lint-all</code></pre>
+          </div>
+
+        </section>
+
+        <section>
+          <h2>Minimering og konkatenering</h2>
           <ul>
             <li><a href="https://github.com/mishoo/UglifyJS2">UglifyJS 2</a>:<br><code>&gt; uglifyjs file1.js file2.js&nbsp;\<br>
            -o foo.min.js \<br>
