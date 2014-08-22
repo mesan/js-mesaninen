@@ -1,0 +1,19 @@
+{
+  "name": "js-mesaninen-2014",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://arildt@bitbucket.org/mikkelsteine/js-mesaninen-2014.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "http": "0.0.0",
+    "node-static": "~0.7.4"
+  }
+}
