@@ -1248,6 +1248,46 @@ $.getJSON("some/url.json", function(jsondata) {
         </section>
 
         <section>
+          <h2>Lytting med watch</h2>
+          <p><em>grunt-contrib-watch</em> lar oss lytte til spesifikke filendringer og kjøre tasks
+            når endringer inntreffer.</p>
+          <div class="fragment">
+            Vi laster ned pluginen:
+<pre><code>npm install grunt-contrib-watch --save-dev</code></pre>
+          </div>
+          <div class="fragment">
+            Og laster den inn i Grunt:
+<pre><code>grunt.loadNpmTasks('grunt-contrib-watch');</code></pre>
+          </div>
+        </section>
+
+        <section>
+            Og konfigurerer den:
+<pre><code>grunt.initConfig({
+  jshint: {
+    gruntfile: ['Gruntfile.js'],
+    all: ['src/**/*.js']
+  },
+  watch: {
+    scripts: {
+      files: ['Gruntfile.js', 'src/**/*.js'],
+      tasks: ['lint-all']
+    }
+  }
+});</code></pre>
+
+          <div class="fragment">
+            <p>Så er det bare å kjøre:</p>
+<pre><code>grunt watch</code></pre>
+          </div>
+
+          <div class="fragment">
+            <p>Nå valideres koden vår hver gang vi gjør en endring på enten
+              <code>Gruntfile.js</code> eller JavaScript-filer i <code>src</code>-mappen.</p>
+          </div>
+        </section>
+
+        <section>
           <h2>Minimering og konkatenering</h2>
           <ul>
             <li><a href="https://github.com/mishoo/UglifyJS2">UglifyJS 2</a>:<br><code>&gt; uglifyjs file1.js file2.js&nbsp;\<br>
@@ -1434,7 +1474,7 @@ $.getJSON("some/url.json", function(jsondata) {
 
       <section class="stack">
         <section data-background="#47A4DE" class="text-white">
-          <h1><i class="fa fa-space-shuttle"></i><br />Fremtiden</h1>
+          <h1><i class="fa fa-rocket"></i><br />Fremtiden</h1>
         </section>
 
         <section>
@@ -1552,7 +1592,7 @@ var squareNr = nr.map(function (x) {
   return x * x;
 });
 
-console.log(squareNr);
+console.log(squareNr); // <= [0, 2, 4]
 </code></pre>
         </section>
 
