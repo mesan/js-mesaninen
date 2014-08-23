@@ -1195,7 +1195,10 @@ $.getJSON("some/url.json", function(jsondata) {
           <h2>Definering av en task</h2>
           <p><strong>La oss si vi ønsker å validere Gruntfile-scriptet vårt med JSHint.</strong></p>
           <div class="fragment"><p>Vi installerer <em>grunt-contrib-jshint</em> med
-            <code>npm</code>:</p>
+            <code>npm</code>:<br/>
+            <span class="fragment text-small">
+              (<code>--save-dev</code> lagrer avhengigheten i package.json.)
+            </span></p>
 <pre><code>npm install grunt-contrib-jshint --save-dev</code></pre></div>
           <div class="fragment">Og konfigurerer tasken vår i <code>Gruntfile.js</code>:
 <pre><code>module.exports = function(grunt) {
@@ -1249,7 +1252,7 @@ $.getJSON("some/url.json", function(jsondata) {
         </section>
 
         <section>
-          <h2>Lytting med watch</h2>
+          <h2><i class="fa fa-eye"></i> Lytting med watch</h2>
           <p><em>grunt-contrib-watch</em> lar oss lytte til spesifikke filendringer og kjøre tasks
             når endringer inntreffer.</p>
           <div class="fragment">
@@ -1288,6 +1291,10 @@ $.getJSON("some/url.json", function(jsondata) {
           </div>
         </section>
 
+        <section data-background="assignments.jpg" data-background-transition="slide">
+          <h2><i class="fa fa-pencil"></i> Oppgaver</h2>
+        </section>
+
         <section>
           <h2>Minimering og konkatenering</h2>
           <ul>
@@ -1318,6 +1325,100 @@ $.getJSON("some/url.json", function(jsondata) {
           <h1 class="hidden">Jasmine</h1>
           <img src="jasmine-logo.svg" alt="Jasmine logo" class="no-border" style="width: 50%" />
           <blockquote class="fragment">Behavior-Driven JavaScript</blockquote>
+        </section>
+
+        <section>
+          <h2>Litt om Jasmine</h2>
+          <ul>
+            <li class="fragment">Kan kjøres på en hvilken som helst JavaScript-plattform.</li>
+            <li class="fragment">IDE-uavhengig.</li>
+            <li class="fragment">Stimulerer til Behavior-Driven Development (BDD).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Behavior-Driven Development</h2>
+          <ul>
+            <li class="fragment">En utvidelse av Test-Driven Development (TDD), som sier:
+              <ol>
+                <li>Skriv test av software-enhet først.</li>
+                <li>Implementer software-enhet.</li>
+                <li>Kjør enhetstest og se at den passerer.</li>
+              </ol>
+            </li>
+            <li class="fragment">Tester spesifiseres i henhold til hvordan de <em>burde</em> oppføre
+              seg.</li>
+            <li class="fragment">Tester formuleres som setninger (<em>Given, When, Then</em>):
+              <ul>
+                <li><code>Given numbers 1 and 4, When I add them, Then I should get 5.</code></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Hvordan ser tester ut i Jasmine?</h2>
+          <div class="fragment">
+            <p>Vi ser på et eksempel:</p>
+<pre><code>describe('Calculator', function () {
+  var calc;
+
+  beforeEach(function () {
+    calc = new Calculator();
+  });
+
+  it('gives the sum of two numbers when they are added', function () {
+    var a = 1;
+    var b = 4;
+
+    var sum = calc.add(a, b);
+
+    expect(sum).toEqual(5);
+  });
+});
+</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2>Funksjoner i Jasmine</h2>
+          <ul>
+            <li class="fragment">
+              <strong><code>describe</code>:</strong>
+              Deklarerer navnet på delen av systemet som testes og inneholder tester som skal
+              kjøres i forbindelse med denne delen. Jasmine kaller dette en <em>suite</em>.
+            </li>
+            <li class="fragment">
+              <strong><code>it</code>:</strong>
+              Beskriver en konkret oppførsel som delen av systemet skal ha, og inneholder testen
+              for å verifisere oppførselen. Jasmine kaller dette en <em>spec</em>.
+            </li>
+            <li class="fragment">
+              <strong><code>expect</code>:</strong>
+              Verifiserer en verdi ved å bruke <em>matchers</em>:
+              <ul>
+                <li class="fragment"><code>toBe</code>, <code>toEqual</code>,
+                  <code>toBeTruthy</code>, <code>toBeFalsy</code>, <code>toBeUndefined</code>,
+                  <code>toBeCloseTo</code>, <code>toThrow</code></li>
+                <li class="fragment">Kan også bruke <code>not</code> foran matcheren for å vende om
+                  uttrykket: <code>expect(number).not.toEqual(5)</code></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Funksjoner i Jasmine (2)</h2>
+          <ul>
+            <li class="fragment">
+              <strong><code>beforeEach</code>:</strong>
+              Definerer en funksjon som skal kjøres <em>før</em> hver test/<em>spec</em>.
+            </li>
+            <li class="fragment">
+              <strong><code>afterEach</code>:</strong>
+              Definerer en funksjon som skal kjøres <em>etter</em> hver test/<em>spec</em>.
+            </li>
+          </ul>
         </section>
 
         <section>

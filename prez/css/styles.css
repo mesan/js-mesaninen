@@ -34,6 +34,10 @@ input[type=text] {
   opacity: 0.3;
 }
 
+.reveal .text-small {
+  font-size: 0.8em;
+}
+
 .reveal h1, .reveal h2, .reveal h3 {
   font-family: 'Open Sans', Arial;
 }
