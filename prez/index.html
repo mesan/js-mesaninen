@@ -37,8 +37,8 @@
         </section>
       </section>
 
-      <section class="stack" data-background="#ffe0d0">
-        <section>
+      <section class="stack">
+        <section data-background="#A14C4C" class="text-white">
           <h1><i class="fa fa-thumbs-o-up"></i><br>Hvorfor JavaScript?</h1>
           <p>Alle bruker det.</p>
         </section>
@@ -52,8 +52,8 @@
         </section>
       </section>
 
-      <section class="stack" data-background="#eee">
-        <section data-background="#ccc">
+      <section class="stack">
+        <section data-background="#333" class="text-white">
           <h1><i class="fa fa-history"></i><br />Historikk</h1>
         </section>
         <section>
@@ -110,8 +110,8 @@
       </section>
 
       <section class="stack">
-        <section>
-          <h1><i class="fa fa-puzzle-piece"></i><br>Bruksområder</h2>
+        <section data-background="#4875A8" class="text-white">
+          <h1><i class="fa fa-puzzle-piece"></i><br />Bruksområder</h2>
         </section>
         <section>
           <h2>Mange muligheter!</h2>
@@ -150,8 +150,8 @@
       </section>
 
       <section class="stack">
-        <section>
-          <h1><i class="fa fa-cubes"></i><br>Språket</h1>
+        <section data-background="#ED9A47" class="text-white">
+          <h1><i class="fa fa-comments-o"></i><br />Språket</h1>
         </section>
         <section>
           <h2>Grunnleggende</h2>
@@ -457,7 +457,7 @@ x.removeEventListener("click", myFunction);
 
 
       <section class="stack">
-        <section data-background="#52C77F" class="text-white">
+        <section data-background="#47B553" class="text-white">
           <h1><i class="fa fa-cogs"></i><br />Rammeverk</h1>
         </section>
 
@@ -504,6 +504,30 @@ x.removeEventListener("click", myFunction);
             <strong>Grunt</strong>.</p>
         </section>
 
+      </section>
+
+      <section class="stack">
+        <section>
+          <h1><i class="fa fa-pencil"></i><br />Litt om oppgavene</h1>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-git-square"></i> Vi bruker Git</h2>
+          <div class="fragment">
+            <p>Klon repoet vårt:</p>
+<pre><code>$ git clone https://bitbucket.org/mikkelsteine/js-mesaninen-2014.git</code></pre>
+          </div>
+          <div class="fragment">
+            <p>Foredraget ligger på branch <code>master</code>.</p>
+          </div>
+          <div class="fragment">
+            <p>Oppgaver ligger på egne brancher, f.eks. <code>oppg-jquery</code>.</p>
+          </div>
+          <div class="fragment">
+            <p>Skift branch med <code>git checkout</code>:</p>
+<pre><code>$ git checkout oppg-jquery</code></pre>
+          </div>
+        </section>
       </section>
 
       <section class="stack">
@@ -912,10 +936,10 @@ $.getJSON("some/url.json", function(jsondata) {
         </section>
 
         <section data-background="assignments.jpg" data-background-transition="slide">
-          <h2><i class="fa fa-pencil"></i> Oppgaver</h2>
+          <h1><i class="fa fa-pencil"></i> Oppgaver</h1>
         </section>
 
-        <section>
+        <section data-background="assignments.jpg" data-background-transition="slide">
           <h2><i class="fa fa-pencil"></i> Oppgave 1: Superhelter</h2>
           <ul>
             <li>
@@ -929,7 +953,7 @@ $.getJSON("some/url.json", function(jsondata) {
           </ul>
         </section>
 
-        <section>
+        <section data-background="assignments.jpg" data-background-transition="slide">
           <h2><i class="fa fa-pencil"></i> Oppgave 2: Spillsøk</h2>
           <ul>
             <li>
@@ -945,7 +969,7 @@ $.getJSON("some/url.json", function(jsondata) {
           </ul>
         </section>
 
-        <section>
+        <section data-background="assignments.jpg" data-background-transition="slide">
           <h2><i class="fa fa-pencil"></i> Oppgave 3: Nyhetsbrev</h2>
           <ul>
             <li>
@@ -972,7 +996,7 @@ $.getJSON("some/url.json", function(jsondata) {
           </ul>
         </section>
 
-        <section>
+        <section data-background="assignments.jpg" data-background-transition="slide">
           <h2><i class="fa fa-pencil"></i> Oppgave 4: Direktiver</h2>
               <strong>Lag følgende direktiv:</strong>
 <pre><code>&lt;wikipedia lang="en" what="Bacon" /></code></pre>
@@ -1073,10 +1097,10 @@ $.getJSON("some/url.json", function(jsondata) {
         </section>
 
         <section data-background="assignments.jpg" data-background-transition="slide">
-          <h2><i class="fa fa-pencil"></i> Oppgaver</h2>
+          <h1><i class="fa fa-pencil"></i> Oppgaver</h1>
         </section>
 
-        <section>
+        <section data-background="assignments.jpg" data-background-transition="slide">
           <h2><i class="fa fa-pencil"></i> Oppgave 1: Oversetter</h2>
           <ul>
             <li>
@@ -1292,7 +1316,7 @@ $.getJSON("some/url.json", function(jsondata) {
         </section>
 
         <section data-background="assignments.jpg" data-background-transition="slide">
-          <h2><i class="fa fa-pencil"></i> Oppgaver</h2>
+          <h1><i class="fa fa-pencil"></i> Oppgaver</h1>
         </section>
 
         <section>
@@ -1332,7 +1356,7 @@ $.getJSON("some/url.json", function(jsondata) {
           <ul>
             <li class="fragment">Kan kjøres på en hvilken som helst JavaScript-plattform.</li>
             <li class="fragment">IDE-uavhengig.</li>
-            <li class="fragment">Stimulerer til Behavior-Driven Development (BDD).</li>
+            <li class="fragment">Oppfordrer til Behavior-Driven Development (BDD).</li>
           </ul>
         </section>
 
@@ -1350,7 +1374,8 @@ $.getJSON("some/url.json", function(jsondata) {
               seg.</li>
             <li class="fragment">Tester formuleres som setninger (<em>Given, When, Then</em>):
               <ul>
-                <li><code>Given numbers 1 and 4, When I add them, Then I should get 5.</code></li>
+                <li><code><strong>Given</strong> numbers 1 and 4, <strong>When</strong> I add them,
+                  <strong>Then</strong> I should get 5.</code></li>
               </ul>
             </li>
           </ul>
@@ -1385,8 +1410,9 @@ $.getJSON("some/url.json", function(jsondata) {
           <ul>
             <li class="fragment">
               <strong><code>describe</code>:</strong>
-              Deklarerer navnet på delen av systemet som testes og inneholder tester som skal
+              Deklarerer navnet på delen av systemet som testes og inneholder testene som skal
               kjøres i forbindelse med denne delen. Jasmine kaller dette en <em>suite</em>.
+              <em>Suites</em> kan også nøstes om ønskelig.
             </li>
             <li class="fragment">
               <strong><code>it</code>:</strong>
@@ -1420,6 +1446,13 @@ $.getJSON("some/url.json", function(jsondata) {
               Definerer en funksjon som skal kjøres <em>etter</em> hver test/<em>spec</em>. (Kan
               f.eks. brukes til å lukke en database-kobling.)
             </li>
+            <li class="fragment">
+              Det er også såret enkelt å <em>mocke</em> eller spionere på deler av koden din med
+              Jasmine. Se
+              <a href="http://jasmine.github.io/2.0/introduction.html" target="_blank">
+                Jasmine's
+                nettside</a>.
+            </li>
           </ul>
         </section>
 
@@ -1429,14 +1462,45 @@ $.getJSON("some/url.json", function(jsondata) {
             <li>Last ned <a href="https://github.com/pivotal/jasmine/tree/master/dist"
                             target="_blank">siste versjon av Jasmine fra GitHub</a>.</li>
             <li>Pakk ut ZIP-filen.</li>
-            <li>Åpne filen <code>SpecRunner.html</code> i nettleseren din.</li>
+            <li>Importer JavaScript-filene og de tilhørende <em>spec</em>-ene i
+              SpecRunner.html med <code>script</code>-tagger.</li>
+            <li>Åpne <code>SpecRunner.html</code> i nettleseren din for å kjøre testene.</li>
           </ol>
+        </section>
+
+        <section data-background="#FDFFC9">
+          <h2><i class="fa fa-warning"></i> Tungvint? Ja.</h2>
+          <p>Det finnes selvfølgelig Grunt-plugins som gjør det mye enklere å kjøre testene
+            dine.</p>
+          <p>F.eks. kan du sette opp at alle tester automatisk blir kjørt når
+            du gjør endringer i JavaScript-filene dine.</p>
+          <p>Vi har dessverre ikke tid til å vise hvordan.</p>
+          <p>Men sjekk
+            <a href="https://github.com/gruntjs/grunt-contrib-jasmine" target="_blank">
+              grunt-contrib-jasmine</a>!</p>
+        </section>
+
+        <section data-background="assignments.jpg" data-background-transition="slide">
+          <h1><i class="fa fa-pencil"></i> Oppgaver</h1>
+        </section>
+
+        <section data-background="assignments.jpg" data-background-transition="slide">
+          <h2><i class="fa fa-pencil"></i> Oppgave: Game of Thrones</h3>
+          <ul>
+            <li>Skift til branch <code>oppg-jasmine</code>:
+              <pre><code>git checkout oppg-jasmine</code></pre></li>
+            <li>Åpne <em>SpecRunner.html</em> i nettleseren din.</li>
+            <li>Verifiser at de fleste testene av <code>GameOfThronesEpisode</code>-klassen
+              feiler.</li>
+            <li>Endre implementasjonen av <code>GameOfThronesEpisode</code> slik at alle
+              testene passerer.</li>
+          </ul>
         </section>
 
       </section>
 
       <section class="stack">
-        <section data-background="#c0d0ff">
+        <section data-background="#9C71AD" class="text-white">
           <h1><i class="fa fa-dashboard"></i><br>Ytelse</h1>
         </section>
 
@@ -1818,10 +1882,11 @@ for (let i = 0; i < 10; i++) {
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script>
     Reveal.initialize({
-      controls: true,
+      controls: false,
       history: true,
       backgroundTransition: 'slide',
-      transition: 'linear'
+      transition: 'linear',
+      mouseWheel: true
     });
     hljs.initHighlightingOnLoad();
   </script>

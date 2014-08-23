@@ -1,0 +1,32 @@
+Tentativ tidsplan.
+
+8.15 - 8.45 (0,5t)
+- Hvorfor JavaScript?
+- Historikk
+- Bruksområder
+
+8.45 - 10.00 (1,25t)
+- Språket + oppgaver
+
+10.00 - 11.00 (1t)
+- Rammeverk intro
+- jQuery + oppgaver
+
+* 11.00 - 11.30 Lunsj (0,5t)
+
+11.30 - 12.30 (1t)
+- AngularJS + oppgaver
+
+* 12.30 - 12.40 Pause (10m)
+
+12.40 - 13.40 (1t)
+- Knockout + oppgaver
+
+13.50 - 14.20 (0,5t)
+- Grunt
+
+14.20 - 14.50 (0,5t)
+- Jasmine + oppgaver
+
+14.50 - 16.00+ (1t 10m+)
+- Mesan Showcase
