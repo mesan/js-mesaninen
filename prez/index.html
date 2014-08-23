@@ -1049,29 +1049,113 @@ $.getJSON("some/url.json", function(jsondata) {
           <ul>
             <li>View</li>
             <li>View Model</li>
-            <li>Observable</li>
             <li>Declarative Binding</li>
+            <li>Observable
+              <ul>
+                <li>Observable Array</li>
+                <li>Computed Observable</li>
+              </ul>
+            </li>
           </ul>
         </section>
 
         <section>
-          <h2><i class="fa fa-cube">View</i></h2>
-          <h3></h3>
+          <h2><i class="fa fa-cube"> View</i></h2>
+          <h3>HTML med deklarative bindinger.</h3>
         </section>
 
         <section>
-          <h2><i class="fa fa-cube">View Model</i></h2>
-          <h3></h3>
+          <h2><i class="fa fa-cube"> View Model</i></h2>
+          <h3>En koderepresentasjon av GUI-et ditt.</h3>
         </section>
 
         <section>
-          <h2><i class="fa fa-cube">Observable</i></h2>
-          <h3></h3>
+          <h2>Hva view-modeller <em>ikke</em> er</h2>
+          <p>En view-modell er <em>ikke</em> HTML-koden din. Det er et objekt som
+            representerer tilstanden og oppførselen til view-et ditt.</p>
         </section>
 
         <section>
-          <h2><i class="fa fa-cube">Declarative Binding</i></h2>
-          <h3></h3>
+          <h2>Eksempel på view-modell</h2>
+          <ul>
+            <li class="fragment">
+              La oss si at <strong>viewet</strong> har et skjema hvor du kan:
+              <ul>
+                <li>fylle ut fornavn og etternavn.</li>
+                <li>sende inn skjema-dataene ved å klikke på en knapp.</li>
+              </ul>
+            </li>
+            <li class="fragment">
+              Da vil <strong>view-modellen</strong> typisk ha:
+              <ul>
+                <li>to felter <code>firstName</code> og <code>lastName</code>.</li>
+                <li>en metode som sender inn dataene til serveren.</li>
+              </ul>
+            </li>
+            <li class="fragment">
+              Videre må viewet og view-modellen kommunisere. Da bruker vi
+              <strong><em>deklarative bindinger</em></strong>.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"> Declarative Binding</i></h2>
+          <h3>Binder view-modellen til GUI-et.</h3>
+        </section>
+
+        <section>
+          <h2><code>data-bind</code></h2>
+          <div>
+            <p>Vi bruker attributtet <code>data-bind</code> for å legge til bindinger:</p>
+            <pre><code>&lth1 data-bind="text: myTitle">&lt;/h1></code></pre>
+          </div>
+          <div class="fragment">
+            <p>Trenger du flere bindinger på samme HTML-element?<br />
+              Bruk komma for å skille dem:</p>
+            <pre><code>&lth1 data-bind="text: myTitle, visible: false">&lt;/h1></code></pre>
+          </div>
+          <p class="fragment">I dette tilfellet er <code>myTitle</code> en <em>observable</em>,
+            altså en verdi som kan observeres (mao. lyttes på).</p>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"> Observable</i></h2>
+          <h3>En type objekt som kan lyttes på, og som sier fra til sine lyttere når dens verdi
+            endres.</h3>
+        </section>
+
+        <section>
+          <h2>Eksempel på <em>observable</em></h2>
+          <div class="fragment">
+            <p>Vi definerer en <em>observable</em> i view-modellen vår på denne måten:</p>
+<pre><code>var pageViewModel = {
+  myTitle: ko.observable('This Is My Title');
+};</code></pre>
+          </div>
+          <div class="fragment">
+            <p>Vi henter ut verdien til en <em>observable</em> slik:</p>
+<pre><code>var myTitleValue = pageViewModel.myTitle();</code></pre>
+          </div>
+          <div class="fragment">
+            <p>Og vi setter verdien slik:</p>
+<pre><code>pageViewModel.myTitle('This Is a Completely New Title');</code></pre>
+          </div>
+          <div class="fragment">
+            <p><i class="fa fa-hand-o-up fa-warning"></i>
+              <strong>Merk:</strong> <em>Observables</em> er funksjoner!
+          </div>
+        </section>
+
+        <section>
+          <h2>Observable Array *</h2>
+          <p>Egne funksjoner for å manipulere array-en.</p>
+        </section>
+
+        <section>
+          <h2>Computed Observable *</h2>
+          <p>Regular computed</p>
+          <p>Pure computed</p>
         </section>
 
         <section>
