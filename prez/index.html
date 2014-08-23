@@ -1412,11 +1412,13 @@ $.getJSON("some/url.json", function(jsondata) {
           <ul>
             <li class="fragment">
               <strong><code>beforeEach</code>:</strong>
-              Definerer en funksjon som skal kjøres <em>før</em> hver test/<em>spec</em>.
+              Definerer en funksjon som skal kjøres <em>før</em> hver test/<em>spec</em>. Fint å
+              bruke for felles oppsett av <em>specs</em> i en <em>suite</em>.
             </li>
             <li class="fragment">
               <strong><code>afterEach</code>:</strong>
-              Definerer en funksjon som skal kjøres <em>etter</em> hver test/<em>spec</em>.
+              Definerer en funksjon som skal kjøres <em>etter</em> hver test/<em>spec</em>. (Kan
+              f.eks. brukes til å lukke en database-kobling.)
             </li>
           </ul>
         </section>
