@@ -1,0 +1,17 @@
+{
+  "name": "newspaper-example",
+  "version": "0.0.1",
+  "description": "Just another Grunt example.",
+  "repository": {
+    "type": "git",
+    "url": "https://arildt@bitbucket.org/mikkelsteine/js-mesaninen-2014.git"
+  },
+  "author": "Arild Wanvik Tvergrov <arildt@mesan.no>",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-uglify": "~0.5.1"
+  }
+}
