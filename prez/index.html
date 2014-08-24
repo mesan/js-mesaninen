@@ -187,6 +187,44 @@ var f = function(x) { return x * kurs; };
 f(45);
           </code></pre></div>
         </section>
+        <section>
+          <h2>Blokk uten scope</h2>
+          <div>Med parantes har man en kodeblokk uten eget skope.
+          <pre><code data-trim contenteditable class="hljs">var x = (10 + "5");
+var f = function(x) { alert(x); };
+(function (x) {f(x);})("hei");
+          </code></pre></div>
+        </section>
+
+        <section>
+          <h2>Closure</h2>
+          <ul>
+            <li>Du har ikke lært JavaScript før du forstår closures.</li>
+            <li class="fragment">Scopet til returnerte funksjoner <em>huskes gjennom applikasjonens levetid</em>.</li>
+            <li class="fragment">Dette gjør en i stand til å lage kraftige konstruksjoner.</li>
+            <li class="fragment">Kan brukes for å lage avgrensede moduler.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Modul med closure</h2>
+          <pre><code data-trim contenteditable class="hljs javascript">MapGraphics = (function(){<span class="fragment">
+  var x = 0, y = 0, z = 0;
+<span class="fragment">
+  function setCoordinate(new_x, new_y, new_z) {
+    x = new_x;
+    y = new_y;
+    z = new_z;
+  } 
+</span><span class="fragment">
+  return {
+    setCoordinate : setCoordinate,
+    getX : function() { return x; },
+    getY : function() { return y; },
+    getZ : function() { return z; }    
+  };
+</span></span>})();
+          </code></pre>
+        </section>
 
         <section>
           <h2>Prototyper</h2>
