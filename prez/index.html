@@ -716,10 +716,7 @@ $.getJSON("some/url.json", function(jsondata) {
         <section>
           <h2><i class="fa fa-file-code-o"></i> Hello World-eksempel</h2>
           <p>Resultat:</p>
-          <div ng-app>
-            <input type="text" ng-model="name" />
-            <p>What's up, {{name}}?</p>
-          </div>
+          <iframe src="../examples/angular/index.html" frameborder="0"></iframe>
         </section>
 
         <section>
@@ -1034,6 +1031,7 @@ $.getJSON("some/url.json", function(jsondata) {
           <h2><i class="fa fa-shopping-cart"></i> Hva tilbyr Knockout?</h2>
           <ul>
             <li>Frikobling av forretningslogikk fra DOM-en.</li>
+            <li>To-veis-binding mellom GUI og forretningslogikken.</li>
           </ul>
         </section>
 
@@ -1066,20 +1064,21 @@ $.getJSON("some/url.json", function(jsondata) {
 
         <section>
           <h2><i class="fa fa-cube"> View Model</i></h2>
-          <h3>En koderepresentasjon av GUI-et ditt.</h3>
+          <h3>En ren koderepresentasjon av GUI-et ditt.</h3>
         </section>
 
         <section>
           <h2>Hva view-modeller <em>ikke</em> er</h2>
-          <p>En view-modell er <em>ikke</em> HTML-koden din. Det er et objekt som
-            representerer tilstanden og oppførselen til view-et ditt.</p>
+          <p>En view-modell er <em>ikke</em> HTML-koden din.</p>
+          <p>Det er et JavaScript-objekt som representerer tilstanden og oppførselen til view-et
+            ditt.</p>
         </section>
 
         <section>
           <h2>Eksempel på view-modell</h2>
           <ul>
             <li class="fragment">
-              La oss si at <strong>viewet</strong> har et skjema hvor du kan:
+              La oss si at et <strong>view</strong> har et skjema hvor du kan:
               <ul>
                 <li>fylle ut fornavn og etternavn.</li>
                 <li>sende inn skjema-dataene ved å klikke på en knapp.</li>
@@ -1089,7 +1088,7 @@ $.getJSON("some/url.json", function(jsondata) {
               Da vil <strong>view-modellen</strong> typisk ha:
               <ul>
                 <li>to felter <code>firstName</code> og <code>lastName</code>.</li>
-                <li>en metode som sender inn dataene til serveren.</li>
+                <li>en metode som sender inn skjema-dataene til serveren.</li>
               </ul>
             </li>
             <li class="fragment">
@@ -1101,7 +1100,7 @@ $.getJSON("some/url.json", function(jsondata) {
 
         <section>
           <h2><i class="fa fa-cube"> Declarative Binding</i></h2>
-          <h3>Binder view-modellen til GUI-et.</h3>
+          <h3>Binder view-modellen til GUI-et (og motsatt).</h3>
         </section>
 
         <section>
@@ -1110,11 +1109,12 @@ $.getJSON("some/url.json", function(jsondata) {
             <p>Vi bruker attributtet <code>data-bind</code> for å legge til bindinger:</p>
             <pre><code>&lth1 data-bind="text: myTitle">&lt;/h1></code></pre>
           </div>
-          <div class="fragment">
-            <p>Trenger du flere bindinger på samme HTML-element?<br />
-              Bruk komma for å skille dem:</p>
-            <pre><code>&lth1 data-bind="text: myTitle, visible: false">&lt;/h1></code></pre>
-          </div>
+          <div>
+            <p class="fragment">Trenger du flere bindinger på samme HTML-element?</p>
+            <div class="fragment">
+              <p>Bruk komma for å skille dem:</p>
+<pre><code>&lth1 data-bind="text: myTitle, visible: false">&lt;/h1></code></pre>
+            </div>
           <p class="fragment">I dette tilfellet er <code>myTitle</code> en <em>observable</em>,
             altså en verdi som kan observeres (mao. lyttes på).</p>
         </section>
@@ -1138,24 +1138,77 @@ $.getJSON("some/url.json", function(jsondata) {
 <pre><code>var myTitleValue = pageViewModel.myTitle();</code></pre>
           </div>
           <div class="fragment">
-            <p>Og vi setter verdien slik:</p>
+            <p>Og setter verdien slik:</p>
 <pre><code>pageViewModel.myTitle('This Is a Completely New Title');</code></pre>
           </div>
           <div class="fragment">
             <p><i class="fa fa-hand-o-up fa-warning"></i>
               <strong>Merk:</strong> <em>Observables</em> er funksjoner!
+            <pre><code>pageViewModel.myTitle = "This Won't Work!";</code></pre>
           </div>
         </section>
 
         <section>
-          <h2>Observable Array *</h2>
-          <p>Egne funksjoner for å manipulere array-en.</p>
+          <h2><i class="fa fa-cube"></i> Observable Array</h2>
+          <h3>Egen type observable for å manipulere arrays.</h3>
         </section>
 
         <section>
-          <h2>Computed Observable *</h2>
-          <p>Regular computed</p>
-          <p>Pure computed</p>
+          <h2>Arrays i Knockout</h2>
+          <ul>
+            <li>Du kan bruke alle native operasjoner på observable arrays.</li>
+            <li class="fragment">Men Knockout anbefaler å manipulere arrays via API-et til
+              observable arrays.
+              <ul>
+                <li>Fungerer i IE6+.</li>
+                <li>Trigger dependency-trackingen (dvs. oppdaterer GUI-et).</li>
+              </ul>
+            </li>
+          </ul>
+          <div class="fragment">
+            <p>Med andre ord:</p>
+<pre><code>// Do
+myObservableArray.push('Item');
+
+// Don't
+myObservableArray().push('Item');
+</code></pre>
+          </div>
+        </section>
+
+        <section>
+          <h2>Observable Array API</h2>
+          <ul>
+            <li>
+              <code>push</code>, <code>pop</code>, <code>unshift</code>, <code>shift</code>,
+              <code>reverse</code>, <code>sort</code>.
+            </li>
+            <li class="fragment">
+              <code>remove(someItem)</code>: Fjerner alle elementer som er lik
+              <code>someItem</code> (bruker ===).
+            </li>
+            <li class="fragment">
+              <code>remove(function (someItem) {})</code>: Fjerner alle elementer som passerer
+              filteret.
+            </li>
+            <li class="fragment">
+              Nyttig tips: <code>extend({ rateLimit: 50 })</code> gjør at lyttere blir informert
+              om endringer 50 ms etter at endringen inntreffer. Greit hvis du gjør
+              mange operasjoner på observable-array-en.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-cube"></i> Computed Observable</h2>
+          <h3>Egen type observable der verdien må beregnes.</h3>
+        </section>
+
+        <section>
+          <h2>To typer: <em>pure</em> og <em>regular</em></h2>
+          <ul>
+            <li>Regular computed</li>
+          </ul>
         </section>
 
         <section>
@@ -1167,7 +1220,7 @@ $.getJSON("some/url.json", function(jsondata) {
     <strong>&lt;script src=&quot;knockout.js&quot;&gt;&lt;/script&gt;</strong>
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;input type=&quot;text&quot; <strong>data-bind=&quot;value: name, valueUpdate: 'keyup'&quot;</strong>&gt;
+    &lt;input type=&quot;text&quot; <strong>data-bind=&quot;textInput: name&quot;</strong> /&gt;
     &lt;p&gt;What's up, &lt;span <strong>data-bind=&quot;text: name&quot;</strong>&gt;&lt;/span&gt;?&lt;/p&gt;
     <strong>&lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;</strong>
   &lt;/body&gt;
@@ -1178,6 +1231,17 @@ $.getJSON("some/url.json", function(jsondata) {
           <p>... og så må vi ikke glemme <code>app.js</code>:</p>
 <pre><code data-trim class="hljs javascript">var helloWorldViewModel = { <strong>name: ko.observable()</strong> };
 <strong>ko.applyBindings</strong>(helloWorldViewModel);</code></pre>
+        </section>
+        
+        <section>
+          <h2>Hva blir resultatet?</h2>
+          <iframe src="../examples/ko/index.html" frameborder="0"></iframe>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-exclamation-circle"></i> &laquo;This Just In!&raquo;</h2>
+          <p><a href="http://blog.stevensanderson.com/2014/08/18/knockout-3-2-0-released/"
+                target="_blank">Knockout 3.2.0 released</a>.</p>
         </section>
 
         <section data-background="assignments.jpg" data-background-transition="slide">
