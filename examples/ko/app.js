@@ -1,5 +1,5 @@
 var vm = {
-  name: ko.observable('Arild')
+  name: ko.observable('world')
 };
 
 ko.applyBindings(vm);

@@ -716,7 +716,7 @@ $.getJSON("some/url.json", function(jsondata) {
         <section>
           <h2><i class="fa fa-file-code-o"></i> Hello World-eksempel</h2>
           <p>Resultat:</p>
-          <iframe src="../examples/angular/index.html" frameborder="0"></iframe>
+          <!--<iframe src="../examples/angular/index.html" frameborder="0"></iframe>-->
         </section>
 
         <section>
@@ -1043,6 +1043,33 @@ $.getJSON("some/url.json", function(jsondata) {
         </section>
 
         <section>
+          <h2><i class="fa fa-file-code-o"></i> Hello World-eksempel</h2>
+          <p>Hva skal til ...?</p>
+<pre class="fragment"><code>&lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+  <strong>&lt;script src=&quot;knockout.js&quot;&gt;&lt;/script&gt;</strong>
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;input type=&quot;text&quot; <strong>data-bind=&quot;textInput: name&quot;</strong> /&gt;
+  &lt;p&gt;What's up, &lt;span <strong>data-bind=&quot;text: name&quot;</strong>&gt;&lt;/span&gt;?&lt;/p&gt;
+  <strong>&lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;</strong>
+  &lt;/body&gt;
+  &lt;/html&gt;</code></pre>
+        </section>
+
+        <section>
+          <p>... og så må vi ikke glemme <code>app.js</code>:</p>
+<pre><code data-trim class="hljs javascript">var helloWorldViewModel = { <strong>name: ko.observable()</strong> };
+  <strong>ko.applyBindings</strong>(helloWorldViewModel);</code></pre>
+        </section>
+
+        <section>
+          <h2>Resultat</h2>
+          <iframe src="../examples/ko/index.html" frameborder="0"></iframe>
+        </section>
+
+        <section>
           <h2><i class="fa fa-cubes"></i> Knockout-komponenter</h2>
           <ul>
             <li>View</li>
@@ -1201,47 +1228,57 @@ myObservableArray().push('Item');
 
         <section>
           <h2><i class="fa fa-cube"></i> Computed Observable</h2>
-          <h3>Egen type observable der verdien må beregnes.</h3>
+          <h3>Egen type observable der den observerbare verdien må beregnes.</h3>
         </section>
 
         <section>
-          <h2>To typer: <em>pure</em> og <em>regular</em></h2>
           <ul>
-            <li>Regular computed</li>
+            <li>
+              En <em>computed observable</em> er ofte avhengig av andre &laquo;vanlige&raquo;
+              <em>observables</em>.
+            </li>
+            <li class="fragment">
+              Hver gang en <em>observable</em> endrer seg, blir <em>computed observables</em> som
+              lytter på denne, omberegnet.
+            </li>
+            <li class="fragment">
+              <strong>Nyttig tips:</strong> På samme måte som <em>observable arrays</em> har også
+              <em>computed observables</em> <code>extend({
+              rateLimit:50 })</code>for å forsinke varslingen etter at endringer inntreffer.
+              Greit hvis beregningen er tidkrevende.
+            </li>
           </ul>
         </section>
 
         <section>
-          <h2><i class="fa fa-file-code-o"></i> Hello World-eksempel</h2>
-          <p>Hva skal til ...?</p>
-<pre class="fragment"><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    <strong>&lt;script src=&quot;knockout.js&quot;&gt;&lt;/script&gt;</strong>
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;input type=&quot;text&quot; <strong>data-bind=&quot;textInput: name&quot;</strong> /&gt;
-    &lt;p&gt;What's up, &lt;span <strong>data-bind=&quot;text: name&quot;</strong>&gt;&lt;/span&gt;?&lt;/p&gt;
-    <strong>&lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;</strong>
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+          <h2>Eksempel på <em>computed observables</em></h2>
+          <p>Vi deklarerer en <em>computed observable</em>, <code>hoursAndSeconds</code>:</p>
+<pre><code>var viewModel = function () {
+  this.hours = ko.observable('00');
+  this.seconds = ko.observable('00');
+  <strong>this.hoursAndSeconds = ko.computed(function () {
+    return this.hours() + ':' + this.seconds();
+  }, this);</strong>
+};</code></pre>
+          <div class="fragment">
+            <p>Og vi har følgende view:</p>
+<pre><code>&lt;input type="text" data-bind="textInput: hours" />
+&lt;input type="text" data-bind="textInput: seconds" />
+&lt;p data-bind="text: hoursAndSeconds">&lt;/p></code></pre>
+          </div>
         </section>
 
         <section>
-          <p>... og så må vi ikke glemme <code>app.js</code>:</p>
-<pre><code data-trim class="hljs javascript">var helloWorldViewModel = { <strong>name: ko.observable()</strong> };
-<strong>ko.applyBindings</strong>(helloWorldViewModel);</code></pre>
-        </section>
-        
-        <section>
-          <h2>Hva blir resultatet?</h2>
-          <iframe src="../examples/ko/index.html" frameborder="0"></iframe>
+          <h2>Resultat:</h2>
+          <iframe src="../examples/ko-computed/index.html" frameborder="0"></iframe>
         </section>
 
         <section>
           <h2><i class="fa fa-exclamation-circle"></i> &laquo;This Just In!&raquo;</h2>
           <p><a href="http://blog.stevensanderson.com/2014/08/18/knockout-3-2-0-released/"
-                target="_blank">Knockout 3.2.0 released</a>.</p>
+                target="_blank">Knockout 3.2.0 released</a>.<br />
+            <span class="text-muted">18. august 2014</span></p>
+
         </section>
 
         <section data-background="assignments.jpg" data-background-transition="slide">
@@ -2027,7 +2064,6 @@ for (let i = 0; i < 10; i++) {
   <script src="../revealjs/lib/js/head.min.js"></script>
   <script src="../revealjs/js/reveal.min.js"></script>
   <script src="../highlight/highlight.pack.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script>
     Reveal.initialize({
       controls: false,
