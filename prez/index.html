@@ -169,7 +169,7 @@
             <li>Alt er objekter, så konvertering av type betyr oppretting av nytt objekt og konvertering av verdi</li>
             <li>Ikke opprett primitiver med <code>new</code>. Mer komplekst, tregere, mindre lesbart.
             <li>De forskjellige typene er: <code>String, Number, Boolean, Array, Object, Undefined, null</code></li>
-            <li>Bruk typeof for å sjekke typen av verdien.</li>
+            <li>Bruk <code>typeof</code> for å sjekke typen av verdien.</li>
           </ul>
         </section>
         <section>
@@ -395,7 +395,7 @@ function f2() {
             <pre><code>var x = (10 + "5");
 
 var f = function(s) { alert(s); };
-(function (s) {f(s);})("hei");</code></pre></p>
+function (s) {f(s);}("hei");</code></pre></p>
           </ul>
         </section>
 
@@ -446,7 +446,7 @@ var avstand = Posisjon.avstandFra([5,6]);
 
         <section>
           <h2>Modul med closure</h2>
-          <pre><code>MapGraphics = (function(){<span class="fragment">
+          <pre><code>var MapGraphics = (function(){<span class="fragment">
   var x = 0, y = 0, z = 0;
 <span class="fragment">
   function setCoordinate(new_x, new_y, new_z) {
@@ -461,7 +461,28 @@ var avstand = Posisjon.avstandFra([5,6]);
     getY : function() { return y; },
     getZ : function() { return z; }    
   };
-</span></span>})();
+</span></span>}());
+          </code></pre>
+        </section>
+        <section>
+          <h2>Modul-alternativ</h2>
+          <pre><code>var MODUL = (function(self){<span class="fragment">
+  var x = 0, y = 0, z = 0; // private
+<span class="fragment">
+  self.status = "aktiv"; // public
+
+  self.sett = function(new_x, new_y, new_z) {
+    x = new_x;
+    y = new_y;
+    z = new_z;
+  }
+
+  self.hent = function() {
+    return [x, y, z];
+  }
+</span><span class="fragment">
+  return self;
+</span></span>}(MODUL));
           </code></pre>
         </section>
 
