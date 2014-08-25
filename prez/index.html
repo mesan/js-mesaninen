@@ -47,8 +47,13 @@
           <h2>Suksesshistorier</h2>
           <ul>
             <li>Norman Antivirus</li>
-            <li>KISS</li>
+            <li>KiSS</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>KiSS</h2>
+          <p>TODO!</p>
         </section>
       </section>
 
@@ -491,7 +496,8 @@ var avstand = Posisjon.avstandFra([5,6]);
 
         <section>
           <h2>Prototyper</h2>
-<pre><code>function Ansatt(navn, tittel, fodt) {
+          <h3>Arvemekanismen til JavaScript.</h3>
+<!--<pre><code>function Ansatt(navn, tittel, fodt) {
   this.navn = navn;
   this.tittel = tittel;
   this.fodt = fodt;
@@ -500,7 +506,45 @@ var avstand = Posisjon.avstandFra([5,6]);
 var fred = new Ansatt("Fred Flintstone", "Caveman", 1970);
 Ansatt.prototype.salary = null;
 Ansatt.salary = 20000;
-</code></pre>
+</code></pre>-->
+        </section>
+
+        <section>
+          <h2>Objektarv</h2>
+          <ul>
+            <li>I JavaScript har vi ikke klasser som arver fra andre klasser.</li>
+            <li>Vi har <em>objekter</em> som arver fra <em>andre objekter</em>.</li>
+            <li>Alle objekter har en <em>prototype</em> &#0150; objektet som de arver fra.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Prototypekjeden</h2>
+          <ul>
+            <li>Når du ber om et felt på et objekt, sjekkes det om objektet har dette feltet.
+              <ul>
+                <li>Dersom objektet <em>har</em> feltet, bruker den det.</li>
+                <li>Dersom objektet <em>ikke</em> har feltet, sjekker den om feltet eksisterer på
+                  <em>prototypeobjektet</em>.
+                </li>
+                <li>Hvis prototypeobjektet ikke har dette feltet heller, sjekker den
+                  dets prototypeobjekt igjen. Og slik går det helt til
+                  prototypekjeden til objektet er traversert &hellip;</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Eksempel</h2>
+          <p>Vi bruker <code>Object.create()</code>:</p>
+<pre><code>var book = { isReadable: true };
+  var animalFarmBook = Object.create(book);
+  animalFarmBook.released = 1945;
+
+  <span class="fragment">animalFarmBook.isReadable; // <= true</span>
+  <span class="fragment">animalFarmBook.released; // <= 1945</span>
+  <span class="fragment">book.released; // <= undefined</span></code></pre>
         </section>
 
         <section>
