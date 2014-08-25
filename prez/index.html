@@ -203,7 +203,7 @@ x = typeof x; // "number"</code></pre>
         <section>
           <h2>Number</h2>
           <ul>
-            <li>Bruk &lt; og &gt; i stedet for = og != når man sammenligner tall.</li>
+            <li>Bruk <code>&lt;</code> og <code>&gt;</code> i stedet for <code>==</code> og <code>!=</code> når man sammenligner tall.</li>
             <li>Tall blir automatisk konvertert til og fra andre typer om man prøver å bruke dem.</li>
             <li>Om JS ikke klarer å konvertere en type til et tall så blir verdien <code>NaN</code> (Not a Number).</li>
             <li><code>Inifinity</code> og <code>-Infinity</code> er mulige verdier.</li>
@@ -682,17 +682,15 @@ var forsideElementer = document.body.children(); // [&lt;h1..., &lt;p...]</code>
         <section>
           <h2>Events</h2>
           <ul>
-            <li>Hendelser ("events") håndteres ved at man setter opp callback-funksjoner knyttet til et element og en hendelse.</li>
+            <li>Events (hendelser) håndteres med callback-funksjoner knyttet til et element og en hendelse.</li>
             <li>Den måten folk flest begynner å sette opp eventer på er å legge de til i HTML. F.eks. <code>&lt;a href="#" onclick="doSomething()"&gt;</code> </li>
             <li>En ryddigere måte er å bruke <code>element.addEventListener("click", function(){ ... })</code> direkte på DOM-objektet.</li>
-            <li>IE er selvfølgelig vanskelig og der heter funksjonen i v8 og eldre <code>attachEvent</code>.</li>
+            <li>IE er selvfølgelig vanskelig og der heter funksjonene i IE&lt;=8 <code>attachEvent</code> etc.</li>
             <li>Man kan legge til event-lyttere til alle DOM-objekter, også <code>window</code> og man kan legge til flere til hvert element.</li>
-            <li>Man kan også fjerne og fyre av eventer (dispatchEvent og removeEventListener).</li>
           </ul>
         </section>
         <section>
-          <pre><code>
-var useCapture = false; // Indre element håndteres først, true gjør motsatt
+          <pre><code>var useCapture = false; // Indre element håndteres først, true gjør motsatt
 var myFunction = function(event) {
   var element = this; // elementet du klikket på
   var faktiskElement = event.currentTarget;
@@ -705,17 +703,21 @@ if (x.addEventListener) { // Alle nettlesere bortsett fra IE8 og eldre
     x.attachEvent("onclick", myFunction, useCapture);
 }
 
-x.removeEventListener("click", myFunction);
-          </code></pre>
+x.removeEventListener("click", myFunction);</code></pre>
         </section>
         <section>
           <h2>Globale funksjoner</h2>
           <ul>
             <li>JavaScript har noen få støttefunksjoner. Et par av dem er verdt å nevne:</li>
             <li><code>eval()</code> er en funksjon som tar input gjennom JS-parseren og kjører innholdet. <strong>eval is evil!</strong></li>
+            <li><code>parseInt()</code> og <code>parseFloat()</code> gjør akkurat det, men trengs aldri i praksis. <code>parseInt</code> har en bonus ved at den med ekstra parameter kan gi tallene i hex eller andre tallsystemer.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Globale funksjoner</h2>
+          <ul>
             <li><code>encodeURI()</code>, <code>decodeURI()</code> brukes får å sikre at en URL er godkjent og at alle spesialtegn er håndtert. Rører ikke spesialtegn som er en del av fullverdig URL.</li>
             <li><code>encodeURIComponent()</code>, <code>decodeURIComponent()</code> gjør tilsvarende, men erstatter også alle tegn i en gyldig URL.</li>
-            <li><code>parseInt()</code> og <code>parseFloat()</code> gjør akkurat det, men trengs aldri i praksis. <code>parseInt</code> har en bonus ved at den med ekstra parameter kan gi tallene i hex eller andre tallsystemer.</li>
           </ul>
         </section>
       </section>
@@ -805,9 +807,9 @@ x.removeEventListener("click", myFunction);
         <section>
           <h2>Enklere hverdag</h2>
           <ul>
-            <li>Skjuler forskjeller mellom implementasjoner. "Alle" bruker det.</li>
+            <li>Skjuler forskjeller mellom implementasjoner og forenkler vanlige oppgaver.</li>
             <li>Hovedbruksområder:<ul>
-              <li>Henting/manipulering av elementer</li>
+              <li>Henting/manipuléring av elementer</li>
               <li>Hendelser</li>
               <li>Animasjoner</li>
               <li>AJAX</li>
@@ -819,7 +821,7 @@ x.removeEventListener("click", myFunction);
           <ul>
             <li>"Unobtrusive", endrer ikke oppførsel til eksisterende JS.</li>
             <li><code>$()</code> eller <code>jQuery()</code> er utgangspunktet for all jQuery-kode</li>
-            <li>Generell fremgangsmåte: Finn objekter og manipuler/les/skriv.</li>
+            <li>Generell fremgangsmåte: Finn objekter og manipulér/les/skriv.</li>
             <li>Kan hekte på en lang rekke kall som gjør koden mer kompakt.</li>
           </ul>
         </section>
@@ -849,8 +851,15 @@ x.removeEventListener("click", myFunction);
             <li>Mer avansert utvalg med f.eks.: <code>:first, :last, :gt(), :lt(), :even, :odd</code></li>
             <li>Velg elementer basert på innhold: <code>:contains(), :has(), :empty()</code></li>
             <li>Velg elementer basert på verdi/attributter: <code>[navn="verdi"]</code></li>
-            <li>+++</li>
-            <li>Resultatet er et objekt som inneholder en Array med DOM-elementer, en jQuery-samling.</li>
+          </ul>
+        </section>
+        <section>
+          <ul>
+            <h2>jQuery-objektet</h2>
+            <li>Resultatet fra et jQuery-søk lagres i jQuery-objektet.</li>
+            <li><code>$()</code> inneholder en Array med DOM-elementer.<br><pre><code>$(".button")[0] // direkte aksess til DOM-objektet</code></pre></li>
+            <li>Alle actions gjøres på alle elementer i samlingen.<br><pre><code>$(".button").hide(); // skjul alle knapper</code></pre></li>
+            <li>Man kan også filtrere subsets med <code>.filter()</code><br><pre><code>$("li").filter(":even").css("background-color", "red");</code></pre></li>
           </ul>
         </section>
         <section>
