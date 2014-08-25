@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Oppgave 1</title>
+  <title>Superhelter</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="main.css" type="text/css" media="screen" />
 </head>
-<body>
-  <h1>Oppgave 1</h1>
+<body ng-app="superheroesApp" ng-controller="SuperheroesController">
+  <h1>Superhelter</h1>
+  <button ng-click="chooseRandomSuperhero()">Choose Random Superhero</button>
+  <p ng-if="chosenSuperhero">{{chosenSuperhero}}</p>
   <script type="text/javascript" src="angular.js"></script>
   <script type="text/javascript" src="main.js"></script>
 </body>
