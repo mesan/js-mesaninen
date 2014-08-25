@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Oppgave 1</title>
+  <title>Spillsøk</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="main.css" type="text/css" media="screen" />
 </head>
-<body>
-  <h1>Oppgave 1</h1>
+<body ng-app="gameSearchApp" ng-controller="GameSearchController">
+  <h1>Spillsøk</h1>
+  <input type="text" ng-model="searchQuery" size="40"
+         placeholder="Søk etter tittel eller utgivelsesår ..." />
+  <ul>
+    <li ng-repeat="game in games | filter:searchQuery">
+      {{game.title}} ({{game.released}})
+    </li>
+  </ul>
   <script type="text/javascript" src="angular.js"></script>
   <script type="text/javascript" src="main.js"></script>
 </body>

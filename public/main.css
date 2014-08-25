@@ -1,3 +1,29 @@
 html, body {
   font-family: 'Arial', 'sans-serif';
+  font-size: 18px;
+}
+
+input[type=text] {
+  padding: 5px;
+  font-size: 18px;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  border: 1px solid #ddd;
+}
+
+li {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+li:first-child {
+  border-top: none;
+}
+
+li:nth-child(odd) {
+  background: #eee;
 }
