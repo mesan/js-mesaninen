@@ -514,7 +514,8 @@ Ansatt.salary = 20000;
           <ul>
             <li>I JavaScript har vi ikke klasser som arver fra andre klasser.</li>
             <li>Vi har <em>objekter</em> som arver fra <em>andre objekter</em>.</li>
-            <li>Alle objekter har en <em>prototype</em> &#0150; objektet som de arver fra.</li>
+            <li>Alle objekter har en <em>prototype</em> &#0150; objektet som de &laquo;arver
+              fra&raquo;.</li>
           </ul>
         </section>
 
@@ -528,23 +529,140 @@ Ansatt.salary = 20000;
                   <em>prototypeobjektet</em>.
                 </li>
                 <li>Hvis prototypeobjektet ikke har dette feltet heller, sjekker den
-                  dets prototypeobjekt igjen. Og slik går det helt til
-                  prototypekjeden til objektet er traversert &hellip;</li>
+                  dets prototypeobjekt igjen. Og slik går det helt til<br />
+                  A) den finner et objekt med det aktuelle feltet, eller <br />
+                  B) <em>prototypekjeden</em> til objektet er traversert.
+                </li>
               </ul>
             </li>
           </ul>
         </section>
 
         <section>
-          <h2>Eksempel</h2>
-          <p>Vi bruker <code>Object.create()</code>:</p>
-<pre><code>var book = { isReadable: true };
-  var animalFarmBook = Object.create(book);
-  animalFarmBook.released = 1945;
+          <h2><code>Object.prototype</code> - siste skanse</h2>
+          <ul>
+            <li>Alle objekter arver til syvende og sist fra <code>Object.prototype</code>.</li>
+            <li>Dette gjelder også funksjoner og arrays.</li>
+          </ul>
+        </section>
 
-  <span class="fragment">animalFarmBook.isReadable; // <= true</span>
-  <span class="fragment">animalFarmBook.released; // <= 1945</span>
-  <span class="fragment">book.released; // <= undefined</span></code></pre>
+        <section>
+          <h2>Eksempler på prototypekjeder</h2>
+          <ul>
+            <li>Arrays:<br />
+              <code>Array.prototype</code> &raquo; <code>Object.prototype</code> &raquo;
+              <code><em>null</em></code></li>
+            <li>Funksjoner:<br /><code>Function.prototype</code> &raquo;
+              <code>Object.prototype</code> &raquo; <code><em>null</em></code></li>
+            <li>Datoer:<br />
+              <code>Date.prototype</code> &raquo;
+              <code>Object.prototype</code> &raquo; <code><em>null</em></code>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Prototypekjede i praksis</h2>
+<pre><code>var myNumbers = [1, 2, 3];
+
+myNumbers.join();
+// 1. Does myNumbers have join method? No.
+// 2. Does Array.prototype have join method? Yes!
+
+myNumbers.hasOwnProperty('whatever');
+// 1. Does myNumbers have hasOwnProperty method? No.
+// 2. Does Array.prototype have hasOwnProperty method? No.
+// 3. Does Object.prototype have hasOwnProperty method? Yes!</code></pre>
+        </section>
+
+        <section>
+          <h2>Eksempel på bruk av arv</h2>
+          <div class="fragment">
+            <p>Vi bruker <code>Object.create()</code>:</p>
+<pre><code>var book = { isReadable: true };
+var animalFarmBook = Object.create(book);
+animalFarmBook.released = 1945;
+
+<span class="fragment">animalFarmBook.isReadable; // <= true</span>
+<span class="fragment">animalFarmBook.released; // <= 1945</span>
+<span class="fragment">book.released; // <= undefined</span></code></pre>
+          </div>
+          <p class="fragment">
+            <i class="fa fa-hand-o-up fa-warning"></i> I dette tilfellet blir prototypekjeden:
+            <br />
+            <code>animalFarmBook</code> &raquo; <code>book</code> &raquo;
+            <code>Object.prototype</code> &raquo; <code><em>null</em></code>
+          </p>
+        </section>
+
+        <section>
+          <h2>Eksempel med egen funksjon</h2>
+          <p>Vi lager vår egen funksjon og ser på prototypekjeden til denne:</p>
+<pre><code>function Person(name) {
+  this.name = name;
+}
+
+var pers = new Person();</code></pre>
+          <p class="fragment">Her blir prototypekjeden:<br />
+            <code>pers</code> &raquo; <code>Function.prototype</code> &raquo;
+            <code>Object.prototype</code> &raquo; <code><em>null</em></code>
+          </p>
+        </section>
+
+        <section>
+          <h2>Eksempel med egne funksjoner</h2>
+          <p>Hva med en funksjon som arver fra en annen?</p>
+<pre class="fragment"><code>function Person(name) {
+  this.name = name;
+}
+
+function Superhero(name) {
+  Person.call(this, name);
+}
+
+var pers = new Person();
+
+Superhero.prototype = person;
+
+var wonderWoman = new Superhero('Wonder Woman');
+</code></pre>
+          <p class="fragment">
+            <i class="fa fa-hand-o-up fa-warning"></i> Her blir prototypekjeden:<br />
+          <code>wonderWoman</code> &raquo; <code>pers</code> &raquo;
+            <code>Function.prototype</code> &raquo; <code>Object.prototype</code> &raquo;
+            <code><em>null</em></code></p>
+        </section>
+
+        <section>
+          <h2><code>new</code>-operatoren</h2>
+          <p>
+            Vi kjenner <code>new</code> meget godt fra Java og C&#x266f for å opprette objekter
+            fra klasser, men hva gjør den egentlig i JavaScript?
+          </p>
+          <div class="fragment">
+            <p>Eksempel</p>
+<pre><code>function House() {}
+var whiteHouse = new House();</code></pre>
+          </div>
+          <ol>
+            <li class="fragment">Oppretter et nytt objekt og setter <code>House.prototype</code>
+              som
+              prototype.</li>
+            <li class="fragment">Funksjonen <code>House</code> blir kalt, med <code>this</code>
+              = det nye objektet.</li>
+            <li class="fragment">Det nyopprettede objektet returneres.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2><code>hasOwnProperty</code></h2>
+          <p><code>hasOwnProperty</code> er den eneste måten for å sjekke om et felt er knyttet
+            til et spesifikt objekt:</p>
+<pre><code>var a = ['a', 'b', 'c'];
+
+a.join; // [Function: join]
+a.hasOwnProperty('join'); // <= false
+Array.prototype.hasOwnProperty('join'); // <= true</code></pre>
         </section>
 
         <section>
