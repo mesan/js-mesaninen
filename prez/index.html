@@ -154,102 +154,24 @@
           <h1><i class="fa fa-comments-o"></i><br />Språket</h1>
         </section>
         <section>
-          <h2>Grunnleggende</h2>
           <ul>
-            <li class="fragment">Imperativt og strukturert: if, while, for, etc. C-stil.</li>
-            <li class="fragment">Dynamisk: Type følger verdi, ikke variabel. "Alt" er objekter og kan utvides som man vil.</li>
-            <li class="fragment">Funksjonelt: Funksjoner er også objekter, kan nøstes og sendes som argumenter.</li>
-            <li class="fragment">Prototype-basert: Bruker prototyper (altså gjenbruk av eksisterende objekt) i stedet for klasser og arv.</li>
+          <p class="fragment"><strong>Imperativt og strukturert:</strong> if, while, for, etc. C-stil.</p>
+          <p class="fragment"><strong>Dynamisk:</strong> Type følger verdi, ikke variabel. "Alt" er objekter og kan utvides som man vil.</p>
+          <p class="fragment"><strong>Funksjonelt:</strong> Funksjoner er også objekter, kan nøstes og sendes som argumenter.</p>
+          <p class="fragment"><strong>Prototype-basert:</strong> Bruker prototyper (altså gjenbruk av eksisterende objekt) i stedet for klasser og arv.</p>
           </ul>
-        </section>
-        <section>
-          <h2>Funksjoner</h2>
-          <div class="fragment">Man kan ha lokale funksjoner inne i andre funksjoner.
-          <pre><code data-trim contenteditable class="hljs javascript">function ytreFunksjon() {
-  function indreFunksjon() { alert("Hei!"); }
-  indreFunksjon();
-}
-</code></pre></div>
-          <div class="fragment">Funksjoner er objekter, akkurat som alt annet.
-          <pre><code data-trim contenteditable class="hljs javascript">function f() {}
-f.call();
-f.valueOf(); // "function f() {}"
-          </code></pre></div>
-        </section>
-        <section>
-          <h2>Funksjoner</h2>
-          <div class="fragment">Kan ha dynamisk antall argumenter. Bruk <code>arguments</code>.
-          <pre><code data-trim contenteditable class="hljs">function f() { var siste_argument = arguments[arguments.length]; }
-f(1,2,3);</code></pre></div>
-          <div class="fragment">Funksjoner kan være anonyme.
-          <pre><code data-trim contenteditable class="hljs javascript">var kurs = 5.67;
-var f = function(x) { return x * kurs; };
-f(45);
-          </code></pre></div>
-        </section>
-        <section>
-          <h2>Blokk uten scope</h2>
-          <div>Med parantes har man en kodeblokk uten eget skope.
-          <pre><code data-trim contenteditable class="hljs">var x = (10 + "5");
-var f = function(x) { alert(x); };
-(function (x) {f(x);})("hei");
-          </code></pre></div>
-        </section>
-
-        <section>
-          <h2>Closure</h2>
-          <ul>
-            <li>Du har ikke lært JavaScript før du forstår closures.</li>
-            <li class="fragment">Scopet til returnerte funksjoner <em>huskes gjennom applikasjonens levetid</em>.</li>
-            <li class="fragment">Dette gjør en i stand til å lage kraftige konstruksjoner.</li>
-            <li class="fragment">Kan brukes for å lage avgrensede moduler.</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Modul med closure</h2>
-          <pre><code data-trim contenteditable class="hljs javascript">MapGraphics = (function(){<span class="fragment">
-  var x = 0, y = 0, z = 0;
-<span class="fragment">
-  function setCoordinate(new_x, new_y, new_z) {
-    x = new_x;
-    y = new_y;
-    z = new_z;
-  } 
-</span><span class="fragment">
-  return {
-    setCoordinate : setCoordinate,
-    getX : function() { return x; },
-    getY : function() { return y; },
-    getZ : function() { return z; }    
-  };
-</span></span>})();
-          </code></pre>
-        </section>
-
-        <section>
-          <h2>Prototyper</h2>
-<pre><code data-trim contenteditable class="hljs javascript">function Ansatt(navn, tittel, fodt) {
-  this.navn = navn;
-  this.tittel = tittel;
-  this.fodt = fodt;
-}
-
-var fred = new Ansatt("Fred Flintstone", "Caveman", 1970);
-Ansatt.prototype.salary = null;
-Ansatt.salary = 20000;
-</code></pre>
         </section>
         <section>
           <h2>Datatyper</h2>
           <ul>
             <li>Svakt typet</li>
-            <li>Operasjoner på typer i JS er ikke helt som man forventer</li>
+            <li>Operasjoner på typer er ikke helt som man forventer</li>
             <li>Alt er objekter, så konvertering av type betyr oppretting av nytt objekt og konvertering av verdi</li>
-            <li>Ikke opprett primitiver med <code>new</code>. Ting blir mer komplekst og tregere.
+            <li>Ikke opprett primitiver med <code>new</code>. Mer komplekst, tregere, mindre lesbart.
             <li>De forskjellige typene er: <code>String, Number, Boolean, Array, Object, Undefined, null</code></li>
             <li>Bruk typeof for å sjekke typen av verdien.</li>
           </ul>
-          <pre><code data-trim contenteditable class="hljs javascript">
+          <pre class="fragment"><code>
 var x; // undefined
 x = 10; // number
 x = "Bøtteknott"; // string
@@ -264,6 +186,11 @@ x = typeof x; // "string"
             <li>Man kan skrive tall med eller uten desimaler: <code>34.00 == 34</code></li>
             <li>Man kan bruke vitenskapsnotasjon: <code>1e2 == 100; 1e-2 == 0.01</code></li>
             <li>Tall oppfører seg som en double i C/Java med de utfordringer det medfører.</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Number</h2>
+          <ul>
             <li>Bruk &lt; og &gt; i stedet for = og != når man sammenligner tall.</li>
             <li>Tall blir automatisk konvertert til og fra andre typer om man prøver å bruke dem.</li>
             <li>Om JS ikke klarer å konvertere en type til et tall så blir verdien <code>NaN</code> (Not a Number).</li>
@@ -271,8 +198,7 @@ x = typeof x; // "string"
           </ul>
         </section>
         <section>
-          <pre><code data-trim contenteditable class="hljs javascript">
-x = 10 + "5"; // ?
+          <pre><code>x = 10 + "5"; // ?
 x = "5" + 10; // ?
 x = "10" - 5; // ?
 x = 5 + "e4"; // ?
@@ -286,8 +212,7 @@ x = 9999999999999999; // ?
 
 function isNumeric(n) {
   return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n)
-}
-          </code></pre>
+}          </code></pre>
         </section>
         <section>
           <h2>Boolean</h2>
@@ -300,7 +225,7 @@ function isNumeric(n) {
           </ul>
         </section>
         <section>
-          <pre><code data-trim contenteditable class="hljs javascript">var c = (false == 0); // true
+          <pre><code>var c = (false == 0); // true
 var d = (false == ""); // true
 var e = (0 == ""); // true
 var f = (null == false); // false
@@ -322,38 +247,30 @@ if (x) {
         <section>
           <h2>String</h2>
           <ul>
-            <li>Kan bruke både ' eller ", f.eks. om man har en streng med et av disse tegnene i seg, så kan man bruke det andre tegnet.</li>
-            <li>"Backslash" (\) brukes for å escape et spesialtegn.</li>
-            <li>Ikke bruk <code>new String</code>, som gir mange uheldig bieffekter. Lag vanlige strengprimitiver.</li>
-            <li>En streng har masse attributter og funksjoner, f.eks. <code>"abc".length => 3</code> og <code>" abc ".trim() => "abc"</code></li>
+            <li>Ikke bruk <code>new String</code> (mange uheldig bieffekter.)<br><pre><code>x = "abc"; // x er et String-objekt</code></pre></li>
+            <li>Både ' og " fungerer som deliminator.<br><pre><code>"abc" === 'abc'; // true</code></pre></li>
+            <li>"Backslash" (\) brukes for å escape et spesialtegn.<br><pre><code>x = "NRK\'s gatekjøkken";</code></pre></li>
+            <li>Strenger har mange nyttige attributter og funksjoner:<pre><code>(' ab'+"c ").trim().substr(0,2).length; // ?</code></pre></li>
           </ul>
-          <pre><code data-trim contenteditable class="hljs javascript">
-x = "abc";
-x = x.substr(0,2); // "ab"
-          </code></pre>
         </section>
         <section>
           <h2>Object</h2>
           <ul>
             <li>Alt bortsett fra primitivene i JS er objekter, også funksjoner.</li>
-            <li>Man lager et objekt ganske enkelt med <code>var obj = { bedrift : "Mesan", adressse : "HI20" };</code></li>
-            <li>Du legger enkelt til nye verdier med <code>obj.telefonnr = "22334455";</code></li>
-            <li>Denne oppførselen er felles for alle objekter, selv om Array er litt spesiell...</li>
-            <li>Å legge til en funksjon til et objekt er like enkelt som å legge til verdier.</li>
+            <li>Man lager et objekt ganske enkelt med<br><pre><code>var bedrift = { bedrift : "Mesan", adresse : "HI20" };</code></pre></li>
+            <li>Du legger enkelt til nye verdier med<br><pre><code>bedrift.telefonnr = "22334455";</code></li>
+            <li>Å legge til en funksjon til et objekt er like enkelt:<br><pre><code>bedrift.ring = function() { alert(this.telefonnr); }</code></pre></li>
+            <li>Man kan også gjøre dynamisk oppslag i et objekt:<br><pre><code>for (attr in bedrift) { var x = bedrift[attr]; }</code></pre></li>
           </ul>
-          <pre><code data-trim contenteditable class="hljs javascript">
-var bedrift = { navn : "Mesan AS", adresse : "HI20", telefonnr : "22334455" };
-bedrift.ring = function() { alert(this.telefonnr); }
-          </code></pre>
         </section>
         <section>
           <h2>Array</h2>
           <ul>
-            <li>Et spesielt objekt med litt anderledes aksessering; man bruker <code>[]</code> i stedet for .</li>
-            <li><code>new Array(1,2,3) === [1,2,3]</code></li>
-            <li>Alle elementene i en array kan ha forksjellige typer.</li>
-            <li>Første element starter på 0, som i C/Java:<br><code>([1,2,3])[0] === 1</code></li>
-            <li><code>typeof [1,2,3] == "object"</code></li>
+            <li>Et spesielt objekt med litt anderledes aksessering;<br><pre><code>([1,3,4])[1] // 3</code></pre></li>
+            <li>Igjen, unngå <code>new</code>:<br><pre><code>new Array(1,2,3) === [1,2,3]</code></pre></li>
+            <li>Alle elementene i en array kan ha forksjellige typer.<br><pre><code>[true, 1, "hei"]</code></pre></li>
+            <li>Typeof gir ikke resultatet man forventer:<br><pre><code>typeof [1,2,3] == "object"</code></pre></li>
+            <li>Nyttige funksjoner inkluderer: <code>.push(), .pop(), .shift(), .unshift(), .slice(), .splice(), .concat(), .sort()</code>
           </ul>
         </section>
         <section>
@@ -366,17 +283,71 @@ bedrift.ring = function() { alert(this.telefonnr); }
         </section>
 
         <section>
-          <h2>Scope (!)</h2>
+          <h2>Funksjoner</h2>
+          <div class="fragment">Man kan ha lokale funksjoner inne i andre funksjoner.
+          <pre><code>function ytreFunksjon() {
+  function indreFunksjon() { alert("Hei!"); }
+  indreFunksjon();
+}
+</code></pre></div>
+          <div class="fragment">Funksjoner er objekter, akkurat som alt annet.
+          <pre><code>function f() {}
+f.call();
+f.valueOf(); // "function f() {}"
+          </code></pre></div>
+        </section>
+        <section>
+          <h2>Funksjoner</h2>
+          <div class="fragment">Kan ha dynamisk antall argumenter. Bruk <code>arguments</code>.
+          <pre><code data-trim contenteditable>function f() { var siste_argument = arguments[arguments.length]; }
+f(1,2,3);</code></pre></div>
+          <div class="fragment">Funksjoner kan være anonyme.
+          <pre><code>var kurs = 5.67;
+var f = function(x) { return x * kurs; };
+f(45);
+          </code></pre></div>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-exclamation-circle"></i> Scope</h2>
           <ul>
-            <li>Alle funksjoner har sitt eget scope, som betyr at alt som opprettes i scopet til en funksjon er bare tilgjengelig i det scopet.</li>
-            <li>Det lokale scopet legges til en kø av scope helt ut til det globale scopet.</li>
-            <li>To funksjoner som opprettes ved siden av hverandre har adskilte scopes.</li>
-            <li>Variable man ikke oppretter med var foran blir endret om den finnes i scope-chain eller opprettet globalt (en del av <code>window</code>).</li>
-            <li>Alle variable/funksjoner man kaller som ikke er en del av scopet må letes fram i scope-rekka.</li>
+            <li>Alle funksjoner har sitt eget scope, skjult for andre:<br><pre><code>function fx() {
+  var x = 0; // ser ikke y
+}
+function fy() {
+  var y = 0; // ser ikke x
+}</code></pre></li>
+            <li>Lokalt scope er ikke tilgjengelig utenfor scopet.<br><pre><code>function fx() { var x = 0; }
+alert(x); // undefined
+</code></pre></li>
+            <li>Det lokale scopet legges til en "scope chain" ut til globalt scope:<br><pre><code>function fx() {
+  // scope chain: globalt => fx
+  var x = 0;
+  function fy() {
+    // scope chain: globalt => fx => fy
+    var y = 0;
+  }
+}</code></pre></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-exclamation-circle"></i> Scope</h2>
+          <ul>
+            <li>Variable man ikke oppretter med <code>var</code> foran blir endret om den finnes i scope chain eller opprettet globalt (en del av <code>window</code>).<br><pre><code>function fx() {
+  var x = 2;
+  function fy() {
+    y = 0; // opprettes globalt
+    x = 3; // finnes i scope chain, endrer verdi
+  }
+}
+alert(y + x); // pang! ser ikke x;</code></pre></li>
+            <li><strong>Det er kostbart å lete i scope chain</strong>; Alle variable/funksjoner man kaller som ikke er en del av scopet må letes fram i scope chain.</li>
           </ul>
         </section>
         <section>
-          <pre><code data-trim contenteditable class="hljs javascript">
+          <h2><i class="fa fa-exclamation-circle"></i> Scope</h2>
+          <pre><code>
 function f() {
   x = 10; // window.x opprettes/oppdateres
   var y = 20; // opprettes i lokalt scope til f(), ikke tilgjengelig utenfra
@@ -394,14 +365,25 @@ function f2() {
 }
           </code></pre>
         </section>
+
         <section>
-          <h2>Hoisting</h2>
+          <h2>Blokk uten scope</h2>
+          <div>Med parantes har man en kodeblokk uten eget skope.
+          <pre><code data-trim contenteditable>var x = (10 + "5");
+
+var f = function(s) { alert(s); };
+(function (s) {f(s);})("hei");
+          </code></pre></div>
+        </section>
+
+        <section>
+          <h2><i class="fa fa-exclamation-circle"></i> Hoisting</h2>
           <ul>
             <li>Oppretting av alle variable blir flyttet til toppen av scopet. Setting av verdi forblir der de er.</li>
-            <li>Vær obs på bruk av variable med samme navn og når de blir satt og brukt.</li>
-            <li>Legg alle variable i toppen av alle funksjoner, alltid. Git litt bedre ytelse også.</li>
+            <li>Vær oppmerksom på bruk av variable med samme navn og når de blir satt og brukt.</li>
+            <li>Legg alle variable i toppen av alle funksjoner, alltid. Gir litt bedre ytelse også.</li>
           </ul>
-          <pre><code data-trim contenteditable class="hljs javascript">var global_i;
+          <pre><code>var global_i;
 
 (function() {
   var x = 20,y,z; // Initisering
@@ -413,6 +395,57 @@ function f2() {
 })();
           </code></pre>
         </section>
+
+        <section>
+          <h2><i class="fa fa-exclamation-circle"></i> Closure</h2>
+          <ul>
+            <li>Du har ikke lært JavaScript før du forstår closures.</li>
+            <li class="fragment">Scopet til funksjoner <em>huskes gjennom funksjonens levetid</em>.</li>
+            <li class="fragment">Nøstede funksjoner som arver scope vil også huske scopet til sine foreldre.</li>
+            <li class="fragment">Closures gjør en i stand til å lage kraftige konstruksjoner.</li>
+            <li class="fragment">Kan brukes for å lage avgrensede moduler.</li>
+          </ul>
+          <pre class="fragment"><code>function f() { var x = 2; return { x:function(){ return x; } } }
+var res = f();
+f = undefined;
+var x = res.x(); <span class="fragment">// 2, scopet til slettet funksjon huskes uansett!</span>
+          </code></pre>
+        </section>
+        <section>
+          <h2>Modul med closure</h2>
+          <pre><code>MapGraphics = (function(){<span class="fragment">
+  var x = 0, y = 0, z = 0;
+<span class="fragment">
+  function setCoordinate(new_x, new_y, new_z) {
+    x = new_x;
+    y = new_y;
+    z = new_z;
+  } 
+</span><span class="fragment">
+  return {
+    setCoordinate : setCoordinate,
+    getX : function() { return x; },
+    getY : function() { return y; },
+    getZ : function() { return z; }    
+  };
+</span></span>})();
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Prototyper</h2>
+<pre><code>function Ansatt(navn, tittel, fodt) {
+  this.navn = navn;
+  this.tittel = tittel;
+  this.fodt = fodt;
+}
+
+var fred = new Ansatt("Fred Flintstone", "Caveman", 1970);
+Ansatt.prototype.salary = null;
+Ansatt.salary = 20000;
+</code></pre>
+        </section>
+
         <section>
           <h2>Math</h2>
           <ul>
@@ -435,7 +468,7 @@ function f2() {
             <li>Man kan lage <code>RegExp</code>-objekter med new, men det er ikke nødvendig. Bruk heller <i>/mønster/modifikatorer</i></li>
             <li>Bruker du samme mønster mange ganger, kan du lagre den i en variabel og bruke f.eks. exec på den.</li>
           </ul>
-          <pre><code data-trim contenteditable class="hljs javascript">
+          <pre><code>
 var pattern = /^[A-Z]$/i;
 var res = str.replace(/(gutt|jente)/i, "menneskebarn");
 var t = /du/i.exec("Du er der."); // 'Du'
@@ -463,7 +496,7 @@ if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
           </ul>
         </section>
         <section>
-          <pre><code data-trim contenteditable class="hljs javascript">
+          <pre><code>
 var useCapture = false; // Indre element håndteres først, true gjør motsatt
 var myFunction = function(event) {
   var element = this; // elementet du klikket på
@@ -596,7 +629,7 @@ x.removeEventListener("click", myFunction);
           </ul>
         </section>
         <section>
-          <pre><code data-trim contenteditable class="hljs javascript">(function() {
+          <pre><code>(function() {
   function showLink() { var aObj = $(this); /* ... */ }
   function hideLink() { /* ... */ }
   function followLink() { /* ... */ }
@@ -663,7 +696,7 @@ x.removeEventListener("click", myFunction);
           </ul>
         </section>
         <section>
-          <pre><code data-trim contenteditable class="hljs javascript">
+          <pre><code>
 $.get("some/url.php?data", function(data) {
   // Bruk data til noe
 });
@@ -1813,7 +1846,7 @@ myObservableArray().push('Item');
           </ul>
         </section>
         <section>
-          <pre><code data-trim contenteditable class="hljs javascript">(function(){
+          <pre><code>(function(){
   var div = document.createElement(“div”),
       hundegaard = $(“#hundegaard”);
 
