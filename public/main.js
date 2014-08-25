@@ -1,5 +1,5 @@
 (function () {
-  var words = {
+  var translatedWords = {
     'bord': 'table',
     'prosjekt': 'project',
     'ansikt': 'face',
@@ -8,15 +8,17 @@
     'bacon': 'bacon'
   };
 
+  function getTranslatedWord(word) {
+    return translatedWords[word];
+  }
+
   var viewModel = {
     word: ko.observable(),
     translatedWord: ko.observable(),
     noResults: ko.observable(false),
     translate: function () {
-      var translatedWord = words[this.word()];
-
+      var translatedWord = getTranslatedWord(this.word());
       this.noResults(translatedWord === undefined);
-
       this.translatedWord(translatedWord);
     }
   };
