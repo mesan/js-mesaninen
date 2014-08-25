@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Oppgave 1</title>
+  <title>Nyhetsbrev</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="main.css" type="text/css" media="screen" />
 </head>
-<body>
-  <h1>Oppgave 1</h1>
+<body ng-app="newsletterApp">
+  <h1>Nyhetsbrev</h1>
+  <form action="" ng-controller="NewsletterFormController" ng-submit="subscribeUser()">
+    <input type="email" ng-model="email" placeholder="E-post" />
+    <input type="text" ng-model="firstName" placeholder="Fornavn" />
+    <input type="text" ng-model="lastName" placeholder="Etternavn" />
+    <button type="submit">Meld meg på!</button>
+  </form>
+  <table ng-controller="NewsletterTableController">
+      <tr>
+        <th>E-post</th>
+        <th>Fornavn</th>
+        <th>Etternavn</th>
+      </tr>
+      <tr ng-repeat="user in users">
+        <td>{{user.email}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+      </tr>
+  </table>
   <script type="text/javascript" src="angular.js"></script>
   <script type="text/javascript" src="main.js"></script>
 </body>

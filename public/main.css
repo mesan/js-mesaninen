@@ -1,3 +1,26 @@
 html, body {
   font-family: 'Arial', 'sans-serif';
+  font-size: 18px;
+}
+
+th {
+  text-align: left;
+  width: 200px;
+}
+
+th, td {
+  padding: 10px;
+}
+
+tr:nth-child(odd) {
+  background: #eee;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input[type=text], input[type=email], button {
+  padding: 5px;
+  font-size: 18px;
 }
