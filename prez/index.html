@@ -92,19 +92,21 @@
           <h2>Implementér!</h2>
           <ul>
             <li>Siste versjon av standarden er ECMAScript 1.8.5 = ES5</li>
-            <li>Mange forskjellige implementasjoner:
-              <ul>
-                <li>JavaScript 1.8.5 (ES5+, Firefox)</li>
-                <li>Node.js (ES5, V8)</li>
-                <li>JScript 9.0 (ES5, Microsoft)</li>
-                <li>Nashorn 1.8.0 (ES5.1, Java/Oracle)</li>
-                <li>ActionScript (ES3, Flash og Flex)</li>
-                <li>QtScript (ES3, Qt)</li>
-                <li>ExtendScript (ES3, Adobe CS)</li>
-                <li>... og mange flere</li>
-              </ul>
-            </li>
+            <li>ESx har blitt implementert i et uttall forskjellige løsninger, også utenom web.</li>
             <li>Alle har særegenheter sammenlignet med standarden.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Mange forskjellige implementasjoner:</h3>
+          <ul>
+            <li>JavaScript 1.8.5 (ES5+, Firefox)</li>
+            <li>Node.js (ES5, V8)</li>
+            <li>JScript 9.0 (ES5, Microsoft)</li>
+            <li>Nashorn 1.8.0 (ES5.1, Java/Oracle)</li>
+            <li>ActionScript (ES3, Flash og Flex)</li>
+            <li>QtScript (ES3, Qt)</li>
+            <li>ExtendScript (ES3, Adobe CS)</li>
+            <li>... og mange flere</li>
           </ul>
         </section>
       </section>
@@ -289,15 +291,16 @@ if (x) {
             <li><code>Math</code> inneholder de vanligste mattefunksjonene og noen predefinerte konstanter.</li>
             <li>Tall kan skrives på forskjellige formater: <code>10 == 0x10 == 012</code>, men man har ikke tilsvarende for binære tall (må bruke streng og <code>parseInt("1010",2)</code>).</li>
             <li>Også bit-mønster-operatorer er effektive: &amp;, |, ~, ^, &lt;&lt; og &gt;&gt;</li>
+            <p><em><code>Math</code> er implementert i C++. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</em></p>
           </ul>
-          <br><br>
+        </section>
+        <section>
           <h2>Date</h2>
           <ul>
             <li>I <code>Date</code>-objektet finner man mange nyttige funksjoner for dato og tid.</li>
             <li>Man kan sammenligne to <code>Date</code>-objekter.</li>
+            <p><em><code>Date</code> er implementert i C++. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</em></p>
           </ul>
-          <br><br>
-          <em><code>Math</code> og <code>Date</code> er implementert i C++. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</em>
         </section>
         <section>
           <h2>RegExp</h2>
@@ -503,14 +506,16 @@ Ansatt.salary = 20000;
         <section>
           <h2>DOM</h2>
           <ul>
-            <li>Document Object Model holder alle elementene i en webside i et tre i minnet.</li>
-            <li>Du har direkte tilgang til denne med <code>document</code>.</li>
-            <li>Med <code>document.getElementById("minId")</code>, <code>getElementsByClassName</code> eller <code>getElementsByName</code> kan man finne elementer i DOM.</li>
+            <li><em>Document Object Model</em> holder alle elementene i en webside i et tre i minnet.</li>
+            <li>Du har direkte tilgang til denne med <code>document</code>:<br><pre><code>var idObj = document.getElementById("minId");
+var knapper = document.getElementsByClassName("button");
+var lister = document.getElementsByName("li");
+var forsideElementer = document.body.children(); // [&lt;h1..., &lt;p...]</code></pre></li>
             <li>Traversering av DOM er kostbart og bør gjøres med forsiktighet. Mellomlagre ting du vil bruke mer enn en gang.</li>
           </ul>
         </section>
         <section>
-          <h2>Hendelser</h2>
+          <h2>Events</h2>
           <ul>
             <li>Hendelser ("events") håndteres ved at man setter opp callback-funksjoner knyttet til et element og en hendelse.</li>
             <li>Den måten folk flest begynner å sette opp eventer på er å legge de til i HTML. F.eks. <code>&lt;a href="#" onclick="doSomething()"&gt;</code> </li>
