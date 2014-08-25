@@ -110,3 +110,9 @@ input[type=text] {
 .img-person {
   width: 20%;
 }
+
+.reveal .text-kiss {
+  text-shadow: 0px 5px 5px #000;
+  color: #fff;
+  font-weight: bold;
+}
