@@ -171,12 +171,14 @@
             <li>De forskjellige typene er: <code>String, Number, Boolean, Array, Object, Undefined, null</code></li>
             <li>Bruk typeof for å sjekke typen av verdien.</li>
           </ul>
-          <pre class="fragment"><code>
-var x; // undefined
+        </section>
+        <section>
+          <pre><code>var x; // undefined
 x = 10; // number
 x = "Bøtteknott"; // string
-x = typeof x; // "string"
-          </code></pre>
+x = "100";
+x = x/10; // 10
+x = typeof x; // "number"</code></pre>
         </section>
         <section>
           <h2>Number</h2>
@@ -260,7 +262,7 @@ if (x) {
             <li>Man lager et objekt ganske enkelt med<br><pre><code>var bedrift = { bedrift : "Mesan", adresse : "HI20" };</code></pre></li>
             <li>Du legger enkelt til nye verdier med<br><pre><code>bedrift.telefonnr = "22334455";</code></li>
             <li>Å legge til en funksjon til et objekt er like enkelt:<br><pre><code>bedrift.ring = function() { alert(this.telefonnr); }</code></pre></li>
-            <li>Man kan også gjøre dynamisk oppslag i et objekt:<br><pre><code>for (attr in bedrift) { var x = bedrift[attr]; }</code></pre></li>
+            <li>Man kan også gjøre dynamisk oppslag/insert (hashmap) i et objekt:<br><pre><code>for (attr in bedrift) { var x = bedrift[attr]; }</code></pre></li>
           </ul>
         </section>
         <section>
@@ -281,74 +283,94 @@ if (x) {
             <li>Disse to er altså ikke det samme, og en verdi som ikke er satt blir ikke automatisk null.</li>
           </ul>
         </section>
+        <section>
+          <h2>Math</h2>
+          <ul>
+            <li><code>Math</code> inneholder de vanligste mattefunksjonene og noen predefinerte konstanter.</li>
+            <li>Tall kan skrives på forskjellige formater: <code>10 == 0x10 == 012</code>, men man har ikke tilsvarende for binære tall (må bruke streng og <code>parseInt("1010",2)</code>).</li>
+            <li>Også bit-mønster-operatorer er effektive: &amp;, |, ~, ^, &lt;&lt; og &gt;&gt;</li>
+          </ul>
+          <br><br>
+          <h2>Date</h2>
+          <ul>
+            <li>I <code>Date</code>-objektet finner man mange nyttige funksjoner for dato og tid.</li>
+            <li>Man kan sammenligne to <code>Date</code>-objekter.</li>
+          </ul>
+          <br><br>
+          <em><code>Math</code> og <code>Date</code> er implementert i C++. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</em>
+        </section>
+        <section>
+          <h2>RegExp</h2>
+          <ul>
+            <li>Man kan lage <code>RegExp</code>-objekter med new, men det er ikke nødvendig. Bruk heller <i>/mønster/modifikatorer</i></li>
+            <li>Bruker du samme mønster mange ganger, kan du lagre den i en variabel og bruke f.eks. exec på den.</li>
+          </ul>
+          <pre><code>
+var pattern = /^[A-Z]$/i;
+var res = str.replace(/(gutt|jente)/i, "menneskebarn");
+var t = /du/i.exec("Du er der."); // 'Du'
+if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
+          </code></pre>
+        </section>
 
         <section>
           <h2>Funksjoner</h2>
-          <div class="fragment">Man kan ha lokale funksjoner inne i andre funksjoner.
-          <pre><code>function ytreFunksjon() {
+          <ul>
+          <div class="fragment">Man kan ha lokale funksjoner inne i andre funksjoner.<br><pre><code>function ytreFunksjon() {
   function indreFunksjon() { alert("Hei!"); }
   indreFunksjon();
-}
-</code></pre></div>
-          <div class="fragment">Funksjoner er objekter, akkurat som alt annet.
-          <pre><code>function f() {}
+}</code></pre></div>
+            <div class="fragment">Funksjoner er objekter, akkurat som alt annet.<br><pre><code>function f() {}
 f.call();
-f.valueOf(); // "function f() {}"
-          </code></pre></div>
-        </section>
-        <section>
-          <h2>Funksjoner</h2>
-          <div class="fragment">Kan ha dynamisk antall argumenter. Bruk <code>arguments</code>.
-          <pre><code data-trim contenteditable>function f() { var siste_argument = arguments[arguments.length]; }
+f.valueOf(); // "function f() {}"</code></pre></div>
+            <div class="fragment">Kan ha dynamisk antall argumenter. Bruk <code>arguments</code>.<br><pre><code>function f() { var siste_argument = arguments[arguments.length]; }
 f(1,2,3);</code></pre></div>
-          <div class="fragment">Funksjoner kan være anonyme.
-          <pre><code>var kurs = 5.67;
+           <div class="fragment">Funksjoner kan være anonyme.<br><pre><code>var kurs = 5.67;
 var f = function(x) { return x * kurs; };
-f(45);
-          </code></pre></div>
+f(45);</code></pre></div>
+          </ul>
         </section>
 
         <section>
           <h2><i class="fa fa-exclamation-circle"></i> Scope</h2>
           <ul>
-            <li>Alle funksjoner har sitt eget scope, skjult for andre:<br><pre><code>function fx() {
+          <div class="fragment">Alle funksjoner har sitt eget scope, skjult for andre:<br><pre><code>function fx() {
   var x = 0; // ser ikke y
 }
 function fy() {
   var y = 0; // ser ikke x
-}</code></pre></li>
-            <li>Lokalt scope er ikke tilgjengelig utenfor scopet.<br><pre><code>function fx() { var x = 0; }
+}</code></pre></div>
+            <div class="fragment">Lokalt scope er ikke tilgjengelig utenfor scopet.<br><pre><code>function fx() { var x = 0; }
 alert(x); // undefined
-</code></pre></li>
-            <li>Det lokale scopet legges til en "scope chain" ut til globalt scope:<br><pre><code>function fx() {
+</code></pre></div>
+            <div class="fragment">Det lokale scopet legges til en "scope chain" ut til globalt scope:<br><pre><code>function fx() {
   // scope chain: globalt => fx
   var x = 0;
   function fy() {
     // scope chain: globalt => fx => fy
     var y = 0;
   }
-}</code></pre></li>
+}</code></pre></div>
           </ul>
         </section>
 
         <section>
           <h2><i class="fa fa-exclamation-circle"></i> Scope</h2>
           <ul>
-            <li>Variable man ikke oppretter med <code>var</code> foran blir endret om den finnes i scope chain eller opprettet globalt (en del av <code>window</code>).<br><pre><code>function fx() {
+            <div class="fragment">Variable man ikke oppretter med <code>var</code> foran blir endret om den finnes i scope chain eller opprettet globalt (en del av <code>window</code>).<br><pre><code>function fx() {
   var x = 2;
   function fy() {
     y = 0; // opprettes globalt
     x = 3; // finnes i scope chain, endrer verdi
   }
 }
-alert(y + x); // pang! ser ikke x;</code></pre></li>
-            <li><strong>Det er kostbart å lete i scope chain</strong>; Alle variable/funksjoner man kaller som ikke er en del av scopet må letes fram i scope chain.</li>
+alert(y + x); // pang! ser ikke x;</code></pre></div>
+            <div class="fragment"><strong>Det er kostbart å lete i scope chain</strong>; Alle variable/funksjoner man kaller som ikke er en del av scopet må letes fram i scope chain.</div>
           </ul>
         </section>
         <section>
           <h2><i class="fa fa-exclamation-circle"></i> Scope</h2>
-          <pre><code>
-function f() {
+          <pre><code>function f() {
   x = 10; // window.x opprettes/oppdateres
   var y = 20; // opprettes i lokalt scope til f(), ikke tilgjengelig utenfra
   function visKoordinat() {
@@ -362,18 +384,19 @@ function f() {
 function f2() {
   y = 30; // Ser ikke y, oppretter y globalt
   x = 25; // endrer global x
-}
-          </code></pre>
+}</code></pre>
         </section>
 
         <section>
           <h2>Blokk uten scope</h2>
-          <div>Med parantes har man en kodeblokk uten eget skope.
-          <pre><code data-trim contenteditable>var x = (10 + "5");
+          <ul>
+            <p>Med parantes har man en kodeblokk uten eget skope.</p>
+            <p>Kan bruke rundt definisjoner (funksjoner, array, etc.) eller som en del av ett statement.<br>
+            <pre><code>var x = (10 + "5");
 
 var f = function(s) { alert(s); };
-(function (s) {f(s);})("hei");
-          </code></pre></div>
+(function (s) {f(s);})("hei");</code></pre></p>
+          </ul>
         </section>
 
         <section>
@@ -386,14 +409,13 @@ var f = function(s) { alert(s); };
           <pre><code>var global_i;
 
 (function() {
-  var x = 20,y,z; // Initisering
+  var x = 20, y, z; // Initisering
   for (;x--;) {
     global_i = x; // vi prøver å sette global variabel...
     alert("Plagsom! " + i);
   }
   var global_i = 0; // Ha! global_i er ikke global likevel.
-})();
-          </code></pre>
+})();</code></pre>
         </section>
 
         <section>
@@ -408,9 +430,20 @@ var f = function(s) { alert(s); };
           <pre class="fragment"><code>function f() { var x = 2; return { x:function(){ return x; } } }
 var res = f();
 f = undefined;
-var x = res.x(); <span class="fragment">// 2, scopet til slettet funksjon huskes uansett!</span>
-          </code></pre>
+var x = res.x(); <span class="fragment">// 2, scopet til slettet funksjon huskes uansett!</span></code></pre>
         </section>
+
+        <section data-background="assignments.jpg" data-background-transition="slide">
+          <h2>Oppgave: Closure (10 min)</h2>
+          <p>Ved å utnytte closure og det andre dere har lært så skal dere lage en modul som kan brukes på denne måten:</p>
+          <pre><code>Posisjon.sett([0,0]);
+var pos = Posisjon.hent(); // pos === [0,0];
+var avstand = Posisjon.avstandFra([5,6]); 
+  // sqrt(abs(x1-x2)^2 + abs(y1-y2)^2) == 7.81</code></pre>
+          <p><strong>Hint!</strong> En anonym funksjon som returnerer et objekt kan inneholde funksjoner med tilgang til scopet til den anonyme funksjonen.</p>
+          <p><strong>Hint 2:</strong> Bruk <a target="new" href="http://www.w3schools.com/jsref/jsref_obj_math.asp"><code>Math</code></a>, og beregning av avstand står over.</p>
+        </section>
+
         <section>
           <h2>Modul med closure</h2>
           <pre><code>MapGraphics = (function(){<span class="fragment">
@@ -446,35 +479,6 @@ Ansatt.salary = 20000;
 </code></pre>
         </section>
 
-        <section>
-          <h2>Math</h2>
-          <ul>
-            <li><code>Math</code> inneholder de vanligste mattefunksjonene og noen predefinerte konstanter.</li>
-            <li>Tall kan skrives på forskjellige formater: <code>10 == 0x10 == 012</code>, men man har ikke tilsvarende for binære tall (må bruke streng og <code>parseInt("1010",2)</code>).</li>
-            <li>Også bit-mønster-operatorer er effektive: &amp;, |, ~, ^, &lt;&lt; og &gt;&gt;</li>
-          </ul>
-          <br><br>
-          <h2>Date</h2>
-          <ul>
-            <li>I <code>Date</code>-objektet finner man mange nyttige funksjoner for dato og tid.</li>
-            <li>Man kan sammenligne to <code>Date</code>-objekter.</li>
-          </ul>
-          <br><br>
-          <em><code>Math</code> og <code>Date</code> er implementert i C++. Ikke prøv å erstatte noen av funksjonene i disse med egen JS-kode.</em>
-        </section>
-        <section>
-          <h2>RegExp</h2>
-          <ul>
-            <li>Man kan lage <code>RegExp</code>-objekter med new, men det er ikke nødvendig. Bruk heller <i>/mønster/modifikatorer</i></li>
-            <li>Bruker du samme mønster mange ganger, kan du lagre den i en variabel og bruke f.eks. exec på den.</li>
-          </ul>
-          <pre><code>
-var pattern = /^[A-Z]$/i;
-var res = str.replace(/(gutt|jente)/i, "menneskebarn");
-var t = /du/i.exec("Du er der."); // 'Du'
-if (str.match(pattern).length > 0) { /* strengen matcher mønsteret */ }
-          </code></pre>
-        </section>
         <section>
           <h2>DOM</h2>
           <ul>
