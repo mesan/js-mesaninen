@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Oppgave 1</title>
+  <title>Oversetter</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="main.css" type="text/css" media="screen" />
 </head>
 <body>
-  <h1>Oppgave 1</h1>
+  <h1>Oversetter</h1>
+  <form action="" data-bind="submit: translate">
+    <input type="text" data-bind="textInput: word" />
+    <button type="submit">Oversett</button>
+  </form>
+  <span data-bind="text: translatedWord"></span>
+  <span data-bind="if: noResults">No results.</span>
   <script type="text/javascript" src="knockout-3.2.0.debug.js"></script>
   <script type="text/javascript" src="main.js"></script>
 </body>
