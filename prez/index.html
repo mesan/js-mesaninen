@@ -1032,7 +1032,7 @@ $.getJSON("some/url.json", function(jsondata) {
           <h2><i class="fa fa-shopping-cart"></i> Hva tilbyr Knockout?</h2>
           <ul>
             <li>Frikobling av forretningslogikk fra DOM-en.</li>
-            <li>To-veis-binding mellom GUI og forretningslogikken.</li>
+            <li>Toveisbinding mellom GUI og forretningslogikken.</li>
           </ul>
         </section>
 
@@ -1156,7 +1156,7 @@ $.getJSON("some/url.json", function(jsondata) {
         <section>
           <h2>Eksempel på <em>observable</em></h2>
           <div class="fragment">
-            <p>Vi definerer en <em>observable</em> i view-modellen vår på denne måten:</p>
+            <p>Vi definerer en <em>observable</em> i view-modellen vår:</p>
 <pre><code>var pageViewModel = {
   myTitle: ko.observable('This Is My Title');
 };</code></pre>
@@ -1208,6 +1208,7 @@ myObservableArray().push('Item');
           <h2>Observable Array API</h2>
           <ul>
             <li>
+              Klassiske operasjoner:
               <code>push</code>, <code>pop</code>, <code>unshift</code>, <code>shift</code>,
               <code>reverse</code>, <code>sort</code>.
             </li>
@@ -1276,10 +1277,16 @@ myObservableArray().push('Item');
 
         <section>
           <h2><i class="fa fa-exclamation-circle"></i> &laquo;This Just In!&raquo;</h2>
-          <p><a href="http://blog.stevensanderson.com/2014/08/18/knockout-3-2-0-released/"
+          <p>
+            <a href="http://blog.stevensanderson.com/2014/08/18/knockout-3-2-0-released/"
                 target="_blank">Knockout 3.2.0 released</a>.<br />
             <span class="text-muted">18. august 2014</span></p>
-
+          <ul class="fragment">
+            <li><em>Components</em></li>
+            <li><em>Custom elements</em></li>
+            <li><em>pureComputed</em></li>
+            <li><em>textInput</em></li>
+          </ul>
         </section>
 
         <section data-background="assignments.jpg" data-background-transition="slide">
