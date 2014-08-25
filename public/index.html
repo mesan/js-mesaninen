@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Oppgave 1</title>
+  <title>Wikipedia App</title>
   <meta charset="utf-8" />
   <link rel="stylesheet" href="main.css" type="text/css" media="screen" />
 </head>
-<body>
-  <h1>Oppgave 1</h1>
+<body ng-app="wikipediaApp">
+  <h1>Wikipedia App</h1>
+  <p>
+    <wikipedia lang="en" what="Bacon"></wikipedia>
+  </p>
+  <p>
+    <wikipedia lang="en" what="Awesome"></wikipedia>
+  </p>
+
   <script type="text/javascript" src="angular.js"></script>
   <script type="text/javascript" src="main.js"></script>
 </body>
