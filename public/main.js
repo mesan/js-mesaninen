@@ -4,6 +4,7 @@
   wikipediaApp.directive('wikipedia', function () {
     return {
       restrict: 'E',
+      replace: true,
       scope: {
         lang: '@',
         what: '@'
